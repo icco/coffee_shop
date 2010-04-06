@@ -1,15 +1,13 @@
-# Sample Proposal Form
+# Proposal Form
 
 Senior Project with Dr. Turner
-
-You must submit a proposal of this general form with these sections to Dr. Turner for approval at least one term before CSC/CPE 491 registration. The most prudent course is often to take CSC/CPE 400 for 2 units with Dr. Turner in the term prior to registration for 491 where the object is to create and perfect this Proposal.
 
 # 1. Definition of Senior Project. 
  
  What is a Senior Project? You must define this term to your satisfaction. Explain your understanding of the Senior Project requirement to me. You may use any sources you wish, please intersect with some Cal Poly definitions and check the Department’s definitions. Consider that part of the task is to become relatively “expert” in some CSC/CPE topic, where you really have some knowledge and experience that shows the maturity you’ve reached in your coursework here at Cal Poly. Make this section concise and understandable so that a student from another major would understand what you are doing at a high level.
 # 2. Type of Senior Project Proposed. 
  
- Do you propose to perform an experiment to see if some process can be automated? Would you like to build a software system to solve a user’s problem? Do you propose to perform a survey of University students and use science to discover a set of user requirements for some proposed system requirements analysis or to perform a social analysis of some software technology? Would you like to do a theoretical analysis of some specific set of requirements or social set of constraints on sets of software requirements? Would you like to write up a thorough survey of some special technical topic for publication? It is important to categorize your work at the outset, even if you change it later (and I am flexible regarding change.)
+I would like to build a software system to help non-technical writers using Linux.
 
 # 3. Expected Abstract of Senior Project. 
 
@@ -34,4 +32,14 @@ You must have some idea how to tell when you are “done.” You must also have 
 # 8. Resources List
 
 the resources you’ll need and include everything you can imagine. Include time off from work, reduced courseloads, extra computing resources, hardware, time with Professor Turner, time with other consultants, books, papers, library time, and access to anything special you need. It is important to be explicit at this point. This section should include your bibliography so far, and note that the bibliography needs to be annotated.
+
+I will need:
+ 
+ * Time with Dr. Turner
+ * A Ruby book (Obtained...)
+ * A book on coding user interfaces with Ruby
+ * Coffee
+ * 10-15 hours a week to code
+ * a gitHub account (Already have...)
+ * Someone (Maybe Dr. Turner...) to talk to about open-source software liscences.
 
