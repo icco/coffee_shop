@@ -73,3 +73,4 @@ You must have some idea how to tell when you are “done.” You must also have 
 ## Bibliography so far:
 
  * Flanagan, David and Matsumoto, Yukihiro. The Ruby Programming Language. Sebastopol, CA: O'Reilly Media, 2008.
+ * "How to Write a Bibliography" A Research Guide For Students. 10 April 2010 < http://www.aresearchguide.com/12biblio.html >.
