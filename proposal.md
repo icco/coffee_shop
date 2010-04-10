@@ -38,7 +38,13 @@ Write up one or two paragraphs of abstract to describe what you think the finish
 
 # 4. Proposed Table of Contents.
 
-Give as detailed a picture of the Table of Contents as is possible at this point. The sections must include main sections: (1) Abstract; (2) Introduction where you generally describe your problem area; (2) Problem description where you carefully and in detail describe the problem you are interested in; (3) Survey of relevant work where you describe how others have looked at this problem or you describe the state of the world in your problem area; (4) your Contribution that consists of some (possibly small) variation on current solutions, a new synthesis or combination of solutions, an analytic criticism of some known solutions, a model to test some hypothesis about the solutions (software) or a mature description of open questions in the area; (5) Evaluation of contribution where you explain how your work has meaning in some context (you need not change the world but should show some improvement or novel evaluation for some element of your solution, experiment or survey, (6) Conclusion, and Bibliography. Note that if there is any ethical consideration to your work, you must detail it and explain your resolution explicitly somewhere in your writeup. Review the ACM/IEEE Software Engineering Code of Ethics and in cases where humans are part of your experimentation, contact the Human Subjects Review Board (IRB) on campus.
+ 1. Abstract 
+ 2. Introduction where you generally describe your problem area
+ 3. Problem description where you carefully and in detail describe the problem you are interested in
+ 4. Survey of relevant work where you describe how others have looked at this problem or you describe the state of the world in your problem area
+ 5. Your Contribution that consists of some (possibly small) variation on current solutions, a new synthesis or combination of solutions, an analytic criticism of some known solutions, a model to test some hypothesis about the solutions (software) or a mature description of open questions in the area
+ 6. Evaluation of contribution where you explain how your work has meaning in some context (you need not change the world but should show some improvement or novel evaluation for some element of your solution, experiment or survey
+ 7. Conclusion, and Bibliography. Note that if there is any ethical consideration to your work, you must detail it and explain your resolution explicitly somewhere in your writeup. Review the ACM/IEEE Software Engineering Code of Ethics and in cases where humans are part of your experimentation, contact the Human Subjects Review Board (IRB) on campus.
 
 # 5. Proposed Process Model for Completion.
 
