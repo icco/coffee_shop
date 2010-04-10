@@ -52,15 +52,16 @@ You must have some idea how to tell when you are “done.” You must also have 
 
 # 8. Resources List
 
-the resources you’ll need and include everything you can imagine. Include time off from work, reduced courseloads, extra computing resources, hardware, time with Professor Turner, time with other consultants, books, papers, library time, and access to anything special you need. It is important to be explicit at this point. This section should include your bibliography so far, and note that the bibliography needs to be annotated.
-
-I will need:
- 
- * Time with Dr. Turner
+ * Time with Dr. Turner (An hour every two weeks?)
  * A Ruby book (Obtained...)
  * A book on coding user interfaces with Ruby
  * Coffee
+ * Beer
  * 10-15 hours a week to code
- * a gitHub account (Already have...)
- * Someone (Maybe Dr. Turner...) to talk to about open-source software liscences.
+ * a GitHub account (Already have...)
+ * Someone (Dr. Turner?) to talk to about open-source software liscences.
+ * Laptop, running Linux, with Ruby 1.9 and vim 7.2 installed (In posession)
 
+## Bibliography so far:
+
+ * Flanagan, David and Matsumoto, Yukihiro. The Ruby Programming Language. Sebastopol, CA: O'Reilly Media, 2008.
