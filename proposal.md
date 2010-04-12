@@ -4,7 +4,7 @@ Senior Project with Dr. Turner
 Nathaniel Welch  
 April 10th, 2010  
 
-# 1. Definition of Senior Project. 
+## 1. Definition of Senior Project. 
  
 A senior project is a project which lets a student take what they have learned
 during their time at Cal Poly, and apply it to an idea that interests them. In
@@ -27,23 +27,24 @@ maintaining their software, and everything else. Finally Computer Science
 graduates should be able to communicate their successes, and failures, to those
 who are both technically and non-technically oriented.
 
-# 2. Type of Senior Project Proposed. 
+## 2. Type of Senior Project Proposed. 
  
 I would like to build a software system to help non-technical writers write
 books on Linux.
 
-# 3. Expected Abstract of Senior Project. 
+## 3. Expected Abstract of Senior Project. 
 
 For my senior project I will be building a desktop application similar to
-WriteRoom and OmmWriter. These two applications are both word processors for
-the Mac OS X operating system. They take are what is commonly described as a
-reset on word processing software, bringing the software back to the days of
-Microsoft Word 3.0 and Word Perfect. They do this by spending more time on
-focusing on the design of the software interface, and focusing on keeping it
-minimalistic, instead of filling the product with new obscure features, which
-is an common complaint against the current iterations of Microsoft Word.
+[WriteRoom][writeroom] and [OmmWriter][ommwriter]. These two applications are
+both word processors for the Mac OS X operating system. They take are what is
+commonly described as a reset on word processing software, bringing the
+software back to the days of Microsoft Word 3.0 and Word Perfect. They do this
+by spending more time on focusing on the design of the software interface, and
+focusing on keeping it minimalistic, instead of filling the product with new
+obscure features, which is an common complaint against the current iterations
+of Microsoft Word.
 
-# 4. Proposed Table of Contents.
+## 4. Proposed Table of Contents.
 
  1. Abstract 
  2. Introduction 
@@ -70,11 +71,11 @@ is an common complaint against the current iterations of Microsoft Word.
  
       Note that if there is any ethical consideration to your work, you must detail it and explain your resolution explicitly somewhere in your writeup. Review the ACM/IEEE Software Engineering Code of Ethics and in cases where humans are part of your experimentation, contact the Human Subjects Review Board (IRB) on campus.
 
-# 5. Proposed Process Model for Completion.
+## 5. Proposed Process Model for Completion.
 
 Here you must propose how you plan to carry out your project. It should include a timetable with proposed work schedule (timesheets are required: remember to expect 10 – 15 hours per week to work on the project). It must show the synchronization points for evaluation of work (by you and by me.) The process model also needs to include features such as change management and alternative considerations (such as if your original idea totally fails.)
 
-# 6. Senior Project Basic Requirements.
+## 6. Senior Project Basic Requirements.
 
  I want this project to be sort of the antithesis of my time at Cal Poly. The
  computer science department is currently changing from a place built entirely
@@ -98,11 +99,11 @@ The following are non-functional requirements for my project:
  * It must promote a distraction free work environment.
  * It must be usable by people who work in various lighting environments (writing in a coffee shop, dark room, corporate environment)
 
-# 7. Senior Project Test Plan.
+## 7. Senior Project Test Plan.
 
 You must have some idea how to tell when you are "done." You must also have some way to evaluate your work and your results so that you can manage your expectations for completion and for grade evaluation. A test plan will guide such an effort: it will be based on your Senior Project requirements. The test plan should include a proposed set of acceptance tests. It should also include a way to evaluate quality attributes and the resulting grade assignments you would think would be fair.
 
-# 8. Resources List
+## 8. Resources List
 
  * Time with Dr. Turner (An hour every two weeks?)
  * A Ruby book (Obtained...)
@@ -117,10 +118,10 @@ You must have some idea how to tell when you are "done." You must also have some
 ## Bibliography so far:
 
  * Flanagan, David and Matsumoto, Yukihiro. The Ruby Programming Language. Sebastopol, CA: O'Reilly Media, 2008.
- * "How to Write a Bibliography" A Research Guide For Students. 10 April 2010 < http://www.aresearchguide.com/12biblio.html >.
- * Vinh, Khoi "Block Writer." Subtraction.Com. 09 May 2006. 12 April 2010 < http://www.subtraction.com/2006/05/09/blockwriter >.
- * Vinh, Khoi "Overcoming Roadblocks to Blockwriter." Subtraction.Com. 01 June 2006. 12 April 2010 < http://www.subtraction.com/2006/06/01/overcoming-r >.
+ * "How to Write a Bibliography" A Research Guide For Students. 10 April 2010 <http://www.aresearchguide.com/12biblio.html>.
+ * Vinh, Khoi "Block Writer." Subtraction.Com. 09 May 2006. 12 April 2010 <http://www.subtraction.com/2006/05/09/blockwriter>.
+ * Vinh, Khoi "Overcoming Roadblocks to Blockwriter." Subtraction.Com. 01 June 2006. 12 April 2010 <http://www.subtraction.com/2006/06/01/overcoming-r>.
 
- * http://www.hogbaysoftware.com/products/writeroom
- * http://www.ommwriter.com/
+ [writeroom]: http://www.hogbaysoftware.com/products/writeroom
+ [ommwriter]: http://www.ommwriter.com/
 
