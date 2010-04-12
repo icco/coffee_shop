@@ -52,11 +52,11 @@ Here you must propose how you plan to carry out your project. It should include 
 
 # 6. Senior Project Basic Requirements.
 
-You can think of this proposal as an extended requirements document for your Senior Project. It should begin with a set of Professional Goals (where would you like to go with your Cal Poly degree?) Exactly what do you expect to accomplish with your Senior Project? You should include a rich set of “nonfunctional” requirements that apply to your project.
+You can think of this proposal as an extended requirements document for your Senior Project. It should begin with a set of Professional Goals (where would you like to go with your Cal Poly degree?) Exactly what do you expect to accomplish with your Senior Project? You should include a rich set of "nonfunctional" requirements that apply to your project.
 
 # 7. Senior Project Test Plan.
 
-You must have some idea how to tell when you are “done.” You must also have some way to evaluate your work and your results so that you can manage your expectations for completion and for grade evaluation. A test plan will guide such an effort: it will be based on your Senior Project requirements. The test plan should include a proposed set of acceptance tests. It should also include a way to evaluate quality attributes and the resulting grade assignments you would think would be fair.
+You must have some idea how to tell when you are "done." You must also have some way to evaluate your work and your results so that you can manage your expectations for completion and for grade evaluation. A test plan will guide such an effort: it will be based on your Senior Project requirements. The test plan should include a proposed set of acceptance tests. It should also include a way to evaluate quality attributes and the resulting grade assignments you would think would be fair.
 
 # 8. Resources List
 
