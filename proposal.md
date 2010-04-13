@@ -73,7 +73,7 @@ of Microsoft Word.
 
 ## 5. Proposed Process Model for Completion.
 
-Here you must propose how you plan to carry out your project. It should include a timetable with proposed work schedule (timesheets are required: remember to expect 10 – 15 hours per week to work on the project). It must show the synchronization points for evaluation of work (by you and by me.) The process model also needs to include features such as change management and alternative considerations (such as if your original idea totally fails.)
+Here you must propose how you plan to carry out your project. It should include a timetable with proposed work schedule (timesheets are required: remember to expect 10 -- 15 hours per week to work on the project). It must show the synchronization points for evaluation of work (by you and by me.) The process model also needs to include features such as change management and alternative considerations (such as if your original idea totally fails.)
 
 ## 6. Senior Project Basic Requirements.
 
@@ -112,8 +112,8 @@ You must have some idea how to tell when you are "done." You must also have some
  * Beer
  * 10-15 hours a week to code
  * a GitHub account (Already have...)
- * Someone (Dr. Turner?) to talk to about open-source software liscences.
- * Laptop, running Linux, with Ruby 1.9 and vim 7.2 installed (In posession)
+ * Someone (Dr. Turner?) to talk to about open-source software licences.
+ * Laptop, running Linux, with Ruby 1.9 and vim 7.2 installed (In possession)
 
 ## Bibliography so far:
 
