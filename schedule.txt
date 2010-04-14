@@ -1,0 +1,51 @@
+GooGrade Release Schedule
+
+Start Mon Mar 30, 2009   
+End  Fri Jun 12, 2009
+Saturday                       4      11      18       25      2       9      16      23       30     6
+                       |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS
+--- Stage 1 ---        |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Final
+                       |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------
+Review SRS              ....[--|]      |       |       |       |       |       |       |       |       |               
+Review Arch               ..[--|]      |       |       |       |       |       |       |       |       |
+Delivery Plan signoff          | x     |       |       |       |       |       |       |       |       |
+Training                  [----|-------|-------|-------|-]____ |       |       |       |       |       |
+Pseudocode                     | ....[-|---]   |       |       |       |       |       |       |       |
+Vertical Prototpyping Party    |       |  x ...|x      |       |       |       |       |       |       |
+Implement Stage 1              |       |     ..|.[-----|.......|.]     |       |       |       |       |
+Unit Test Development          |       |     ..|.[-----|.......|.]     |       |       |       |       |
+Daily Builds begin             |       |   ....|..x    |       |       |       |       |       |       |
+Write Sys Tests                |       |     ..|.....[-|-----..|.]     |       |       |       |       |
+Integration Test               |       |       |       |[------|-]     |       |       |       |       |
+Daily Tests Begin              |       |       |       |     ..|..x    |       |       |       |       |
+Review System Test             |       |       |   ....|...[--]|       |       |       |       |       |
+Release Prep                   |       |       |       |       |[-]    |       |       |       |       |
+Midterm Exam                   |       |       |       |     x |       |       |       |       |       |
+Release 1                      |       |       |       |       |   x (Wed 5/6 noon)    |       |       |
+                       |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS
+--- Stage 2 ---        |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Final  
+                       |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------
+Release Party                                                        x |       |       |       |       |       
+Fix Bugs for Release 1.1                                               | [-]   |       |       |       |     
+Test Release 1.1                                                       | [---] |       |       |       |     
+Release 1.1                                                            |     x |       |       |       | 
+Implement Stage 2                                                      | [-----|-------|---]   |       |
+Unit Test Development                                                  | [-----|-------|----]  |       |
+Formal Reveiws                                                         |       |    [--|-]     |       |          
+No School                                                              |       |       | x     |       |        
+Write Sys Tests                                                        |       |[------|---]   |       | 
+System Test                                                            |       |       | [-----|--]    |
+write Deployment Doc                                                   |       |       |  [---]|       |
+Release Prep                                                           |       |       |       |[--]   |
+Release 2 Due                                                          |       |       |       |   x(Wed 6/3 11am)
+Final                                                                  |       |       |       |       | x ( Mon 6/8 10 am )
+                       |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS
+                       |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Dead  | Final  
+
+
+Symbols
+[   activity starts 	x   milestone date
+-   activity underway 	.   date slipped (oops)
+]   activity completes 	_   date pulled in (yeah)
+
+
