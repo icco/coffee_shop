@@ -23,6 +23,7 @@ Research UI Minimalism |       |       |       |      [|-------|------]|       |
 Write Spec             |       |       |       |[------|-------|-------|------]|       |       |       |
 Proof Spec             |       |       |       |       |       |[------|-------|-]     |       |       |
 Spec Due               |       |       |       |       |       |       |       |       |       |  x    |
+UI Study / Prototype   |       |       |       |       |       |       |     [-|-------|-------|]      |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                                4      11      18       25      2       9      16      23       30     6
 
@@ -34,7 +35,14 @@ End   Sat Sept 5th, 2010
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
 --- Q2 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Wk 11 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-                       |       |       |       |       |       |       |       |       |       |       |       |
+UI Prototype Due       |       |  x    |       |       |       |       |       |       |       |       |       |
+Milestone 1            |       |       |      x|       |       |       |       |       |       |       |       |
+Milestone 2            |       |       |       |       |       |      x|       |       |       |       |       |
+Milestone 3            |       |       |       |       |       |       |       |       |      x|       |       |
+Code                   | [-----|-------|-------|-------|-------|-------|-------|-------|-------|-------|-----] |
+Eat Pizza              | [-----|-------|-------|-------|-------|-------|-------|-------|-------|-------|-----] |
+Drink Beer             | [-----|-------|-------|-------|-------|-------|-------|-------|-------|-------|-----] |
+Drink Coffee           | [-----|-------|-------|-------|-------|-------|-------|-------|-------|-------|-----] |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                               27       4      11      18      25       1       8      15      22      29       5
 
