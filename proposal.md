@@ -77,7 +77,7 @@ of Microsoft Word.
  
 ## 5. Proposed Process Model for Completion.
 
-Here you must propose how you plan to carry out your project. It should include a timetable with proposed work schedule (timesheets are required: remember to expect 10 -- 15 hours per week to work on the project). It must show the synchronization points for evaluation of work (by you and by me.) The process model also needs to include features such as change management and alternative considerations (such as if your original idea totally fails.)
+Attached.
 
 ## 6. Senior Project Basic Requirements.
 

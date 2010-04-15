@@ -1,7 +1,7 @@
 Coffee_Shop Schedule
 
 Symbols
-[   activity starts 	x   milestone date
+[   activity starts 	   x   milestone date
 -   activity underway 	.   date slipped (oops)
 ]   activity completes 	_   date pulled in (yeah)
 
@@ -14,7 +14,15 @@ End   Sat June 5th, 2010
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
 --- Q1 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-                       |       |       |       |       |       |       |       |       |       |       |
+Meet With Turner       |  x    |       |       |       |       |       |       |       |       |       |
+Draft Proposal 1       |       |  x    |       |       |       |       |       |       |       |       |
+Draft Proposal 2       |       |       |  x    |       |       |       |       |       |       |       |
+Research Old Word Proc |       |       |   [---|-------|----]  |       |       |       |       |       |
+Research Written Word  |       |       |       |[------|-------|]      |       |       |       |       |
+Research UI Minimalism |       |       |       |      [|-------|------]|       |       |       |       |
+Write Spec             |       |       |       |[------|-------|-------|------]|       |       |       |
+Proof Spec             |       |       |       |       |       |[------|-------|-]     |       |       |
+Spec Due               |       |       |       |       |       |       |       |       |       |  x    |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                                4      11      18       25      2       9      16      23       30     6
 
