@@ -55,7 +55,7 @@ End   Sat Dec 4th, 2010
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
 --- Q3 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Wk 11 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-                       |       |       |       |       |       |       |       |       |       |       |       |
+Milestone 4            |       |  x    |       |       |       |       |       |       |       |       |       |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                               26       3      10       17     24      31       7      14      21      28       4
 
@@ -67,7 +67,7 @@ End   Sat Mar 12th, 2011
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
 --- Q4 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-                       |       |       |       |       |       |       |       |       |       |       |
+Final Paper Due        |       |       |       |       |       |       |       |       |       |     x |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                                9      16      23      30       6      13      20      27       6      13
 
