@@ -46,7 +46,6 @@ Drink Coffee           | [-----|-------|-------|-------|-------|-------|-------|
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                               27       4      11      18      25       1       8      15      22      29       5
 
-
 Fall Qtr
 Start Sun Sept 19th, 2010
 End   Sat Dec 4th, 2010
