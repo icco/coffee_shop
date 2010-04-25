@@ -38,7 +38,7 @@ books on Linux.
 
 For my senior project I will be building a desktop application similar to
 [WriteRoom][writeroom] and [OmmWriter][ommwriter]. These two applications are
-both word processors for the Mac OS X operating system. They take are what is
+both word processors for the Mac OS X operating system. They take what is
 commonly described as a reset on word processing software, bringing the
 software back to the days of Microsoft Word 3.0 and Word Perfect. They do this
 by spending more time on focusing on the design of the software interface, and
