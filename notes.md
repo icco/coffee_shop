@@ -1,6 +1,8 @@
 # Research Notes
 
-## WriteRoom 4-25-10
+## 4.25.10
+
+### WriteRoom
 
  * Lets you change font and colors
  * obscure key combinations to do any sort of display settings
@@ -10,7 +12,7 @@
  * [![normal type](http://github.com/icco/coffee_shop/raw/master/images/writeroom1.png)](http://github.com/icco/coffee_shop/raw/master/images/writeroom1.png)
  * [![page broken](http://github.com/icco/coffee_shop/raw/master/images/writeroom2.png)](http://github.com/icco/coffee_shop/raw/master/images/writeroom2.png)
 
-## OmmWriter 4-25-10
+### OmmWriter
 
  * Lets you change font (sans, serif, script), font-size, themes (background/color combinations), background music and typing noise
  * I found typing noise very soothing, but I prefered to pick my own background music.
@@ -23,4 +25,8 @@
  * [![normal type](http://github.com/icco/coffee_shop/raw/master/images/ommwriter2.png)](http://github.com/icco/coffee_shop/raw/master/images/ommwriter2.png)
  * [![menu on mouse move](http://github.com/icco/coffee_shop/raw/master/images/ommwriter3.png)](http://github.com/icco/coffee_shop/raw/master/images/ommwriter3.png)
 
+### Other References
+
+ * <http://en.wikipedia.org/wiki/Word_processor>
+ * <http://daringfireball.net/projects/markdown/>
 
