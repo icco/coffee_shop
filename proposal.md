@@ -4,6 +4,8 @@ Senior Project with Dr. Turner
 Nathaniel Welch  
 April 10th, 2010  
 
+_This proposal can also be seen online at <http://coffee-shop.heroku.com/>_
+
 ## 1. Definition of Senior Project.
  
 A senior project is a project which lets a student take what they have learned
@@ -103,7 +105,18 @@ The following are non-functional requirements for my project:
 
 ## 7. Senior Project Test Plan.
 
-You must have some idea how to tell when you are "done." You must also have some way to evaluate your work and your results so that you can manage your expectations for completion and for grade evaluation. A test plan will guide such an effort: it will be based on your Senior Project requirements. The test plan should include a proposed set of acceptance tests. It should also include a way to evaluate quality attributes and the resulting grade assignments you would think would be fair.
+At the very least, I need to be able to sit down in a classroom, coffee shop,
+or Dexter Lawn, and type out a paper. When I can do this, and save the document
+in some standards compliant format, the software will be done. 
+
+But to actually evaluate my effort I will need to have other people use my
+software as well. I plan on running some informal surveys in the Cal Poly
+Library, a coffee shop downtown, and on Dexter Lawn to get an idea if users
+other than myself find the software useful.
+
+To help we stay on this goal I plan on continuously talking to people
+throughout the durration of my senior project, to see how people normally take
+notes and write, to see if I can't promote a more natural writting environment.
 
 ## 8. Resources List
 
