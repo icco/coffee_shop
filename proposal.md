@@ -71,9 +71,7 @@ of Microsoft Word.
     Where I explain how my work has meaning in some context. Should show some
     improvement over current solutions.
 
- 7. Ethical implications of writting Open Source Software
- 
- 8. Conclusion, and Bibliography.
+ 7. Conclusion, and Bibliography.
  
 ## 5. Proposed Process Model for Completion.
 
