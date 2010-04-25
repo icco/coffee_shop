@@ -24,6 +24,18 @@ get '/schedule' do
    erb :page, :locals => { :title => title, :content => content }
 end
 
+get '/notes' do
+   title = "Senior Project Notes"
+   md = RDiscount.new(File.read("notes.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
+
+get '/spec' do
+   title = "Senior Project Specification"
+   md = RDiscount.new(File.read("spec.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
+
 get '/style.css' do
    content_type 'text/css', :charset => 'utf-8'
    less :style
