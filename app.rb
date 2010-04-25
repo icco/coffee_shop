@@ -5,6 +5,7 @@ require 'rubygems'
 require 'sinatra'
 require 'less'
 require 'rdiscount'
+require 'rmagick'
 
 get '/' do
    md = RDiscount.new(File.read("README.md"), :smart).to_html
@@ -26,5 +27,11 @@ end
 get '/style.css' do
    content_type 'text/css', :charset => 'utf-8'
    less :style
+end
+
+get '/favicon.ico' do
+   content_type 'image/x-ico'
+   img = Magick::Image.read('./views/favicon.ico')[0]
+   img.to_blob
 end
 
