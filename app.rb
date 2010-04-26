@@ -5,7 +5,8 @@ require 'rubygems'
 require 'sinatra'
 require 'less'
 require 'rdiscount'
-require 'rmagick'
+require 'RMagick'
+include Magick
 
 get '/' do
    md = RDiscount.new(File.read("README.md"), :smart).to_html
