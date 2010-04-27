@@ -62,16 +62,15 @@ of Microsoft Word.
     Research of the history of word processors, UI Design, and the written word.
  
  5. Your Contribution
- 
-    Consists of some (possibly small) variation on current solutions, a new
-    synthesis or combination of solutions, an analytic criticism of some known
-    solutions, a model to test some hypothesis about the solutions (software)
-    or a mature description of open questions in the area
+
+    I will talk about why my contribution is needed and what my goal is. I will
+    also bring in content from my talks with people around town and talk about
+    technical desisions.
  
  6. Evaluation of contribution
  
-    Where I explain how my work has meaning in some context. Should show some
-    improvement over current solutions.
+    Where I explain how my work has meaning and how it improves upon previous
+    solutions.
 
  7. Conclusion, and Bibliography.
  

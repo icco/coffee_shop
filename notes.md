@@ -9,8 +9,8 @@
  * ESC lets you turn app into normal text editor. Almost seems like a wrapper around text edit.
  * Growl notifications still appear
  * Wrap to page is pretty cool
- * [![normal type](http://github.com/icco/coffee_shop/raw/master/images/writeroom1.png)](http://github.com/icco/coffee_shop/raw/master/images/writeroom1.png)
- * [![page broken](http://github.com/icco/coffee_shop/raw/master/images/writeroom2.png)](http://github.com/icco/coffee_shop/raw/master/images/writeroom2.png)
+ * [normal type](http://github.com/icco/coffee_shop/raw/master/images/writeroom1.png)
+ * [page broken](http://github.com/icco/coffee_shop/raw/master/images/writeroom2.png)
 
 ### OmmWriter
 
@@ -21,9 +21,9 @@
  * UI was much more visible
  * gave scroll bar and word count
  * adjustable work area
- * [![blank page](http://github.com/icco/coffee_shop/raw/master/images/ommwriter1.png)](http://github.com/icco/coffee_shop/raw/master/images/ommwriter1.png)
- * [![normal type](http://github.com/icco/coffee_shop/raw/master/images/ommwriter2.png)](http://github.com/icco/coffee_shop/raw/master/images/ommwriter2.png)
- * [![menu on mouse move](http://github.com/icco/coffee_shop/raw/master/images/ommwriter3.png)](http://github.com/icco/coffee_shop/raw/master/images/ommwriter3.png)
+ * [blank page](http://github.com/icco/coffee_shop/raw/master/images/ommwriter1.png)
+ * [normal type](http://github.com/icco/coffee_shop/raw/master/images/ommwriter2.png)
+ * [menu on mouse move](http://github.com/icco/coffee_shop/raw/master/images/ommwriter3.png)
 
 ### Other References
 
