@@ -5,6 +5,8 @@ require 'rubygems'
 require 'sinatra'
 require 'less'
 require 'rdiscount'
+require 'RMagick'
+include Magick
 
 get '/' do
    md = RDiscount.new(File.read("README.md"), :smart).to_html
@@ -23,8 +25,26 @@ get '/schedule' do
    erb :page, :locals => { :title => title, :content => content }
 end
 
+get '/notes' do
+   title = "Senior Project Notes"
+   md = RDiscount.new(File.read("notes.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
+
+get '/spec' do
+   title = "Senior Project Specification"
+   md = RDiscount.new(File.read("spec.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
+
 get '/style.css' do
    content_type 'text/css', :charset => 'utf-8'
    less :style
+end
+
+get '/favicon.ico' do
+   content_type 'image/x-ico'
+   img = Magick::Image.read('./views/favicon.ico')[0]
+   img.to_blob
 end
 

@@ -1,3 +1,4 @@
 less
 sinatra --version 1.0
 rdiscount
+rmagick --version 2.12.2
