@@ -5,6 +5,7 @@ Symbols
 -   activity underway 	.   date slipped (oops)
 ]   activity completes 	_   date pulled in (yeah)
 
+Note: All milestones include drinking beer with Turner.
 
 Spring Qtr
 Start Sun March 29th, 2010
@@ -17,7 +18,7 @@ End   Sat June 5th, 2010
 Meet With Turner       |  x    |       |       |       |       |       |       |       |       |       |
 Draft Proposal 1       |       |  x    |       |       |       |       |       |       |       |       |
 Draft Proposal 2       |       |       |  x    |       |       |       |       |       |       |       |
-Research Old Word Proc |       |       |   [---|-------|----]  |       |       |       |       |       |
+Research Old Word Proc |       |       |   [---|-------|----...|......]|       |       |       |       |
 Research Written Word  |       |       |       |[------|-------|]      |       |       |       |       |
 Research UI Minimalism |       |       |       |      [|-------|------]|       |       |       |       |
 Write Spec             |       |       |       |[------|-------|-------|------]|       |       |       |
