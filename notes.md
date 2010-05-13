@@ -30,3 +30,17 @@
  * <http://en.wikipedia.org/wiki/Word_processor>
  * <http://daringfireball.net/projects/markdown/>
 
+## 5.12.10
+
+### OpenOffice Writer 3.2
+
+ * A substantial amount of features. 
+ * Very easy to just start typing, although you feel like you need to format your writting.
+ * Has a full screen mode, crashes some times when coming in and out.
+ * export to pdf, very useful
+ * Spell check. Seemed much more obvious than the other apps
+ * Had to select all of text to change font, colors, etc.
+ * Supported so many fonts it blew my mind.
+ * very easy to zoom with slider in bottom right.
+ * Lots of buttons that I had no idea what they did, kind of scared me.
+
