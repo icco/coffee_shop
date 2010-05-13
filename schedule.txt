@@ -18,11 +18,10 @@ End   Sat June 5th, 2010
 Meet With Turner       |  x    |       |       |       |       |       |       |       |       |       |
 Draft Proposal 1       |       |  x    |       |       |       |       |       |       |       |       |
 Draft Proposal 2       |       |       |  x    |       |       |       |       |       |       |       |
-Research Old Word Proc |       |       |   [---|-------|----...|......]|       |       |       |       |
-Research Written Word  |       |       |       |[------|-------|]      |       |       |       |       |
-Research UI Minimalism |       |       |       |      [|-------|------]|       |       |       |       |
-Write Spec             |       |       |       |[------|-------|-------|------]|       |       |       |
-Proof Spec             |       |       |       |       |       |[------|-------|-]     |       |       |
+Research Old Word Proc |       |       |   [---|-------|----...|.......|...]   |       |       |       |
+Research Written Word  |       |       |       |.......|.......|.......|[-----]|       |       |       |
+Research UI Minimalism |       |       |       |      .|.......|.......|...[---|----]  |       |       |
+Write Spec             |       |       |       |.......|.......|.......|[------|-------|---]   |       |
 Spec Due               |       |       |       |       |       |       |       |       |       |  x    |
 UI Study / Prototype   |       |       |       |       |       |       |     [-|-------|-------|]      |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
