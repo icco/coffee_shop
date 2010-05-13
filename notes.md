@@ -43,10 +43,16 @@
  * Supported so many fonts it blew my mind.
  * very easy to zoom with slider in bottom right.
  * Lots of buttons that I had no idea what they did, kind of scared me.
+ * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/images/oo1.png)
+ * [screenshot 2](http://github.com/icco/coffee_shop/raw/master/images/oo2.png)
+ * [screenshot 3](http://github.com/icco/coffee_shop/raw/master/images/oo3.png)
 
 ### Vim 7.2
 
  * Incredibly customizable
  * all commands are incredibly arcane
  * full-screen ability is dependent on terminal app.
+ * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/images/vim1.png)
+ * [screenshot 2](http://github.com/icco/coffee_shop/raw/master/images/vim2.png)
+ * [screenshot 3](http://github.com/icco/coffee_shop/raw/master/images/vim3.png)
 
