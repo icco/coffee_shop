@@ -56,3 +56,16 @@
  * [screenshot 2](http://github.com/icco/coffee_shop/raw/master/images/vim2.png)
  * [screenshot 3](http://github.com/icco/coffee_shop/raw/master/images/vim3.png)
 
+### Mircosoft Word 5.5
+
+ * Only runs in dosbox.
+ * a pain to install. extracted 400 files before setup and then another 200 after install
+ * navigating document was done with keyboard, but you could select sections with the mouse
+ * screenshots were a pain
+ * no color or font customizations
+ * fullscreen text
+ * page breaks were very obvious with a dotted line
+ * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/images/w55_1.png)
+ * [reference article](http://www.downloadsquad.com/2005/11/25/free-file/)
+ * [Download link](http://download.microsoft.com/download/word97win/Wd55_be/97/WIN98/EN-US/Wd55_ben.exe)
+
