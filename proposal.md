@@ -100,7 +100,8 @@ Attached.
 The following are non-functional requirements for my project:
 
  * It must promote a distraction free work environment.
- * It must be usable by people who work in various lighting environments (writing in a coffee shop, dark room, corporate environment)
+ * It must be usable by people who work in various lighting environments
+   (writing in a coffee shop, dark room, corporate environment)
 
 ## 7. Senior Project Test Plan.
 
@@ -114,8 +115,8 @@ Library, a coffee shop downtown, and on Dexter Lawn to get an idea if users
 other than myself find the software useful.
 
 To help we stay on this goal I plan on continuously talking to people
-throughout the durration of my senior project, to see how people normally take
-notes and write, to see if I can't promote a more natural writting environment.
+throughout the duration of my senior project, to see how people normally take
+notes and write, to see if I can't promote a more natural writing environment.
 
 ## 8. Resources List
 

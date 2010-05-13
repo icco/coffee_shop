@@ -4,12 +4,14 @@
    <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
-   <ul id="header">
-      <li><a href="/proposal">Project Proposal</a></li>
-      <li><a href="/schedule">Project Schedule</a></li>
-      <li><a href="/spec">Project Specification</a></li>
-      <li><a href="/notes">Project Notes</a></li>
-   </ul>
+   <div id="header" style="text-align: right;">
+      <ul>
+         <li><a href="/proposal">Project Proposal</a> &raquo;</li>
+         <li><a href="/schedule">Project Schedule</a> &raquo;</li>
+         <li><a href="/spec">Project Specification</a> &raquo;</li>
+         <li><a href="/notes">Project Notes</a> &raquo;</li>
+      </ul>
+   </div>
    <div id="content">
       <%= readme %>
    </div>

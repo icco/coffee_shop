@@ -1,6 +1,6 @@
 # coffee_shop
 
-coffee shop is the temporary (maybe long term...?) name for my senior project.
+coffee shop is the name for my senior project.
 
 For the next ten weeks or so this repository will contain mainly
 documentation, and very little code, but that may change with time.

@@ -2,8 +2,17 @@
 <head>
    <title><%= title %></title>
    <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+   <style type="text/css" media="print">
+      #header { display: none; }
+   </style>
+
 </head>
 <body>
+   <div id="header">
+      <ul>
+         <li>&laquo; <a href="/">Back to Index</a></li>
+      </ul>
+   </div>
    <div id="content">
       <%= content %>
    </div>
