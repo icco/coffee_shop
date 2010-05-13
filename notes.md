@@ -59,7 +59,7 @@
 ### Mircosoft Word 5.5
 
  * Only runs in dosbox.
- * a pain to install. extracted 400 files before setup and then another 200 after install
+ * a pain to install. Extracted 400 files before setup and then another 200 after install
  * navigating document was done with keyboard, but you could select sections with the mouse
  * screenshots were a pain
  * no color or font customizations
