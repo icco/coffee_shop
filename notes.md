@@ -15,7 +15,7 @@
 ### OmmWriter
 
  * Lets you change font (sans, serif, script), font-size, themes (background/color combinations), background music and typing noise
- * I found typing noise very soothing, but I prefered to pick my own background music.
+ * I found typing noise very soothing, but I preferred to pick my own background music.
  * very limited choice in themes. No Black/Green, low contrast option
  * the sound the program produced an emotion that seemed to promote typing, although I'm not sure if I could say it was distraction free.
  * UI was much more visible
@@ -35,7 +35,7 @@
 ### OpenOffice Writer 3.2
 
  * A substantial amount of features. 
- * Very easy to just start typing, although you feel like you need to format your writting.
+ * Very easy to just start typing, although you feel like you need to format your writing.
  * Has a full screen mode, crashes some times when coming in and out.
  * export to pdf, very useful
  * Spell check. Seemed much more obvious than the other apps
@@ -43,4 +43,10 @@
  * Supported so many fonts it blew my mind.
  * very easy to zoom with slider in bottom right.
  * Lots of buttons that I had no idea what they did, kind of scared me.
+
+### Vim 7.2
+
+ * Incredibly customizable
+ * all commands are incredibly arcane
+ * full-screen ability is dependent on terminal app.
 
