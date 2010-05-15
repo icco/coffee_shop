@@ -76,12 +76,12 @@ of Microsoft Word.
  
 ## 5. Proposed Process Model for Completion.
 
-Attached.
+[Attached](/schedule).
 
 ## 6. Senior Project Basic Requirements.
 
  I want this project to be sort of the antithesis of my time at Cal Poly. The
- computer science department is currently changing from a place built entirely
+ Computer Science department is currently changing from a place built entirely
  around teaching people how to build desktop applications, to a place focused
  on the web and developing for it's concurrency based infrastructure. Most of
  my lower level classes were of the first school of thought, but almost all of
@@ -102,6 +102,8 @@ The following are non-functional requirements for my project:
  * It must promote a distraction free work environment.
  * It must be usable by people who work in various lighting environments
    (writing in a coffee shop, dark room, corporate environment)
+
+I have attached a more formalized list of requirements in the [spec](/spec).
 
 ## 7. Senior Project Test Plan.
 
