@@ -2,8 +2,9 @@
 
 coffee_shop is the name for my senior project.
 
-For the next ten weeks or so this repository will contain mainly
-documentation, and very little code, but that may change with time.
+For the next ten weeks or so this repository will contain mainly documentation,
+and very little code, but that may change with time. The source code for this
+project is available on [GitHub](http://github.com/icco/coffee_shop).
 
 ## Who?
 
