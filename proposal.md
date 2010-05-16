@@ -138,6 +138,7 @@ notes and write, to see if I can't promote a more natural writing environment.
  * "How to Write a Bibliography" A Research Guide For Students. 10 April 2010 <http://www.aresearchguide.com/12biblio.html>.
  * Vinh, Khoi "Block Writer." Subtraction.Com. 09 May 2006. 12 April 2010 <http://www.subtraction.com/2006/05/09/blockwriter>.
  * Vinh, Khoi "Overcoming Roadblocks to Blockwriter." Subtraction.Com. 01 June 2006. 12 April 2010 <http://www.subtraction.com/2006/06/01/overcoming-r>.
+ * Niiranen, Ossi "Licensing 101 for Open Source Projects: Choosing an Open Source License" Linux.com. 09 July 2009. 15 May 2010 <http://www.linux.com/news/biz-os/legal/26690-licensing-101-for-open-source-projects-choosing-an-open-source-license>
 
  [writeroom]: http://www.hogbaysoftware.com/products/writeroom
  [ommwriter]: http://www.ommwriter.com/
