@@ -39,7 +39,7 @@ end
 
 
 get '/survey' do
-   title = "Senior Project Questionaire"
+   title = "Senior Project Questionnaire"
    md = RDiscount.new(File.read("Questionaire.md"), :smart).to_html
    erb :page, :locals => { :title => title, :content => md }
 end
