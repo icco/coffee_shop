@@ -38,9 +38,9 @@ In the following requirements, it refers to the application, coffee_shop.
  * **FR8.3**: the user should be able to select a font, from a limited selection of fonts.
  * **FR8.4**: these setting should be saved between sessions
 
-**FR9**: The program must support find an replace.
+**FR9**: It must support find an replace.
 
-**FR10**: The program must be able to display a wordcount.
+**FR10**: It must be able to display a wordcount.
  
 ## Non-Functional Requirements
 
