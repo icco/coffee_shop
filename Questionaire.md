@@ -1,5 +1,7 @@
 # Questionnaire
 
+**This questionnaire can be taken at <http://is.gd/cdADo>.**
+
 Hey there,
 
 For my senior project I am building a minimalistic word processor for Linux. I
