@@ -37,6 +37,13 @@ get '/spec' do
    erb :page, :locals => { :title => title, :content => md }
 end
 
+
+get '/survey' do
+   title = "Senior Project Questionaire"
+   md = RDiscount.new(File.read("Questionaire.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
+
 get '/style.css' do
    content_type 'text/css', :charset => 'utf-8'
    less :style
