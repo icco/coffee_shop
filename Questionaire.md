@@ -1,4 +1,4 @@
-# Questionaire
+# Questionnaire
 
 Hey there,
 
@@ -23,13 +23,13 @@ you use more than one, please specify what you use each for.
 
 ex. Coffee shop, well-lit room, dark alleyways, buses, anywhere I can sit, etc.
 
-## Q3. What features do you find absolutly necessary when writting using a word processor?
+## Q3. What features do you find absolutely necessary when writing using a word processor?
 
 ex. Word count, keyboard shortcuts, find and replace, spell check, formatting, etc.
 
 ## Q4. How large is the average piece of text you write?
 
-ex. single pages, books, a few paragraphs, etc.
+ex. Single pages, books, a few paragraphs, etc.
 
 Thank you for your responses. If you'd like to learn more about my senior
 project, you can check out what I have done so far at <http://coffee-shop.heroku.com>.
