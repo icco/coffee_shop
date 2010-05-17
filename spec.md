@@ -18,7 +18,7 @@ In the following requirements, it refers to the application, coffee_shop.
 
  * It will not support all versions of Linux. I'm currently considering a build environment similar to Ubuntu 10.04.
 
-**FR4**: It must run full-screen
+**FR4**: It must run full-screen.
 
 **FR5**: It must allow the user to type into the application.
  
@@ -38,6 +38,10 @@ In the following requirements, it refers to the application, coffee_shop.
  * **FR8.3**: the user should be able to select a font, from a limited selection of fonts.
  * **FR8.4**: these setting should be saved between sessions
 
+**FR9**: The program must support find an replace.
+
+**FR10**: The program must be able to display a wordcount.
+ 
 ## Non-Functional Requirements
 
  * It should promote a distraction free work environment.
