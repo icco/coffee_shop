@@ -21,9 +21,9 @@ Draft Proposal 2       |       |       |  x    |       |       |       |       |
 Research Old Word Proc |       |       |   [---|-------|----...|.......|...]   |       |       |       |
 Research Written Word  |       |       |       |.......|.......|.......|[-----]|       |       |       |
 Research UI Minimalism |       |       |       |      .|.......|.......|...[---|----]  |       |       |
-Write Spec             |       |       |       |.......|.......|.......|[------|-------|---]   |       |
-Spec Due               |       |       |       |       |       |       |       |       |       |  x    |
-UI Study / Prototype   |       |       |       |       |       |       |     [-|-------|-------|]      |
+Write Spec             |       |       |       |.......|.......|.......|[------|-------|--]_   |       |
+Proposal + Spec Due    |       |       |       |       |       |       |       |       |       |  x    |
+UI Study               |       |       |       |       |       |       |     [-|-------|-------|]      |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                                4      11      18       25      2       9      16      23       30     6
 
