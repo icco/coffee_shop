@@ -69,3 +69,21 @@
  * [reference article](http://www.downloadsquad.com/2005/11/25/free-file/)
  * [Download link](http://download.microsoft.com/download/word97win/Wd55_be/97/WIN98/EN-US/Wd55_ben.exe)
 
+## 6.1.10
+
+I went through the [survey](/survey) and put together my results. I had left
+the survey relatively open ended, but that gave me decent results. Basically I
+discovered that there were two classifications of users of word processors:
+those that wrote for a corporate / academic environment and those that wrote
+for themselves. The users that wrote more for academia and corporate positions
+tended to want lots of formatting options. Users writing for themselves
+wanted something that hid everything and let them just write. 
+
+None of the people I surveyed wanted any sort of auto-correct and everyone
+wanted spell check.
+
+Based on these discoveries I found my user group, who I have decided to call
+Johnny. Johnny writes fiction in his free time and aspires to be a writer. He
+is currently employed doing other things, so he uses his word processor as he
+commutes and during his time off. Most of what Johnny writes tends to be one or
+two pages, but he has been known to turn out novels depending on his mood.
