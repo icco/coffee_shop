@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
-# A simple app.
+
+# A simple app to display my senior project code.
+# @author Nathaniel "Nat" Welch
 
 require 'rubygems'
 require 'sinatra'
@@ -37,6 +39,11 @@ get '/spec' do
    erb :page, :locals => { :title => title, :content => md }
 end
 
+get '/ui' do
+   title = "Senior Project UI Prototype"
+   md = RDiscount.new(File.read("ui_prototype.md"), :smart).to_html
+   erb :page, :locals => { :title => title, :content => md }
+end
 
 get '/survey' do
    title = "Senior Project Questionnaire"
