@@ -35,7 +35,7 @@ End   Sat Sept 5th, 2010
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
 --- Q2 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Wk 11 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-UI Prototype Due       |       |  x    |       |       |       |       |       |       |       |       |       |
+UI Prototype Due       |x______|___    |       |       |       |       |       |       |       |       |       |
 Milestone 1            |       |       |      x|       |       |       |       |       |       |       |       |
 Milestone 2            |       |       |       |       |       |      x|       |       |       |       |       |
 Milestone 3            |       |       |       |       |       |       |       |       |      x|       |       |
