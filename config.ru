@@ -1,5 +1,4 @@
- 
-## Just run the application
-require 'app'
+## Just run the website.
+require 'website'
 run Sinatra::Application
 
