@@ -87,3 +87,22 @@ Johnny. Johnny writes fiction in his free time and aspires to be a writer. He
 is currently employed doing other things, so he uses his word processor as he
 commutes and during his time off. Most of what Johnny writes tends to be one or
 two pages, but he has been known to turn out novels depending on his mood.
+
+## 6.13.10
+
+Played around with the Ruby UI toolkit [Shoes](http://github.com/shoes/shoes)
+and read through the whole [shoes book](http://github.com/downloads/shoes/shoes/nks.pdf). 
+
+Shoes seems like a great idea, but in the end I don't think it is what I will
+be going with because it seems too close to the web and feels like it is more
+meant to prototype than to build applications for long term use and
+development.
+
+## 7.3.10
+
+For the last few days (weeks?) I have been messing around with some other gui
+toolkits. I had wanted to use GTK+, but the ruby extensions seem to be buggy,
+old, and not under current maintainence. It seems like Qt is the way to go, so
+I started playing around with it. I found a [great tutorial](http://www.darshancomputing.com/qt4-qtruby-tutorial/) 
+and the Qt4 documentation is really good, heck I even figured out the full
+screen stuff. Now on to getting a working prototype...
