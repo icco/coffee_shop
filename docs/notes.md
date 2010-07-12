@@ -106,3 +106,11 @@ old, and not under current maintainence. It seems like Qt is the way to go, so
 I started playing around with it. I found a [great tutorial](http://www.darshancomputing.com/qt4-qtruby-tutorial/) 
 and the Qt4 documentation is really good, heck I even figured out the full
 screen stuff. Now on to getting a working prototype...
+
+## 7.12.10
+
+Proved that you can build something close to the UI that I had spec'd out.
+Current prototype allows for typing and quiting. Still need to figure out how
+to do things like open files and the like. One downside, beyond that ruby
+tutorial there does not seem to be any documentation of ruby-qt. Qt has great
+documentation, I just need to gues on some class names and such.
