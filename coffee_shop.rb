@@ -4,18 +4,22 @@ require 'Qt4'
 
 # http://www.darshancomputing.com/qt4-qtruby-tutorial/chapter_03
 
-class TextBox < Qt::Widget
+class TextBox < Qt::TextEdit
+   def initialize
+      super
+      setAcceptRichText false
+   end
 end
 
 class MenuItem < Qt::Widget
 end
 
 class QuitButton < MenuItem
-   def initialize()
-      super() # First setup the menuitme
+   def initialize
+      super # First setup the menuitem
 
       # Build the button
-      quit = Qt::PushButton.new('Quit')
+      quit = Qt::PushButton.new('Q')
       quit.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
 
       # Connect the button to an action
@@ -29,27 +33,25 @@ class QuitButton < MenuItem
 end
 
 class FullScreen < Qt::Widget
-   def initialize()
-      super()
-      grid = Qt::GridLayout.new()
-
-      for row in 0..2
-         for column in 0..2
-            grid.addWidget(QuitButton.new, row, column)
-         end
-      end
-
+   def initialize
+      super
       layout = Qt::VBoxLayout.new()
-      layout.addLayout(grid)
-      setLayout(layout)
+      layout.addWidget QuitButton.new
+      layout.addWidget QuitButton.new
+      layout.addWidget QuitButton.new
+      layout.addWidget QuitButton.new
+      grid = Qt::GridLayout.new
+      grid.addWidget(TextBox.new, 0, 0)
+      grid.addLayout(layout, 0, 1)
+      setLayout(grid)
 
       setWindowState(Qt::WindowFullScreen)
    end
 end
 
-app = Qt::Application.new(ARGV)
+app = Qt::Application.new ARGV
 
-widget = FullScreen.new() # Create Root Window
-widget.show() # Display
-app.exec() # Run
+widget = FullScreen.new # Create Root Window
+widget.show # Display
+app.exec # Run
 
