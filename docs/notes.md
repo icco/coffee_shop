@@ -102,7 +102,7 @@ development.
 
 For the last few days (weeks?) I have been messing around with some other gui
 toolkits. I had wanted to use GTK+, but the ruby extensions seem to be buggy,
-old, and not under current maintainence. It seems like Qt is the way to go, so
+old, and not under current maintenance. It seems like Qt is the way to go, so
 I started playing around with it. I found a [great tutorial](http://www.darshancomputing.com/qt4-qtruby-tutorial/) 
 and the Qt4 documentation is really good, heck I even figured out the full
 screen stuff. Now on to getting a working prototype...
@@ -113,4 +113,24 @@ Proved that you can build something close to the UI that I had spec'd out.
 Current prototype allows for typing and quiting. Still need to figure out how
 to do things like open files and the like. One downside, beyond that ruby
 tutorial there does not seem to be any documentation of ruby-qt. Qt has great
-documentation, I just need to gues on some class names and such.
+documentation, I just need to guess on some class names and such.
+
+## 8.14.10
+
+found the application `rbqtapi`. Makes learning about accessor functions a lot
+easier. 
+
+Sad that it took me so long to get back to work on this, but I can now access
+the text from the box. 
+
+Thoughts on my file representation. 
+ 
+ * I need to have multiple files open at the same time, and multiple buffers with text in them.
+ * when do buffers transform into files?
+ * is filename and text enough for a file? I think it is...
+ * should I save on text change or on a timer? Both are easy...
+   * http://doc.trolltech.com/3.3/qtextedit.html
+   * http://doc.trolltech.com/4.2/qtimer.html
+ * Shawn brought up the point that find/replace could be a bit of a bitch, but there was an algorithm we talked about in 349 that would be helpful.
+
+
