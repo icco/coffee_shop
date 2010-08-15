@@ -4,10 +4,29 @@ require 'Qt4'
 
 # http://www.darshancomputing.com/qt4-qtruby-tutorial/chapter_03
 
-class TextBox < Qt::TextEdit
+class CoffeeText
+   def initialize x
+      @text = x
+   end
+
+   def save
+      p @text
+   end
+end
+
+class TextBox < Qt::Widget
    def initialize
       super
-      setAcceptRichText false
+      textb = Qt::TextEdit.new do
+         connect(SIGNAL :textChanged) {
+            c = CoffeeText.new(textb.toPlainText)
+            c.save
+         }
+      end
+      textb.setAcceptRichText false
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(textb)
+      setLayout(layout)
    end
 end
 
@@ -19,11 +38,11 @@ class QuitButton < MenuItem
       super # First setup the menuitem
 
       # Build the button
-      quit = Qt::PushButton.new('Q')
-      quit.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
-
       # Connect the button to an action
-      connect(quit, SIGNAL('clicked()'), $qApp, SLOT('quit()'))
+      quit = Qt::PushButton.new('Quit') do
+         connect(SIGNAL :clicked) { Qt::Application.instance.quit }
+      end
+      quit.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
 
       # Lay the button out
       layout = Qt::VBoxLayout.new()
