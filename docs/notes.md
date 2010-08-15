@@ -133,4 +133,6 @@ Thoughts on my file representation.
    * http://doc.trolltech.com/4.2/qtimer.html
  * Shawn brought up the point that find/replace could be a bit of a bitch, but there was an algorithm we talked about in 349 that would be helpful.
 
+Can't seem to get QT4 on ruby 1.9 on ubuntu. WTF.
+
 
