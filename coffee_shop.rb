@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
+# Require Qt4, ruby 1.8 only
 require 'Qt4'
 
-# http://www.darshancomputing.com/qt4-qtruby-tutorial/chapter_03
-
+# Our base class for storring data
+# We still need subclasses for a file and buffer, I think...
 class CoffeeText
    def initialize x
       @text = x
@@ -14,6 +15,7 @@ class CoffeeText
    end
 end
 
+# this is the big ass text box.
 class TextBox < Qt::Widget
    def initialize
       super
@@ -30,12 +32,14 @@ class TextBox < Qt::Widget
    end
 end
 
+# Super class for anything in the menu
 class MenuItem < Qt::Widget
 end
 
 class QuitButton < MenuItem
    def initialize
-      super # First setup the menuitem
+      # First setup the menuitem
+      super 
 
       # Build the button
       # Connect the button to an action
@@ -68,9 +72,15 @@ class FullScreen < Qt::Widget
    end
 end
 
+# Go Dog Go
 app = Qt::Application.new ARGV
 
-widget = FullScreen.new # Create Root Window
-widget.show # Display
-app.exec # Run
+# Create Root Window
+widget = FullScreen.new 
+
+# Display
+widget.show 
+
+# Run
+app.exec 
 
