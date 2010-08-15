@@ -51,6 +51,11 @@ get '/survey' do
    erb :page, :locals => { :title => title, :content => md }
 end
 
+get '/docs' do
+   f = File.new "docs/coffee_shop.html" 
+   erb :blank, :locals => { :content => f.read }
+end
+
 get '/style.css' do
    content_type 'text/css', :charset => 'utf-8'
    less :style
