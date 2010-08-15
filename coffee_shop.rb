@@ -6,8 +6,15 @@ require 'Qt4'
 # Our base class for storring data
 # We still need subclasses for a file and buffer, I think...
 class CoffeeText
-   def initialize x
-      @text = x
+   # I can never seem to remember this little function name
+   attr_accessor :text, :fname
+
+   def initialize filename
+      @fname = filename
+   end
+
+   def load
+
    end
 
    def save
@@ -19,10 +26,13 @@ end
 class TextBox < Qt::Widget
    def initialize
       super
+      
+      file = CoffeeText.new ""
+
       textb = Qt::TextEdit.new do
          connect(SIGNAL :textChanged) {
-            c = CoffeeText.new(textb.toPlainText)
-            c.save
+            file.text = textb.toPlainText
+            file.save
          }
       end
       textb.setAcceptRichText false
