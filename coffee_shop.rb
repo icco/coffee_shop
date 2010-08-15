@@ -14,11 +14,28 @@ class CoffeeText
    end
 
    def load
+      if @fname.empty
+         log "Empty filename, could not load"
+      else
+         file = File.new(@fname, 'r')
+         @text = file.read
+         file.close
+      end
 
+      return @text
    end
 
    def save
-      p @text
+      if !@fname.empty?
+         # Surprise surprise, we only want to save when we have a filename.
+         file = File.new(@fname, 'w')
+         file.write @text
+         # If we don't close, the file won't actually save until the program dies
+         file.close
+      else
+         # Maybe popup a box and ask if they would like to save?
+         log "Not Saving: filename empty"
+      end
    end
 end
 
@@ -27,7 +44,7 @@ class TextBox < Qt::Widget
    def initialize
       super
       
-      file = CoffeeText.new ""
+      file = CoffeeText.new "test.txt"
 
       textb = Qt::TextEdit.new do
          connect(SIGNAL :textChanged) {
@@ -80,6 +97,13 @@ class FullScreen < Qt::Widget
 
       setWindowState(Qt::WindowFullScreen)
    end
+end
+
+# A standard "log" format.
+def log text
+   tFormat = "[%m/%d/%Y %H:%M:%S]: "
+   t = Time.new
+   puts t.strftime(tFormat) + text 
 end
 
 # Go Dog Go
