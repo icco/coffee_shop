@@ -1,21 +1,20 @@
 <html>
-<head>
-   <title><%= title %></title>
-   <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
-   <style type="text/css" media="print">
-      #header { display: none; }
-      body { font-family: Helvetica, Serif; font-size: 12px; }
-   </style>
-
-</head>
-<body>
-   <div id="header">
-      <ul>
-         <li>&laquo; <a href="/">Back to Index</a></li>
-      </ul>
-   </div>
-   <div id="content">
-      <%= content %>
-   </div>
-</body>
+   <head>
+      <title><%= title %></title>
+      <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+      <style type="text/css" media="print">
+         #header { display: none; }
+         body { font-family: Helvetica, Serif; font-size: 12px; }
+      </style>
+   </head>
+   <body>
+      <div id="header">
+         <ul>
+            <li>&laquo; <a href="/">Back to Index</a></li>
+         </ul>
+      </div>
+      <div id="content">
+         <%= content %>
+      </div>
+   </body>
 </html>

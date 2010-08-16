@@ -8,6 +8,7 @@ require 'sinatra'
 require 'less'
 require 'rdiscount'
 require 'RMagick'
+# require 'pandoc-ruby'
 include Magick
 
 get '/' do
