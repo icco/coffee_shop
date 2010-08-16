@@ -46,13 +46,13 @@ class TextBox < Qt::Widget
       
       file = CoffeeText.new "test.txt"
 
-      textb = Qt::TextEdit.new do
+      textb = Qt::PlainTextEdit.new do
          connect(SIGNAL :textChanged) {
             file.text = textb.toPlainText
             file.save
          }
       end
-      textb.setAcceptRichText false
+      setGeometry(10, 10, 10, 10)
       layout = Qt::VBoxLayout.new()
       layout.addWidget(textb)
       setLayout(layout)
@@ -92,6 +92,8 @@ class FullScreen < Qt::Widget
       layout.addWidget QuitButton.new
       grid = Qt::GridLayout.new
       grid.addWidget(TextBox.new, 0, 0)
+      grid.addWidget(TextBox.new, 1, 0)
+      grid.addWidget(TextBox.new, 2, 0)
       grid.addLayout(layout, 0, 1)
       setLayout(grid)
 

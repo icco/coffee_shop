@@ -1,5 +1,11 @@
 # Research Notes
 
+This is where I store the work I do by day, and my ideas. As a warning there is
+some profanity throughout and my thoughts are jumbled to say the least. It is
+also not a guarantee that it lists all of the work I have done, just a close
+approximation of what I was thinking about the days I remembered to put down my
+thoughts.
+
 ## 4.25.10
 
 ### WriteRoom
@@ -129,10 +135,35 @@ Thoughts on my file representation.
  * when do buffers transform into files?
  * is filename and text enough for a file? I think it is...
  * should I save on text change or on a timer? Both are easy...
-   * http://doc.trolltech.com/3.3/qtextedit.html
-   * http://doc.trolltech.com/4.2/qtimer.html
+   * <http://doc.trolltech.com/3.3/qtextedit.html>
+   * <http://doc.trolltech.com/4.2/qtimer.html>
  * Shawn brought up the point that find/replace could be a bit of a bitch, but there was an algorithm we talked about in 349 that would be helpful.
 
-Can't seem to get QT4 on ruby 1.9 on ubuntu. WTF.
+Can't seem to get Qt4 on ruby 1.9 on Ubuntu. WTF.
 
+## 8.15.10
+
+Thinking about how to deal with paging. The best bet is probable to create a ui
+element is a scrollbox containing a number of textboxes. As the text grows
+longer we add more text boxes (so basically each page equals one text box). 
+
+I need to figure out how to create a scrollbox that contains x number of fixed
+sized text boxes. Generating them, and creating them on load should be easy.
+
+ * <http://doc.trolltech.com/4.4/qwidget.html#geometry-prop>
+
+I also need to decide how I want to build and store the config options. I'm
+thinking just a classic hidden file. I doubt I'll need more than a single yaml
+file's worth of information. I assume yaml should be a sufficient enough file
+format for config.
+
+I also played around with the qt-designer program. Definitely not easy to use on
+a small screen, but the command `rbuic4 coffee.ui -x -o mainform.rb` is a cool
+idea to say the least. It takes a .ui file (what the qt designer outputs) and
+then generates ruby code that runs and creates the widget you designed. It
+looks like shit, and the code is spaghetti puke to say the least, but at least
+it works.
+
+Also, I should write a little javascript that builds a table of contents out of
+the h2s and h3s on the page...
 
