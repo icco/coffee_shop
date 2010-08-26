@@ -35,13 +35,28 @@
         <p> Require Qt4, ruby 1.8 only</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span></pre></div>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span></pre></div>
       </td>
     </tr>
     <tr id='section-3'>
       <td class=docs>
         <div class="octowrap">
           <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <p> Global settings</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">GlobalSettings</span>
+   <span class="kp">include</span> <span class="no">Singleton</span>
+   <span class="kp">attr_accessor</span> <span class="ss">:file</span>
+<span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-4">#</a>
         </div>
         <p> Our base class for storring data
  We still need subclasses for a file and buffer, I think&hellip;</p>
@@ -50,46 +65,19 @@
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">CoffeeText</span></pre></div>
       </td>
     </tr>
-    <tr id='section-4'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-4">#</a>
-        </div>
-        <p> I can never seem to remember this little function name</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>   <span class="kp">attr_accessor</span> <span class="ss">:text</span><span class="p">,</span> <span class="ss">:fname</span>
-
-   <span class="k">def</span> <span class="nf">initialize</span> <span class="n">filename</span>
-      <span class="vi">@fname</span> <span class="o">=</span> <span class="n">filename</span>
-   <span class="k">end</span>
-
-   <span class="k">def</span> <span class="nf">load</span>
-      <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty</span>
-         <span class="n">log</span> <span class="s2">&quot;Empty filename, could not load&quot;</span>
-      <span class="k">else</span>
-         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-         <span class="vi">@text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
-         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
-      <span class="k">end</span>
-
-      <span class="k">return</span> <span class="vi">@text</span>
-   <span class="k">end</span>
-
-   <span class="k">def</span> <span class="nf">save</span>
-      <span class="k">if</span> <span class="o">!</span><span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span></pre></div>
-      </td>
-    </tr>
     <tr id='section-5'>
       <td class=docs>
         <div class="octowrap">
           <a class="octothorpe" href="#section-5">#</a>
         </div>
-        <p> Surprise surprise, we only want to save when we have a filename.</p>
+        <p> I can never seem to remember this little function name</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-         <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="vi">@text</span></pre></div>
+        <div class='highlight'><pre>   <span class="kp">attr_accessor</span> <span class="ss">:text</span><span class="p">,</span> <span class="ss">:fname</span><span class="p">,</span> <span class="ss">:lastsave</span><span class="p">,</span> <span class="ss">:changed</span>
+
+   <span class="k">def</span> <span class="nf">initialize</span> <span class="n">filename</span>
+      <span class="vi">@fname</span> <span class="o">=</span> <span class="n">filename</span>
+   <span class="k">end</span></pre></div>
       </td>
     </tr>
     <tr id='section-6'>
@@ -97,11 +85,29 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-6">#</a>
         </div>
-        <p> If we don&rsquo;t close, the file won&rsquo;t actually save until the program dies</p>
+        <p> currently I don&rsquo;t know how to put the loaded text back into the editor</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
-      <span class="k">else</span></pre></div>
+        <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">load</span> <span class="n">filename</span>
+      <span class="vi">@fname</span> <span class="o">=</span> <span class="n">filename</span>
+
+      <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty</span>
+         <span class="n">log</span> <span class="s2">&quot;Empty filename, could not load&quot;</span>
+      <span class="k">else</span>
+         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+         <span class="vi">@text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
+         <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">true</span>
+         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
+      <span class="k">end</span>
+
+      <span class="k">return</span> <span class="vi">@text</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">save</span> <span class="n">mode</span>
+      <span class="k">if</span> <span class="o">!</span><span class="vi">@lastsave</span><span class="o">.</span><span class="n">nil?</span> <span class="ow">and</span> <span class="p">(</span><span class="no">Time</span><span class="o">.</span><span class="n">new</span> <span class="o">-</span> <span class="vi">@lastsave</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
+            <span class="k">case</span> <span class="n">mode</span>
+            <span class="k">when</span> <span class="s1">&#39;auto&#39;</span></pre></div>
       </td>
     </tr>
     <tr id='section-7'>
@@ -109,13 +115,16 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-7">#</a>
         </div>
-        <p> Maybe popup a box and ask if they would like to save?</p>
+        <p>log &ldquo;Not Saving: filename empty&rdquo;</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>         <span class="n">log</span> <span class="s2">&quot;Not Saving: filename empty&quot;</span>
-      <span class="k">end</span>
-   <span class="k">end</span>
-<span class="k">end</span></pre></div>
+        <div class='highlight'><pre>               <span class="k">return</span>
+            <span class="k">when</span> <span class="s1">&#39;click&#39;</span>
+               <span class="vi">@fname</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getSaveFileName</span><span class="p">()</span>
+            <span class="k">else</span>
+               <span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="k">end</span>
+         <span class="k">end</span></pre></div>
       </td>
     </tr>
     <tr id='section-8'>
@@ -123,27 +132,12 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-8">#</a>
         </div>
-        <p> this is the big ass text box.</p>
+        <p> Surprise surprise, we only want to save when we have a filename.</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="k">class</span> <span class="nc">TextBox</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
-   <span class="k">def</span> <span class="nf">initialize</span>
-      <span class="k">super</span>
-      
-      <span class="n">file</span> <span class="o">=</span> <span class="no">CoffeeText</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;test.txt&quot;</span>
-
-      <span class="n">textb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">TextEdit</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textb</span><span class="o">.</span><span class="n">toPlainText</span>
-            <span class="n">file</span><span class="o">.</span><span class="n">save</span>
-         <span class="p">}</span>
-      <span class="k">end</span>
-      <span class="n">textb</span><span class="o">.</span><span class="n">setAcceptRichText</span> <span class="kp">false</span>
-      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">textb</span><span class="p">)</span>
-      <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-   <span class="k">end</span>
-<span class="k">end</span></pre></div>
+        <div class='highlight'><pre>         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+         <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="vi">@text</span>
+         <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">false</span></pre></div>
       </td>
     </tr>
     <tr id='section-9'>
@@ -151,14 +145,16 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-9">#</a>
         </div>
-        <p> Super class for anything in the menu</p>
+        <p> If we don&rsquo;t close, the file won&rsquo;t actually save until the program dies</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="k">class</span> <span class="nc">MenuItem</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">QuitButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
-   <span class="k">def</span> <span class="nf">initialize</span></pre></div>
+        <div class='highlight'><pre>         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
+         <span class="vi">@lastsave</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">new</span>
+      <span class="k">else</span>
+         <span class="vi">@lastsave</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
       </td>
     </tr>
     <tr id='section-10'>
@@ -166,16 +162,92 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-10">#</a>
         </div>
-        <p> First setup the menuitem</p>
+        <p> this is the big ass text box.</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="k">super</span> </pre></div>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">TextBox</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
+   <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span>
+      <span class="n">textb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
+         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
+            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textb</span><span class="o">.</span><span class="n">toPlainText</span>
+            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
+         <span class="p">}</span>
+      <span class="k">end</span>
+
+      <span class="n">setGeometry</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">textb</span><span class="p">)</span>
+      <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
       </td>
     </tr>
     <tr id='section-11'>
       <td class=docs>
         <div class="octowrap">
           <a class="octothorpe" href="#section-11">#</a>
+        </div>
+        <p> Super class for anything in the menu</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">MenuItem</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">SaveButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+   <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span> 
+      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">)</span> <span class="k">do</span>
+         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
+            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;click&#39;</span>
+         <span class="p">}</span>
+      <span class="k">end</span>
+      <span class="n">but</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
+      <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">LoadButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+   <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span> 
+      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Load&#39;</span><span class="p">)</span> <span class="k">do</span>
+         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span>
+               <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
+            <span class="k">end</span>
+
+            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">()</span>
+         <span class="p">}</span>
+      <span class="k">end</span>
+      <span class="n">but</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
+      <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="k">class</span> <span class="nc">QuitButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+   <span class="k">def</span> <span class="nf">initialize</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-12'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-12">#</a>
+        </div>
+        <p> First setup the menuitem</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="k">super</span> </pre></div>
+      </td>
+    </tr>
+    <tr id='section-13'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-13">#</a>
         </div>
         <p> Build the button
  Connect the button to an action</p>
@@ -187,10 +259,10 @@
       <span class="n">quit</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span></pre></div>
       </td>
     </tr>
-    <tr id='section-12'>
+    <tr id='section-14'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-12">#</a>
+          <a class="octothorpe" href="#section-14">#</a>
         </div>
         <p> Lay the button out</p>
       </td>
@@ -202,15 +274,19 @@
 <span class="k">end</span>
 
 <span class="k">class</span> <span class="nc">FullScreen</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
+   <span class="kp">attr_accessor</span> <span class="ss">:file</span>
+
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
+
+      <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="no">CoffeeText</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;&quot;</span>
+      <span class="n">tb</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span>
+
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="no">TextBox</span><span class="o">.</span><span class="n">new</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
       <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
 
@@ -219,10 +295,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-13'>
+    <tr id='section-15'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-13">#</a>
+          <a class="octothorpe" href="#section-15">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
       </td>
@@ -234,10 +310,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-14'>
+    <tr id='section-16'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-14">#</a>
+          <a class="octothorpe" href="#section-16">#</a>
         </div>
         <p> Go Dog Go</p>
       </td>
@@ -245,10 +321,10 @@
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span></pre></div>
       </td>
     </tr>
-    <tr id='section-15'>
+    <tr id='section-17'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-15">#</a>
+          <a class="octothorpe" href="#section-17">#</a>
         </div>
         <p> Create Root Window</p>
       </td>
@@ -256,10 +332,10 @@
         <div class='highlight'><pre><span class="n">widget</span> <span class="o">=</span> <span class="no">FullScreen</span><span class="o">.</span><span class="n">new</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-16'>
+    <tr id='section-18'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-16">#</a>
+          <a class="octothorpe" href="#section-18">#</a>
         </div>
         <p> Display</p>
       </td>
@@ -267,10 +343,10 @@
         <div class='highlight'><pre><span class="n">widget</span><span class="o">.</span><span class="n">show</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-17'>
+    <tr id='section-19'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-17">#</a>
+          <a class="octothorpe" href="#section-19">#</a>
         </div>
         <p> Run</p>
 

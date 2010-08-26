@@ -14,18 +14,22 @@ end
 # We still need subclasses for a file and buffer, I think...
 class CoffeeText
    # I can never seem to remember this little function name
-   attr_accessor :text, :fname, :lastsave
+   attr_accessor :text, :fname, :lastsave, :changed
 
    def initialize filename
       @fname = filename
    end
 
-   def load
-      if @fname.empty
+   # currently I don't know how to put the loaded text back into the editor
+   def load filename
+      @fname = filename
+
+      if @fname.empty?
          log "Empty filename, could not load"
       else
          file = File.new(@fname, 'r')
          @text = file.read
+         @changed = true
          file.close
       end
 
@@ -37,7 +41,7 @@ class CoffeeText
          if @fname.empty?
             case mode
             when 'auto'
-               log "Not Saving: filename empty"
+               #log "Not Saving: filename empty"
                return
             when 'click'
                @fname = Qt::FileDialog.getSaveFileName()
@@ -49,6 +53,7 @@ class CoffeeText
          # Surprise surprise, we only want to save when we have a filename.
          file = File.new(@fname, 'w')
          file.write @text
+         @changed = false
          # If we don't close, the file won't actually save until the program dies
          file.close
          @lastsave = Time.new
@@ -95,6 +100,26 @@ class SaveButton < MenuItem
    end
 end
 
+class LoadButton < MenuItem
+   def initialize
+      super 
+      but = Qt::PushButton.new('Load') do
+         connect(SIGNAL :clicked) {
+            if (GlobalSettings.instance.file.changed)
+               GlobalSettings.instance.file.save 'auto'
+            end
+
+            GlobalSettings.instance.file.load Qt::FileDialog.getOpenFileName()
+         }
+      end
+      but.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(but)
+      setLayout(layout)
+   end
+end
+
+
 class QuitButton < MenuItem
    def initialize
       # First setup the menuitem
@@ -125,6 +150,7 @@ class FullScreen < Qt::Widget
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget QuitButton.new
+      layout.addWidget LoadButton.new
       layout.addWidget SaveButton.new
       grid = Qt::GridLayout.new
       grid.addWidget(tb, 0, 0)
