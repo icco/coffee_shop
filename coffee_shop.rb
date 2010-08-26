@@ -2,12 +2,19 @@
 
 # Require Qt4, ruby 1.8 only
 require 'Qt4'
+require 'singleton'
+
+# Global settings
+class GlobalSettings
+   include Singleton
+   attr_accessor :file
+end
 
 # Our base class for storring data
 # We still need subclasses for a file and buffer, I think...
 class CoffeeText
    # I can never seem to remember this little function name
-   attr_accessor :text, :fname
+   attr_accessor :text, :fname, :lastsave
 
    def initialize filename
       @fname = filename
@@ -25,16 +32,28 @@ class CoffeeText
       return @text
    end
 
-   def save
-      if !@fname.empty?
+   def save mode
+      if !@lastsave.nil? and (Time.new - @lastsave > 1)
+         if @fname.empty?
+            case mode
+            when 'auto'
+               log "Not Saving: filename empty"
+               return
+            when 'click'
+               @fname = Qt::FileDialog.getSaveFileName()
+            else
+               log "Unknow save mode: #{mode}."
+            end
+         end
+
          # Surprise surprise, we only want to save when we have a filename.
          file = File.new(@fname, 'w')
          file.write @text
          # If we don't close, the file won't actually save until the program dies
          file.close
+         @lastsave = Time.new
       else
-         # Maybe popup a box and ask if they would like to save?
-         log "Not Saving: filename empty"
+         @lastsave = Time.at(0)
       end
    end
 end
@@ -43,15 +62,13 @@ end
 class TextBox < Qt::Widget
    def initialize
       super
-      
-      file = CoffeeText.new "test.txt"
-
       textb = Qt::PlainTextEdit.new do
          connect(SIGNAL :textChanged) {
-            file.text = textb.toPlainText
-            file.save
+            GlobalSettings.instance.file.text = textb.toPlainText
+            GlobalSettings.instance.file.save 'auto'
          }
       end
+
       setGeometry(10, 10, 10, 10)
       layout = Qt::VBoxLayout.new()
       layout.addWidget(textb)
@@ -61,6 +78,21 @@ end
 
 # Super class for anything in the menu
 class MenuItem < Qt::Widget
+end
+
+class SaveButton < MenuItem
+   def initialize
+      super 
+      but = Qt::PushButton.new('Save') do
+         connect(SIGNAL :clicked) {
+            GlobalSettings.instance.file.save 'click'
+         }
+      end
+      but.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(but)
+      setLayout(layout)
+   end
 end
 
 class QuitButton < MenuItem
@@ -83,17 +115,19 @@ class QuitButton < MenuItem
 end
 
 class FullScreen < Qt::Widget
+   attr_accessor :file
+
    def initialize
       super
+
+      GlobalSettings.instance.file = CoffeeText.new ""
+      tb = TextBox.new
+
       layout = Qt::VBoxLayout.new()
       layout.addWidget QuitButton.new
-      layout.addWidget QuitButton.new
-      layout.addWidget QuitButton.new
-      layout.addWidget QuitButton.new
+      layout.addWidget SaveButton.new
       grid = Qt::GridLayout.new
-      grid.addWidget(TextBox.new, 0, 0)
-      grid.addWidget(TextBox.new, 1, 0)
-      grid.addWidget(TextBox.new, 2, 0)
+      grid.addWidget(tb, 0, 0)
       grid.addLayout(layout, 0, 1)
       setLayout(grid)
 

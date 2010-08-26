@@ -167,3 +167,12 @@ it works.
 Also, I should write a little javascript that builds a table of contents out of
 the h2s and h3s on the page...
 
+## 8.25.10
+
+So, things I learned today... 
+
+ 1. The [singleton](http://dalibornasevic.com/posts/9-ruby-singleton-pattern-again) pattern is great, and ruby methods are teh beez knees. 
+ 2. Talking over problems with other coders makes remembering things a whole lot easier
+ 3. I CAN NOW SAVE TO A FILE OF MY CHOICE. BYAHHHHH.
+
+
