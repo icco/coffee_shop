@@ -64,7 +64,7 @@ end
 
 get '/favicon.ico' do
    content_type 'image/x-ico'
-   img = Magick::Image.read('./views/favicon.ico')[0]
+   img = Magick::Image.read('docs/views/favicon.ico')[0]
    img.to_blob
 end
 
