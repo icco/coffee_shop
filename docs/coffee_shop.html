@@ -32,11 +32,20 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-2">#</a>
         </div>
-        <p> Require Qt4, ruby 1.8 only</p>
+        <p> <strong>coffee_shop</strong> is an implementation of <a href="http://www.hogbaysoftware.com/products/writeroom">writeroom</a> in ruby for Linux. It
+ was written by Nathaniel Welch for his senior project at Cal Poly.</p>
+
+<p> The program&rsquo;s goal is to be small, lightweight and distraction free.</p>
+
+<p> Some of it&rsquo;s main features are:</p>
+
+<ul>
+<li>open, edit and save text files</li>
+<li>provide a simplistic UI to keep the user focused on writing</li>
+</ul>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span></pre></div>
+        <div class='highlight'><pre></pre></div>
       </td>
     </tr>
     <tr id='section-3'>
@@ -44,7 +53,20 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-3">#</a>
         </div>
-        <p> Global settings</p>
+        <p> Require Qt4. It sadly only works with ruby 1.8.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-4">#</a>
+        </div>
+        <p> This class is a singleton for storing configuration data that needs to be
+ passed around the program.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">GlobalSettings</span>
@@ -53,22 +75,22 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-4'>
+    <tr id='section-5'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-4">#</a>
+          <a class="octothorpe" href="#section-5">#</a>
         </div>
-        <p> Our base class for storring data
- We still need subclasses for a file and buffer, I think&hellip;</p>
+        <p> Our base class for storring textual data. We still need subclasses for a
+ file and buffer, I think&hellip;</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">CoffeeText</span></pre></div>
       </td>
     </tr>
-    <tr id='section-5'>
+    <tr id='section-6'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-5">#</a>
+          <a class="octothorpe" href="#section-6">#</a>
         </div>
         <p> I can never seem to remember this little function name</p>
       </td>
@@ -80,10 +102,10 @@
    <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-6'>
+    <tr id='section-7'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-6">#</a>
+          <a class="octothorpe" href="#section-7">#</a>
         </div>
         <p> currently I don&rsquo;t know how to put the loaded text back into the editor</p>
       </td>
@@ -91,7 +113,7 @@
         <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">load</span> <span class="n">filename</span>
       <span class="vi">@fname</span> <span class="o">=</span> <span class="n">filename</span>
 
-      <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty</span>
+      <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
          <span class="n">log</span> <span class="s2">&quot;Empty filename, could not load&quot;</span>
       <span class="k">else</span>
          <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -110,10 +132,10 @@
             <span class="k">when</span> <span class="s1">&#39;auto&#39;</span></pre></div>
       </td>
     </tr>
-    <tr id='section-7'>
+    <tr id='section-8'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-7">#</a>
+          <a class="octothorpe" href="#section-8">#</a>
         </div>
         <p>log &ldquo;Not Saving: filename empty&rdquo;</p>
       </td>
@@ -127,10 +149,10 @@
          <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-8'>
+    <tr id='section-9'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-8">#</a>
+          <a class="octothorpe" href="#section-9">#</a>
         </div>
         <p> Surprise surprise, we only want to save when we have a filename.</p>
       </td>
@@ -140,10 +162,10 @@
          <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">false</span></pre></div>
       </td>
     </tr>
-    <tr id='section-9'>
+    <tr id='section-10'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-9">#</a>
+          <a class="octothorpe" href="#section-10">#</a>
         </div>
         <p> If we don&rsquo;t close, the file won&rsquo;t actually save until the program dies</p>
       </td>
@@ -157,10 +179,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-10'>
+    <tr id='section-11'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-10">#</a>
+          <a class="octothorpe" href="#section-11">#</a>
         </div>
         <p> this is the big ass text box.</p>
       </td>
@@ -183,10 +205,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-11'>
+    <tr id='section-12'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-11">#</a>
+          <a class="octothorpe" href="#section-12">#</a>
         </div>
         <p> Super class for anything in the menu</p>
       </td>
@@ -233,10 +255,10 @@
    <span class="k">def</span> <span class="nf">initialize</span></pre></div>
       </td>
     </tr>
-    <tr id='section-12'>
+    <tr id='section-13'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-12">#</a>
+          <a class="octothorpe" href="#section-13">#</a>
         </div>
         <p> First setup the menuitem</p>
       </td>
@@ -244,10 +266,10 @@
         <div class='highlight'><pre>      <span class="k">super</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-13'>
+    <tr id='section-14'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-13">#</a>
+          <a class="octothorpe" href="#section-14">#</a>
         </div>
         <p> Build the button
  Connect the button to an action</p>
@@ -259,10 +281,10 @@
       <span class="n">quit</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span></pre></div>
       </td>
     </tr>
-    <tr id='section-14'>
+    <tr id='section-15'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-14">#</a>
+          <a class="octothorpe" href="#section-15">#</a>
         </div>
         <p> Lay the button out</p>
       </td>
@@ -284,6 +306,7 @@
 
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
       <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -295,10 +318,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-15'>
+    <tr id='section-16'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-15">#</a>
+          <a class="octothorpe" href="#section-16">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
       </td>
@@ -310,10 +333,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-16'>
+    <tr id='section-17'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-16">#</a>
+          <a class="octothorpe" href="#section-17">#</a>
         </div>
         <p> Go Dog Go</p>
       </td>
@@ -321,10 +344,10 @@
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span></pre></div>
       </td>
     </tr>
-    <tr id='section-17'>
+    <tr id='section-18'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-17">#</a>
+          <a class="octothorpe" href="#section-18">#</a>
         </div>
         <p> Create Root Window</p>
       </td>
@@ -332,10 +355,10 @@
         <div class='highlight'><pre><span class="n">widget</span> <span class="o">=</span> <span class="no">FullScreen</span><span class="o">.</span><span class="n">new</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-18'>
+    <tr id='section-19'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-18">#</a>
+          <a class="octothorpe" href="#section-19">#</a>
         </div>
         <p> Display</p>
       </td>
@@ -343,10 +366,10 @@
         <div class='highlight'><pre><span class="n">widget</span><span class="o">.</span><span class="n">show</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-19'>
+    <tr id='section-20'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-19">#</a>
+          <a class="octothorpe" href="#section-20">#</a>
         </div>
         <p> Run</p>
 

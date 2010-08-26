@@ -1,17 +1,32 @@
 #!/usr/bin/env ruby
 
-# Require Qt4, ruby 1.8 only
+# **coffee_shop** is an implementation of [writeroom][wr] in ruby for Linux. It
+# was written by Nathaniel Welch for his senior project at Cal Poly. 
+#
+# The program's goal is to be small, lightweight and distraction free.
+# 
+# Some of it's main features are:
+#
+#  * open, edit and save text files
+#  * provide a simplistic UI to keep the user focused on writing
+# 
+# Anyway, enough of my babbling. Lets take a look at the code.
+#
+# [wr]: http://www.hogbaysoftware.com/products/writeroom
+
+# First off we need to require Qt4. It sadly only works with ruby 1.8.
 require 'Qt4'
 require 'singleton'
 
-# Global settings
+# Next we define this class, which is a singleton for storing configuration
+# data that needs to be passed around the program. 
 class GlobalSettings
    include Singleton
    attr_accessor :file
 end
 
-# Our base class for storring data
-# We still need subclasses for a file and buffer, I think...
+# After that we define a class for storing textual data. We still need
+# subclasses for a file and buffer, I think...
 class CoffeeText
    # I can never seem to remember this little function name
    attr_accessor :text, :fname, :lastsave, :changed
