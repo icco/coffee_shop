@@ -1,4 +1,4 @@
 ## Just run the website.
-require 'website'
+require 'docs/website'
 run Sinatra::Application
 
