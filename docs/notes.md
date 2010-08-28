@@ -175,4 +175,9 @@ So, things I learned today...
  2. Talking over problems with other coders makes remembering things a whole lot easier
  3. I CAN NOW SAVE TO A FILE OF MY CHOICE. BYAHHHHH.
 
+## 8.28.10
+
+ I can now load and save files. Which is awesome. I still need to figure out how to
+ do pagination and make the menu nice. After that, tabs would be great.
+
 

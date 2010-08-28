@@ -22,12 +22,19 @@ require 'singleton'
 # data that needs to be passed around the program. 
 class GlobalSettings
    include Singleton
-   attr_accessor :file
+   attr_accessor :files, :currentFile, :text
+
+   def file
+      return @files[@currentFile]
+   end
+
+   def file=(a)
+      @files[@currentFile] = a
+   end
 end
 
-# After that we define a class for storing textual data. We still need
-# subclasses for a file and buffer, I think...
-class CoffeeText
+# A class to represent something on disk.
+class CoffeeFile
    # I can never seem to remember this little function name
    attr_accessor :text, :fname, :lastsave, :changed
 
@@ -46,6 +53,7 @@ class CoffeeText
          @text = file.read
          @changed = true
          file.close
+         GlobalSettings.instance.text.text = @text
       end
 
       return @text
@@ -82,17 +90,21 @@ end
 class TextBox < Qt::Widget
    def initialize
       super
-      textb = Qt::PlainTextEdit.new do
-         connect(SIGNAL :textChanged) {
-            GlobalSettings.instance.file.text = textb.toPlainText
-            GlobalSettings.instance.file.save 'auto'
-         }
-      end
+      gs = GlobalSettings.instance
+      @tb = Qt::PlainTextEdit.new 
+      @tb.connect(SIGNAL :textChanged) {
+         gs.file.text = @tb.toPlainText
+         gs.file.save 'auto'
+      }
 
       setGeometry(10, 10, 10, 10)
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(textb)
+      layout.addWidget(@tb)
       setLayout(layout)
+   end
+
+   def text= txt
+      @tb.setPlainText txt
    end
 end
 
@@ -118,10 +130,11 @@ end
 class LoadButton < MenuItem
    def initialize
       super 
+      gs = GlobalSettings.instance
       but = Qt::PushButton.new('Load') do
          connect(SIGNAL :clicked) {
-            if (GlobalSettings.instance.file.changed)
-               GlobalSettings.instance.file.save 'auto'
+            if (gs.files[gs.currentFile].changed)
+               gs.file.save 'auto'
             end
 
             GlobalSettings.instance.file.load Qt::FileDialog.getOpenFileName()
@@ -160,15 +173,19 @@ class FullScreen < Qt::Widget
    def initialize
       super
 
-      GlobalSettings.instance.file = CoffeeText.new ""
-      tb = TextBox.new
+      gs = GlobalSettings.instance;
+      gs.files = [];
+      gs.currentFile = 0;
+      gs.files[gs.currentFile] = CoffeeFile.new ""
+      gs.text = TextBox.new
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget QuitButton.new
       layout.addWidget LoadButton.new
       layout.addWidget SaveButton.new
+
       grid = Qt::GridLayout.new
-      grid.addWidget(tb, 0, 0)
+      grid.addWidget(gs.text, 0, 0)
       grid.addLayout(layout, 0, 1)
       setLayout(grid)
 
