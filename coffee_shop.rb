@@ -115,7 +115,11 @@ end
 class SaveButton < MenuItem
    def initialize
       super 
-      but = Qt::PushButton.new('Save') do
+
+      icon  = Qt::Icon.new 'assets/save.png'
+      label = "Save"
+
+      but = Qt::PushButton.new(icon, label) do
          connect(SIGNAL :clicked) {
             GlobalSettings.instance.file.save 'click'
          }

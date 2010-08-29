@@ -43,6 +43,9 @@
 <li>open, edit and save text files</li>
 <li>provide a simplistic UI to keep the user focused on writing</li>
 </ul>
+
+
+<p> Anyway, enough of my babbling. Lets take a look at the code.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre></pre></div>
@@ -53,7 +56,7 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-3">#</a>
         </div>
-        <p> Require Qt4. It sadly only works with ruby 1.8.</p>
+        <p> First off we need to require Qt4. It sadly only works with ruby 1.8.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
@@ -65,13 +68,21 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-4">#</a>
         </div>
-        <p> This class is a singleton for storing configuration data that needs to be
- passed around the program.</p>
+        <p> Next we define this class, which is a singleton for storing configuration
+ data that needs to be passed around the program.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">GlobalSettings</span>
    <span class="kp">include</span> <span class="no">Singleton</span>
-   <span class="kp">attr_accessor</span> <span class="ss">:file</span>
+   <span class="kp">attr_accessor</span> <span class="ss">:files</span><span class="p">,</span> <span class="ss">:currentFile</span><span class="p">,</span> <span class="ss">:text</span>
+
+   <span class="k">def</span> <span class="nf">file</span>
+      <span class="k">return</span> <span class="vi">@files</span><span class="o">[</span><span class="vi">@currentFile</span><span class="o">]</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">file</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+      <span class="vi">@files</span><span class="o">[</span><span class="vi">@currentFile</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span>
+   <span class="k">end</span>
 <span class="k">end</span></pre></div>
       </td>
     </tr>
@@ -80,11 +91,10 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-5">#</a>
         </div>
-        <p> Our base class for storring textual data. We still need subclasses for a
- file and buffer, I think&hellip;</p>
+        <p> A class to represent something on disk.</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="k">class</span> <span class="nc">CoffeeText</span></pre></div>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">CoffeeFile</span></pre></div>
       </td>
     </tr>
     <tr id='section-6'>
@@ -120,22 +130,33 @@
          <span class="vi">@text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
          <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">true</span>
          <span class="n">file</span><span class="o">.</span><span class="n">close</span>
+         <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="vi">@text</span>
       <span class="k">end</span>
 
       <span class="k">return</span> <span class="vi">@text</span>
    <span class="k">end</span>
 
    <span class="k">def</span> <span class="nf">save</span> <span class="n">mode</span>
-      <span class="k">if</span> <span class="o">!</span><span class="vi">@lastsave</span><span class="o">.</span><span class="n">nil?</span> <span class="ow">and</span> <span class="p">(</span><span class="no">Time</span><span class="o">.</span><span class="n">new</span> <span class="o">-</span> <span class="vi">@lastsave</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
-         <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
-            <span class="k">case</span> <span class="n">mode</span>
-            <span class="k">when</span> <span class="s1">&#39;auto&#39;</span></pre></div>
+      <span class="k">if</span> <span class="o">!</span><span class="vi">@lastsave</span><span class="o">.</span><span class="n">nil?</span> <span class="ow">and</span> <span class="p">(</span><span class="no">Time</span><span class="o">.</span><span class="n">new</span> <span class="o">-</span> <span class="vi">@lastsave</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span></pre></div>
       </td>
     </tr>
     <tr id='section-8'>
       <td class=docs>
         <div class="octowrap">
           <a class="octothorpe" href="#section-8">#</a>
+        </div>
+        <p> Surprise surprise, we only want to save when we have a filename.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>         <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
+            <span class="k">case</span> <span class="n">mode</span>
+            <span class="k">when</span> <span class="s1">&#39;auto&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-9'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-9">#</a>
         </div>
         <p>log &ldquo;Not Saving: filename empty&rdquo;</p>
       </td>
@@ -146,18 +167,9 @@
             <span class="k">else</span>
                <span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="k">end</span>
-         <span class="k">end</span></pre></div>
-      </td>
-    </tr>
-    <tr id='section-9'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-9">#</a>
-        </div>
-        <p> Surprise surprise, we only want to save when we have a filename.</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+         <span class="k">end</span>
+
+         <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
          <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="vi">@text</span>
          <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">false</span></pre></div>
       </td>
@@ -167,7 +179,7 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-10">#</a>
         </div>
-        <p> If we don&rsquo;t close, the file won&rsquo;t actually save until the program dies</p>
+        <p> If we don&rsquo;t close, the file won&rsquo;t actually save until prgm death</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
@@ -190,17 +202,21 @@
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">TextBox</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
-      <span class="n">textb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
-            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textb</span><span class="o">.</span><span class="n">toPlainText</span>
-            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
-         <span class="p">}</span>
-      <span class="k">end</span>
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
+      <span class="vi">@tb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> 
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">toPlainText</span>
+         <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
+      <span class="p">}</span>
 
       <span class="n">setGeometry</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">textb</span><span class="p">)</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@tb</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">text</span><span class="o">=</span> <span class="n">txt</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setPlainText</span> <span class="n">txt</span>
    <span class="k">end</span>
 <span class="k">end</span></pre></div>
       </td>
@@ -219,7 +235,11 @@
 <span class="k">class</span> <span class="nc">SaveButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span> 
-      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">)</span> <span class="k">do</span>
+
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/save.png&#39;</span>
+      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Save&quot;</span>
+
+      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="k">do</span>
          <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
             <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;click&#39;</span>
          <span class="p">}</span>
@@ -234,10 +254,11 @@
 <span class="k">class</span> <span class="nc">LoadButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span> 
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Load&#39;</span><span class="p">)</span> <span class="k">do</span>
          <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span>
-               <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">files</span><span class="o">[</span><span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span><span class="o">].</span><span class="n">changed</span><span class="p">)</span>
+               <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
             <span class="k">end</span>
 
             <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">()</span>
@@ -301,15 +322,19 @@
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
 
-      <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="no">CoffeeText</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;&quot;</span>
-      <span class="n">tb</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">files</span><span class="o">[</span><span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span><span class="o">]</span> <span class="o">=</span> <span class="no">CoffeeFile</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;&quot;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span>
 
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
+
       <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
       <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
 
