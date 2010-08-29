@@ -11,7 +11,7 @@ count and current time at the bottom and finally the outline of the page.
 
 Here are scanned versions of those sketches:
 
- * [Page 1](http://github.com/icco/coffee_shop/raw/master/images/ui1.jpg)
- * [Page 2](http://github.com/icco/coffee_shop/raw/master/images/ui2.jpg)
- * [Page 3](http://github.com/icco/coffee_shop/raw/master/images/ui3.jpg)
+ * [Page 1](http://github.com/icco/coffee_shop/raw/master/docs/images/ui1.jpg)
+ * [Page 2](http://github.com/icco/coffee_shop/raw/master/docs/images/ui2.jpg)
+ * [Page 3](http://github.com/icco/coffee_shop/raw/master/docs/images/ui3.jpg)
 
