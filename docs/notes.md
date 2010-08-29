@@ -96,22 +96,27 @@ two pages, but he has been known to turn out novels depending on his mood.
 
 ## 6.13.10
 
-Played around with the Ruby UI toolkit [Shoes](http://github.com/shoes/shoes)
-and read through the whole [shoes book](http://github.com/downloads/shoes/shoes/nks.pdf). 
+Played around with the Ruby UI toolkit [Shoes][shoes] and read through the
+whole [shoes book][shoesbook]. 
 
 Shoes seems like a great idea, but in the end I don't think it is what I will
 be going with because it seems too close to the web and feels like it is more
 meant to prototype than to build applications for long term use and
 development.
 
+[shoes]: http://github.com/shoes/shoes
+[shoesbook]: http://github.com/downloads/shoes/shoes/nks.pdf
+
 ## 7.3.10
 
 For the last few days (weeks?) I have been messing around with some other gui
 toolkits. I had wanted to use GTK+, but the ruby extensions seem to be buggy,
-old, and not under current maintenance. It seems like Qt is the way to go, so
-I started playing around with it. I found a [great tutorial](http://www.darshancomputing.com/qt4-qtruby-tutorial/) 
-and the Qt4 documentation is really good, heck I even figured out the full
-screen stuff. Now on to getting a working prototype...
+old, and not under current maintenance. It seems like Qt is the way to go, so I
+started playing around with it. I found a [great tutorial][tut] and the Qt4
+documentation is really good, heck I even figured out the full screen stuff.
+Now on to getting a working prototype...
+
+[tut]: http://www.darshancomputing.com/qt4-qtruby-tutorial/
 
 ## 7.12.10
 
@@ -123,7 +128,7 @@ documentation, I just need to guess on some class names and such.
 
 ## 8.14.10
 
-found the application `rbqtapi`. Makes learning about accessor functions a lot
+I found the application `rbqtapi`. Makes learning about accessor functions a lot
 easier. 
 
 Sad that it took me so long to get back to work on this, but I can now access
@@ -132,9 +137,9 @@ the text from the box.
 Thoughts on my file representation. 
  
  * I need to have multiple files open at the same time, and multiple buffers with text in them.
- * when do buffers transform into files?
- * is filename and text enough for a file? I think it is...
- * should I save on text change or on a timer? Both are easy...
+ * When do buffers transform into files?
+ * Is filename and text enough for a file? I think it is...
+ * Should I save on text change or on a timer? Both are easy...
    * <http://doc.trolltech.com/3.3/qtextedit.html>
    * <http://doc.trolltech.com/4.2/qtimer.html>
  * Shawn brought up the point that find/replace could be a bit of a bitch, but there was an algorithm we talked about in 349 that would be helpful.
@@ -164,7 +169,7 @@ then generates ruby code that runs and creates the widget you designed. It
 looks like shit, and the code is spaghetti puke to say the least, but at least
 it works.
 
-Also, I should write a little javascript that builds a table of contents out of
+Also, I should write a little JavaScript that builds a table of contents out of
 the h2s and h3s on the page...
 
 ## 8.25.10
@@ -205,6 +210,11 @@ ruby:
 I've been trying to figure out how to replace the word "Quit" with an image. It
 seems to solve this issue I need to use either a [QIcon][qi] or a [QLabel][ql].
 
+To do the type of popout menus that I have proposed in the [UI Specs][ui], I
+believe I need to build a [QMenu][qm] and then use `QtPushButton::setMenu()` to
+put stuff into said pop-out menu.
+
 [ql]: http://doc.trolltech.com/4.1/qlabel.html
 [qi]: http://doc.trolltech.com/4.1/qicon.html
-
+[qm]: http://doc.trolltech.com/4.1/qmenu.html 
+[ui]: /ui

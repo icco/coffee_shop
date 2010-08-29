@@ -5,6 +5,15 @@
 #    update website
 #    build a binary
 
-doc: coffee_shop.rb
+all: run
+
+doc: coffee_shop.rb docs/coffee_shop.html
 	rocco coffee_shop.rb
 	mv coffee_shop.html docs/
+
+run: doc coffee_shop.rb
+	./coffee_shop.rb
+
+webserver: docs/website.rb
+	docs/website.rb
+
