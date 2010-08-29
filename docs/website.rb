@@ -8,47 +8,55 @@ require 'sinatra'
 require 'less'
 require 'rdiscount'
 require 'RMagick'
-# require 'pandoc-ruby'
+require 'github/markup'
 include Magick
 
 get '/' do
-   md = RDiscount.new(File.read("README.md"), :smart).to_html
+   file = "README.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :index, :locals => { :readme => md }
 end
 
 get '/proposal' do
    title = "Senior Project Proposal"
-   md = RDiscount.new(File.read("docs/proposal.md"), :smart).to_html
+   file = "docs/proposal.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :page, :locals => { :title => title, :content => md }
 end
 
 get '/schedule' do
    title = "Senior Project Schedule"
-   content = "<pre>\n#{File.read("docs/schedule.txt")}\n</pre>"
-   erb :page, :locals => { :title => title, :content => content }
+   file = "docs/schedule.txt"
+   md = GitHub::Markup.render(file, File.read(file))
+   content = "<pre>\n#{md}\n</pre>"
+   erb :page, :locals => { :title => title, :content => content}
 end
 
 get '/notes' do
    title = "Senior Project Notes"
-   md = RDiscount.new(File.read("docs/notes.md"), :smart).to_html
+   file = "docs/notes.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :page, :locals => { :title => title, :content => md }
 end
 
 get '/spec' do
    title = "Senior Project Specification"
-   md = RDiscount.new(File.read("docs/spec.md"), :smart).to_html
+   file = "docs/spec.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :page, :locals => { :title => title, :content => md }
 end
 
 get '/ui' do
    title = "Senior Project UI Prototype"
-   md = RDiscount.new(File.read("docs/ui_prototype.md"), :smart).to_html
+   file = "docs/ui_prototype.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :page, :locals => { :title => title, :content => md }
 end
 
 get '/survey' do
    title = "Senior Project Questionnaire"
-   md = RDiscount.new(File.read("docs/Questionaire.md"), :smart).to_html
+   file = "docs/Questionaire.md"
+   md = GitHub::Markup.render(file, File.read(file))
    erb :page, :locals => { :title => title, :content => md }
 end
 
