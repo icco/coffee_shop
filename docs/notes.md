@@ -177,7 +177,12 @@ So, things I learned today...
 
 ## 8.28.10
 
- I can now load and save files. Which is awesome. I still need to figure out how to
- do pagination and make the menu nice. After that, tabs would be great.
+I can now load and save files. Which is awesome. I still need to figure out how
+to do pagination and make the menu nice. After that, tabs would be great.
+
+I also need to look at [QGraphicsScene][gv] which lets me do custom graphics in
+the menu.
+
+[gv]: http://doc.qt.nokia.com/4.6/graphicsview.html
 
 
