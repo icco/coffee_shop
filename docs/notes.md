@@ -171,9 +171,11 @@ the h2s and h3s on the page...
 
 So, things I learned today... 
 
- 1. The [singleton](http://dalibornasevic.com/posts/9-ruby-singleton-pattern-again) pattern is great, and ruby methods are teh beez knees. 
+ 1. The [singleton][sing] pattern is great, and ruby methods are teh beez knees. 
  2. Talking over problems with other coders makes remembering things a whole lot easier
  3. I CAN NOW SAVE TO A FILE OF MY CHOICE. BYAHHHHH.
+
+[sing]: http://dalibornasevic.com/posts/9-ruby-singleton-pattern-again
 
 ## 8.28.10
 
@@ -185,4 +187,24 @@ the menu.
 
 [gv]: http://doc.qt.nokia.com/4.6/graphicsview.html
 
+## 8.29.10
+
+For a moment there, I thought about the fact that I could have written this as
+a web app and used [AIR][air] to display this on the desktop. But then I
+remembered that I'm doing this so I can experience the pain that is developing
+for the desktop.
+
+Anyway, the Qt documentation is absurd. Everything seems so over engineered, it
+reminds me of why I hate Java and C++. I'm escaping some of that by coding in
+ruby: 
+
+    quit = Qt::PushButton.new('Quit') do
+       connect(SIGNAL :clicked) { Qt::Application.instance.quit }
+    end 
+
+I've been trying to figure out how to replace the word "Quit" with an image. It
+seems to solve this issue I need to use either a [QIcon][qi] or a [QLabel][ql].
+
+[ql]: http://doc.trolltech.com/4.1/qlabel.html
+[qi]: http://doc.trolltech.com/4.1/qicon.html
 

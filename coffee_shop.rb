@@ -61,6 +61,7 @@ class CoffeeFile
 
    def save mode
       if !@lastsave.nil? and (Time.new - @lastsave > 1)
+         # Surprise surprise, we only want to save when we have a filename.
          if @fname.empty?
             case mode
             when 'auto'
@@ -73,11 +74,10 @@ class CoffeeFile
             end
          end
 
-         # Surprise surprise, we only want to save when we have a filename.
          file = File.new(@fname, 'w')
          file.write @text
          @changed = false
-         # If we don't close, the file won't actually save until the program dies
+         # If we don't close, the file won't actually save until prgm death
          file.close
          @lastsave = Time.new
       else
