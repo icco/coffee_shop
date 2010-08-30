@@ -22,7 +22,7 @@ require 'singleton'
 # data that needs to be passed around the program. 
 class GlobalSettings
    include Singleton
-   attr_accessor :files, :currentFile, :text
+   attr_accessor :files, :currentFile, :text, :bgColor, :fgColor
 
    def file
       return @files[@currentFile]
@@ -32,11 +32,25 @@ class GlobalSettings
       @files[@currentFile] = a
    end
 
+   def app
+      return Qt::Application.instance
+   end
+
+   def refresh
+      app.setStyleSheet(appStyles)
+   end
+
    def appStyles
+      @bgColor = '#FFF' if @bgColor.nil?
+      @fgColor = '#000' if @fgColor.nil?
+
       return <<-GLOBAL
          * {
-            background-color: #fff;
-            color: #cccccc;
+            background-color: #{@bgColor};
+         }
+
+         QPlainTextEdit {
+            color: #{@fgColor};
          }
       GLOBAL
    end
@@ -134,6 +148,51 @@ class MenuItem < Qt::Widget
    end
 end
 
+class BgColorButton < MenuItem
+   def initialize
+      super
+
+      gs = GlobalSettings.instance
+
+      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/add.png'
+      label = "Color"
+
+      but = Qt::PushButton.new('Bg') do
+         connect(SIGNAL :clicked) { 
+            gs.bgColor = Qt::ColorDialog.getColor.name
+            gs.refresh
+         }
+      end
+      but.setStyleSheet(@menuStyle);
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(but)
+      setLayout(layout)
+   end
+end
+
+class FgColorButton < MenuItem
+   def initialize
+      super
+
+      gs = GlobalSettings.instance
+
+      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/add.png'
+      label = "Color"
+
+      but = Qt::PushButton.new('Fg') do
+         connect(SIGNAL :clicked) { 
+            gs.fgColor = Qt::ColorDialog.getColor.name
+            gs.refresh
+         }
+      end
+      but.setStyleSheet(@menuStyle);
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(but)
+      setLayout(layout)
+   end
+end
+
+
 class SaveButton < MenuItem
    def initialize
       super 
@@ -184,7 +243,6 @@ class QuitButton < MenuItem
       # First setup the menuitem
       super 
 
-
       icon  = Qt::Icon.new 'assets/icons/png/black/64x64/close.png'
       label = "Quit"
 
@@ -203,6 +261,7 @@ class QuitButton < MenuItem
 end
 
 class FullScreen < Qt::Widget
+   include Singleton
    attr_accessor :file
 
    def initialize
@@ -219,8 +278,13 @@ class FullScreen < Qt::Widget
       menu1.addWidget LoadButton.new
       menu1.addWidget QuitButton.new
 
+      menu2 = Qt::HBoxLayout.new()
+      menu2.addWidget FgColorButton.new
+      menu2.addWidget BgColorButton.new
+
       menus = Qt::VBoxLayout.new
       menus.addLayout menu1
+      menus.addLayout menu2
 
       grid = Qt::GridLayout.new
       grid.addWidget(gs.text, 0, 0)
@@ -242,11 +306,8 @@ end
 app = Qt::Application.new ARGV
 app.setStyleSheet(GlobalSettings.instance.appStyles)
 
-# Create Root Window
-widget = FullScreen.new 
-
 # Display
-widget.show 
+FullScreen.instance.show 
 
 # Run
 app.exec 
