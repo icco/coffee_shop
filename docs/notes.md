@@ -194,6 +194,10 @@ the menu.
 
 ## 8.29.10
 
+__NOTE__: I think this has been implied, but there are often multihour breaks in
+between the thought processes of some paragraphs. This is especially true
+today.
+
 For a moment there, I thought about the fact that I could have written this as
 a web app and used [AIR][air] to display this on the desktop. But then I
 remembered that I'm doing this so I can experience the pain that is developing
@@ -210,11 +214,17 @@ ruby:
 I've been trying to figure out how to replace the word "Quit" with an image. It
 seems to solve this issue I need to use either a [QIcon][qi] or a [QLabel][ql].
 
-To do the type of popout menus that I have proposed in the [UI Specs][ui], I
+To do the type of pop out menus that I have proposed in the [UI Specs][ui], I
 believe I need to build a [QMenu][qm] and then use `QtPushButton::setMenu()` to
 put stuff into said pop-out menu.
 
+So I discovered that [Qt supports StyleSheets][qsss]. This is probably the
+greatest discovery I could have made. This will make style the whole app really
+easy. So happy that I found this.
+
+[qsss]: http://doc.qt.nokia.com/4.4/stylesheet-syntax.html
 [ql]: http://doc.trolltech.com/4.1/qlabel.html
 [qi]: http://doc.trolltech.com/4.1/qicon.html
 [qm]: http://doc.trolltech.com/4.1/qmenu.html 
 [ui]: /ui
+

@@ -110,21 +110,37 @@ end
 
 # Super class for anything in the menu
 class MenuItem < Qt::Widget
+   def initialize
+      super
+
+      # Now that we know about stylesheets, we can save a string that all
+      # MenuItems can use to style themselves. It's kind of amazing really.
+      @menuStyle = <<-STYLE
+      QPushButton {
+         border: none;
+         background-color: #fff;
+         min-width: 80px;
+         font-size: 18px;
+         font-weight: bold;
+         padding: 10px;
+      }
+      STYLE
+   end
 end
 
 class SaveButton < MenuItem
    def initialize
       super 
 
+      gs = GlobalSettings.instance
+
       icon  = Qt::Icon.new 'assets/save.png'
       label = "Save"
 
       but = Qt::PushButton.new(icon, label) do
-         connect(SIGNAL :clicked) {
-            GlobalSettings.instance.file.save 'click'
-         }
+         connect(SIGNAL :clicked) { gs.file.save 'click' }
       end
-      but.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
+      but.setStyleSheet(@menuStyle);
       layout = Qt::VBoxLayout.new()
       layout.addWidget(but)
       setLayout(layout)
@@ -141,10 +157,10 @@ class LoadButton < MenuItem
                gs.file.save 'auto'
             end
 
-            GlobalSettings.instance.file.load Qt::FileDialog.getOpenFileName()
+            gs.file.load Qt::FileDialog.getOpenFileName()
          }
       end
-      but.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
+      but.setStyleSheet(@menuStyle);
       layout = Qt::VBoxLayout.new()
       layout.addWidget(but)
       setLayout(layout)
@@ -162,7 +178,7 @@ class QuitButton < MenuItem
       quit = Qt::PushButton.new('Quit') do
          connect(SIGNAL :clicked) { Qt::Application.instance.quit }
       end
-      quit.setFont(Qt::Font.new('Times', 18, Qt::Font::Bold))
+      quit.setStyleSheet(@menuStyle);
 
       # Lay the button out
       layout = Qt::VBoxLayout.new()
