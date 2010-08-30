@@ -45,12 +45,13 @@ class GlobalSettings
       @fgColor = '#000' if @fgColor.nil?
 
       return <<-GLOBAL
-         * {
+         QHBoxLayout {
             background-color: #{@bgColor};
          }
 
          QPlainTextEdit {
             color: #{@fgColor};
+            border: 1px solid #{@fgColor}; 
          }
       GLOBAL
    end
@@ -120,7 +121,8 @@ class TextBox < Qt::Widget
          gs.file.save 'auto'
       }
 
-      setGeometry(10, 10, 10, 10)
+      @tb.setFrameShape Qt::Frame::NoFrame
+
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@tb)
       setLayout(layout)
@@ -277,19 +279,33 @@ class FullScreen < Qt::Widget
       menu1.addWidget SaveButton.new
       menu1.addWidget LoadButton.new
       menu1.addWidget QuitButton.new
+      menu1.setAlignment Qt::AlignLeft
 
       menu2 = Qt::HBoxLayout.new()
       menu2.addWidget FgColorButton.new
       menu2.addWidget BgColorButton.new
+      menu2.setAlignment Qt::AlignLeft
 
       menus = Qt::VBoxLayout.new
       menus.addLayout menu1
       menus.addLayout menu2
+      menus.setAlignment Qt::AlignTop
+
+      hbox = Qt::HBoxLayout.new
+      hbox.addWidget(gs.text)
+      hbox.addLayout(menus)
+
+      spacer1 = Qt::SpacerItem.new(300, 100)
+      spacer2 = Qt::SpacerItem.new(200, 100)
 
       grid = Qt::GridLayout.new
-      grid.addWidget(gs.text, 0, 0)
-      grid.addLayout(menus, 0, 1)
+      grid.addItem(spacer1, 0, 0)
+      grid.addItem(spacer2, 0, 2)
+      grid.addLayout(hbox, 0, 1)
+
       setLayout(grid)
+
+      setWindowTitle "Coffee_Shop"
 
       setWindowState(Qt::WindowFullScreen)
    end

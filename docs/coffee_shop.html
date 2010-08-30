@@ -97,12 +97,13 @@
       <span class="vi">@fgColor</span> <span class="o">=</span> <span class="s1">&#39;#000&#39;</span> <span class="k">if</span> <span class="vi">@fgColor</span><span class="o">.</span><span class="n">nil?</span>
 
       <span class="k">return</span> <span class="o">&lt;&lt;-</span><span class="no">GLOBAL</span>
-<span class="sh">         * {</span>
+<span class="sh">         QHBoxLayout {</span>
 <span class="sh">            background-color: #{@bgColor};</span>
 <span class="sh">         }</span>
 
 <span class="sh">         QPlainTextEdit {</span>
 <span class="sh">            color: #{@fgColor};</span>
+<span class="sh">            border: 1px solid #{@fgColor}; </span>
 <span class="sh">         }</span>
 <span class="no">      GLOBAL</span>
    <span class="k">end</span>
@@ -232,7 +233,8 @@
          <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
       <span class="p">}</span>
 
-      <span class="n">setGeometry</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setFrameShape</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Frame</span><span class="o">::</span><span class="no">NoFrame</span>
+
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@tb</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
@@ -282,7 +284,7 @@
 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/png/black/64x64/add.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Color&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Bg&#39;</span><span class="p">)</span> <span class="k">do</span>
@@ -304,7 +306,7 @@
 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/png/black/64x64/add.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Color&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Fg&#39;</span><span class="p">)</span> <span class="k">do</span>
@@ -327,7 +329,7 @@
 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/png/black/64x64/save.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/save.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Save&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
@@ -345,7 +347,7 @@
       <span class="k">super</span> 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/png/black/64x64/open.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/open.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Load&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
@@ -380,7 +382,7 @@
       <td class=code>
         <div class='highlight'><pre>      <span class="k">super</span> 
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/png/black/64x64/close.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/close.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Quit&quot;</span></pre></div>
       </td>
     </tr>
@@ -430,19 +432,33 @@
       <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu1</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span>
 
       <span class="n">menu2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">FgColorButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">BgColorButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu2</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span>
 
       <span class="n">menus</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu1</span>
       <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu2</span>
+      <span class="n">menus</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignTop</span>
+
+      <span class="n">hbox</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">menus</span><span class="p">)</span>
+
+      <span class="n">spacer1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+      <span class="n">spacer2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
       <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">menus</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">hbox</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
       <span class="n">setLayout</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+      <span class="n">setWindowTitle</span> <span class="s2">&quot;Coffee_Shop&quot;</span>
 
       <span class="n">setWindowState</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">WindowFullScreen</span><span class="p">)</span>
    <span class="k">end</span>
