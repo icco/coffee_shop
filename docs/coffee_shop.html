@@ -230,21 +230,45 @@
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">MenuItem</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
+   <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-13'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-13">#</a>
+        </div>
+        <p> Now that we know about stylesheets, we can save a string that all
+ MenuItems can use to style themselves. It&rsquo;s kind of amazing really.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="vi">@menuStyle</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">STYLE</span>
+<span class="sh">      QPushButton {</span>
+<span class="sh">         border: none;</span>
+<span class="sh">         background-color: #fff;</span>
+<span class="sh">         min-width: 80px;</span>
+<span class="sh">         font-size: 18px;</span>
+<span class="sh">         font-weight: bold;</span>
+<span class="sh">         padding: 10px;</span>
+<span class="sh">      }</span>
+<span class="no">      STYLE</span>
+   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="k">class</span> <span class="nc">SaveButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span> 
 
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
+
       <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/save.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Save&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
-            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;click&#39;</span>
-         <span class="p">}</span>
+         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;click&#39;</span> <span class="p">}</span>
       <span class="k">end</span>
-      <span class="n">but</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span>
+      <span class="n">but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
@@ -261,10 +285,10 @@
                <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
             <span class="k">end</span>
 
-            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">()</span>
+            <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">()</span>
          <span class="p">}</span>
       <span class="k">end</span>
-      <span class="n">but</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span>
+      <span class="n">but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
@@ -276,10 +300,10 @@
    <span class="k">def</span> <span class="nf">initialize</span></pre></div>
       </td>
     </tr>
-    <tr id='section-13'>
+    <tr id='section-14'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-13">#</a>
+          <a class="octothorpe" href="#section-14">#</a>
         </div>
         <p> First setup the menuitem</p>
       </td>
@@ -287,10 +311,10 @@
         <div class='highlight'><pre>      <span class="k">super</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-14'>
+    <tr id='section-15'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-14">#</a>
+          <a class="octothorpe" href="#section-15">#</a>
         </div>
         <p> Build the button
  Connect the button to an action</p>
@@ -299,13 +323,13 @@
         <div class='highlight'><pre>      <span class="n">quit</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Quit&#39;</span><span class="p">)</span> <span class="k">do</span>
          <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">quit</span> <span class="p">}</span>
       <span class="k">end</span>
-      <span class="n">quit</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Times&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Font</span><span class="o">::</span><span class="no">Bold</span><span class="p">))</span></pre></div>
+      <span class="n">quit</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span></pre></div>
       </td>
     </tr>
-    <tr id='section-15'>
+    <tr id='section-16'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-15">#</a>
+          <a class="octothorpe" href="#section-16">#</a>
         </div>
         <p> Lay the button out</p>
       </td>
@@ -343,10 +367,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-16'>
+    <tr id='section-17'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-16">#</a>
+          <a class="octothorpe" href="#section-17">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
       </td>
@@ -358,10 +382,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-17'>
+    <tr id='section-18'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-17">#</a>
+          <a class="octothorpe" href="#section-18">#</a>
         </div>
         <p> Go Dog Go</p>
       </td>
@@ -369,10 +393,10 @@
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span></pre></div>
       </td>
     </tr>
-    <tr id='section-18'>
+    <tr id='section-19'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-18">#</a>
+          <a class="octothorpe" href="#section-19">#</a>
         </div>
         <p> Create Root Window</p>
       </td>
@@ -380,10 +404,10 @@
         <div class='highlight'><pre><span class="n">widget</span> <span class="o">=</span> <span class="no">FullScreen</span><span class="o">.</span><span class="n">new</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-19'>
+    <tr id='section-20'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-19">#</a>
+          <a class="octothorpe" href="#section-20">#</a>
         </div>
         <p> Display</p>
       </td>
@@ -391,10 +415,10 @@
         <div class='highlight'><pre><span class="n">widget</span><span class="o">.</span><span class="n">show</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-20'>
+    <tr id='section-21'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-20">#</a>
+          <a class="octothorpe" href="#section-21">#</a>
         </div>
         <p> Run</p>
 
