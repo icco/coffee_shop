@@ -31,6 +31,15 @@ class GlobalSettings
    def file=(a)
       @files[@currentFile] = a
    end
+
+   def appStyles
+      return <<-GLOBAL
+         * {
+            background-color: #fff;
+            color: #cccccc;
+         }
+      GLOBAL
+   end
 end
 
 # A class to represent something on disk.
@@ -118,11 +127,8 @@ class MenuItem < Qt::Widget
       @menuStyle = <<-STYLE
       QPushButton {
          border: none;
-         background-color: #fff;
-         min-width: 80px;
-         font-size: 18px;
-         font-weight: bold;
-         padding: 10px;
+         width:  20px;
+         height: 20px;
       }
       STYLE
    end
@@ -134,10 +140,10 @@ class SaveButton < MenuItem
 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/save.png'
+      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/save.png'
       label = "Save"
 
-      but = Qt::PushButton.new(icon, label) do
+      but = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) { gs.file.save 'click' }
       end
       but.setStyleSheet(@menuStyle);
@@ -151,7 +157,11 @@ class LoadButton < MenuItem
    def initialize
       super 
       gs = GlobalSettings.instance
-      but = Qt::PushButton.new('Load') do
+
+      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/open.png'
+      label = "Load"
+
+      but = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) {
             if (gs.files[gs.currentFile].changed)
                gs.file.save 'auto'
@@ -161,6 +171,7 @@ class LoadButton < MenuItem
          }
       end
       but.setStyleSheet(@menuStyle);
+
       layout = Qt::VBoxLayout.new()
       layout.addWidget(but)
       setLayout(layout)
@@ -173,9 +184,13 @@ class QuitButton < MenuItem
       # First setup the menuitem
       super 
 
+
+      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/close.png'
+      label = "Quit"
+
       # Build the button
       # Connect the button to an action
-      quit = Qt::PushButton.new('Quit') do
+      quit = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) { Qt::Application.instance.quit }
       end
       quit.setStyleSheet(@menuStyle);
@@ -199,14 +214,17 @@ class FullScreen < Qt::Widget
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget QuitButton.new
-      layout.addWidget LoadButton.new
-      layout.addWidget SaveButton.new
+      menu1 = Qt::HBoxLayout.new()
+      menu1.addWidget SaveButton.new
+      menu1.addWidget LoadButton.new
+      menu1.addWidget QuitButton.new
+
+      menus = Qt::VBoxLayout.new
+      menus.addLayout menu1
 
       grid = Qt::GridLayout.new
       grid.addWidget(gs.text, 0, 0)
-      grid.addLayout(layout, 0, 1)
+      grid.addLayout(menus, 0, 1)
       setLayout(grid)
 
       setWindowState(Qt::WindowFullScreen)
@@ -222,6 +240,7 @@ end
 
 # Go Dog Go
 app = Qt::Application.new ARGV
+app.setStyleSheet(GlobalSettings.instance.appStyles)
 
 # Create Root Window
 widget = FullScreen.new 
