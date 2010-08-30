@@ -154,7 +154,7 @@ class BgColorButton < MenuItem
 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/add.png'
+      icon  = Qt::Icon.new 'assets/icons/black/64x64/add.png'
       label = "Color"
 
       but = Qt::PushButton.new('Bg') do
@@ -176,7 +176,7 @@ class FgColorButton < MenuItem
 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/add.png'
+      icon  = Qt::Icon.new 'assets/icons/black/64x64/add.png'
       label = "Color"
 
       but = Qt::PushButton.new('Fg') do
@@ -199,7 +199,7 @@ class SaveButton < MenuItem
 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/save.png'
+      icon  = Qt::Icon.new 'assets/icons/black/64x64/save.png'
       label = "Save"
 
       but = Qt::PushButton.new(icon, "") do
@@ -217,7 +217,7 @@ class LoadButton < MenuItem
       super 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/open.png'
+      icon  = Qt::Icon.new 'assets/icons/black/64x64/open.png'
       label = "Load"
 
       but = Qt::PushButton.new(icon, "") do
@@ -243,7 +243,7 @@ class QuitButton < MenuItem
       # First setup the menuitem
       super 
 
-      icon  = Qt::Icon.new 'assets/icons/png/black/64x64/close.png'
+      icon  = Qt::Icon.new 'assets/icons/black/64x64/close.png'
       label = "Quit"
 
       # Build the button
