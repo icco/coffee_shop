@@ -69,6 +69,7 @@ class CoffeeFile
 
    def initialize filename
       @fname = filename
+      @pageCount = 1
    end
 
    def load filename
@@ -134,27 +135,83 @@ class CoffeeFile
    end
 end
 
-# this is the big ass text box.
+class Boxes < Qt::Widget
+   def initialize
+      super
+      layout = Qt::VBoxLayout.new()
+      @widgets = []
+
+      (0..GlobalSettings.instance.file.pageCount).each {|n|
+         @widgets[n] = build n
+         layout.addWidget(@widgets[n])
+      }
+
+      setLayout(layout)
+   end
+
+   def text= txt
+      GlobalSettings.instance.file.text = txt
+      (0..GlobalSettings.instance.file.pageCount).each {|n|
+         @widgets[n] = build n if @widgets[n].nil?
+         @widgets[n].setPlainText GlobalSettings.instance.file.page n
+      }
+   end
+
+   def text
+      t = ""
+      @widgets.each {|v| t += v }
+
+      return t
+   end
+
+   # Fire off custom signal
+   def textChanged
+      puts "TEXT CHANGED"
+   end
+
+   def get n
+      return @wigets[n]
+   end
+
+   def build n
+      wid = Qt::PlainTextEdit.new 
+
+      wid.connect(SIGNAL :textChanged) {
+         textChanged
+      }
+
+      wid.setStyleSheet <<-STYLE
+         QPlainTextEdit {
+         }
+      STYLE
+
+      wid.setVerticalScrollBarPolicy Qt::ScrollBarAlwaysOff
+      wid.setHorizontalScrollBarPolicy Qt::ScrollBarAlwaysOff
+
+      wid.setFrameShape Qt::Frame::NoFrame
+
+      return wid
+   end
+end 
+
 class TextBox < Qt::Widget
    def initialize
       super
 
       gs = GlobalSettings.instance
-      @tb = Qt::PlainTextEdit.new 
-      @tb.connect(SIGNAL :textChanged) {
-         gs.file.text = @tb.toPlainText
-         gs.file.save 'auto'
-      }
+      @boxes = Boxes.new
 
-      @tb.setFrameShape Qt::Frame::NoFrame
+      @sa = Qt::ScrollArea.new
+      @sa.setFrameShape Qt::Frame::NoFrame
 
+      @sa.setWidget @boxes
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(@tb)
+      layout.addWidget(@sa)
       setLayout(layout)
    end
 
    def text= txt
-      @tb.setPlainText txt
+      @boxes.text = txt
    end
 end
 
