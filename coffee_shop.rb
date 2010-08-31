@@ -22,7 +22,7 @@ require 'singleton'
 # data that needs to be passed around the program. 
 class GlobalSettings
    include Singleton
-   attr_accessor :files, :currentFile, :text, :bgColor, :fgColor
+   attr_accessor :text, :files, :currentFile, :bgColor, :fgColor
 
    def file
       return @files[@currentFile]
@@ -45,7 +45,7 @@ class GlobalSettings
       @fgColor = '#000' if @fgColor.nil?
 
       return <<-GLOBAL
-         QHBoxLayout {
+         QVBoxLayout {
             background-color: #{@bgColor};
          }
 
@@ -55,18 +55,22 @@ class GlobalSettings
          }
       GLOBAL
    end
+
 end
 
 # A class to represent something on disk.
 class CoffeeFile
    # I can never seem to remember this little function name
-   attr_accessor :text, :fname, :lastsave, :changed
+   attr_accessor :fname, :lastsave, :changed
+   attr_reader :text, :pageCount
+
+   # Number of characters per page
+   @@perPage = 100
 
    def initialize filename
       @fname = filename
    end
 
-   # currently I don't know how to put the loaded text back into the editor
    def load filename
       @fname = filename
 
@@ -108,12 +112,33 @@ class CoffeeFile
          @lastsave = Time.at(0)
       end
    end
+
+   # When text comes in, we need to recalc pages.
+   def text= txt
+      @text = txt
+      @pageCount = (@text.length.to_f / @@perPage.to_f)
+   end
+
+   # This function returns the text of the page requested.
+   def page num
+      if num < 0 || num > @pageCount
+         return nil
+      end
+
+      # Instead of doing the math, and doing the offset lookup, we could store
+      # the page content in a hash table on change of @text.
+      offset = num * @@perPage
+      range = offset..(offset+@@perPage)
+
+      return @text[range]
+   end
 end
 
 # this is the big ass text box.
 class TextBox < Qt::Widget
    def initialize
       super
+
       gs = GlobalSettings.instance
       @tb = Qt::PlainTextEdit.new 
       @tb.connect(SIGNAL :textChanged) {
@@ -165,7 +190,9 @@ class BgColorButton < MenuItem
             gs.refresh
          }
       end
+
       but.setStyleSheet(@menuStyle);
+      
       layout = Qt::VBoxLayout.new()
       layout.addWidget(but)
       setLayout(layout)
@@ -224,7 +251,7 @@ class LoadButton < MenuItem
 
       but = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) {
-            if (gs.files[gs.currentFile].changed)
+            if (gs.file.changed)
                gs.file.save 'auto'
             end
 
