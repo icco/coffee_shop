@@ -153,18 +153,17 @@ class Boxes < Qt::Widget
    # called every time the text changes.
    def paintEvent x
       # Need to move text around
-      @widgets.each {|n|
-
+      txt = self.text
+      GlobalSettings.instance.file.text = txt
+      (0...GlobalSettings.instance.file.pageCount).each {|n|
+         @widgets[n] = build n if @widgets[n].nil?
+         @widgets[n].setPlainText GlobalSettings.instance.file.page n
       }
 
       (0...GlobalSettings.instance.file.pageCount).each {|n|
          @widgets[n] = build n if @widgets[n].nil?
          self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
       }
-
-      p self.sizeHint
-
-      super
    end
 
    def text= txt
@@ -177,7 +176,7 @@ class Boxes < Qt::Widget
 
    def text
       t = ""
-      @widgets.each {|v| t += v }
+      @widgets.each {|v| t += v.plainText }
 
       return t
    end
@@ -189,7 +188,7 @@ class Boxes < Qt::Widget
    def build n
       wid = Qt::PlainTextEdit.new 
 
-      wid.setFixedWidth 550
+      wid.setFixedWidth 570
       wid.setFixedHeight 750
 
       # Queues up a paint event when text changes.
