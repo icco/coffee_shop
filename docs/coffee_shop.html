@@ -298,18 +298,17 @@
         <p> Need to move text around</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="vi">@widgets</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
-
+        <div class='highlight'><pre>      <span class="n">txt</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">text</span>
+      <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">txt</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+         <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">build</span> <span class="n">n</span> <span class="k">if</span> <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">nil?</span>
+         <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">setPlainText</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">page</span> <span class="n">n</span>
       <span class="p">}</span>
 
       <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
          <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">build</span> <span class="n">n</span> <span class="k">if</span> <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">nil?</span>
          <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
       <span class="p">}</span>
-
-      <span class="nb">p</span> <span class="nb">self</span><span class="o">.</span><span class="n">sizeHint</span>
-
-      <span class="k">super</span>
    <span class="k">end</span>
 
    <span class="k">def</span> <span class="nf">text</span><span class="o">=</span> <span class="n">txt</span>
@@ -322,7 +321,7 @@
 
    <span class="k">def</span> <span class="nf">text</span>
       <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-      <span class="vi">@widgets</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">t</span> <span class="o">+=</span> <span class="n">v</span> <span class="p">}</span>
+      <span class="vi">@widgets</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">t</span> <span class="o">+=</span> <span class="n">v</span><span class="o">.</span><span class="n">plainText</span> <span class="p">}</span>
 
       <span class="k">return</span> <span class="n">t</span>
    <span class="k">end</span>
@@ -334,7 +333,7 @@
    <span class="k">def</span> <span class="nf">build</span> <span class="n">n</span>
       <span class="n">wid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> 
 
-      <span class="n">wid</span><span class="o">.</span><span class="n">setFixedWidth</span> <span class="mi">550</span>
+      <span class="n">wid</span><span class="o">.</span><span class="n">setFixedWidth</span> <span class="mi">570</span>
       <span class="n">wid</span><span class="o">.</span><span class="n">setFixedHeight</span> <span class="mi">750</span></pre></div>
       </td>
     </tr>
@@ -415,9 +414,18 @@
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
 
-      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
-
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-19'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-19">#</a>
+        </div>
+        <p> I need to dynamically figure out icon color based on bg color.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Color&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Bg&#39;</span><span class="p">)</span> <span class="k">do</span>
@@ -507,10 +515,10 @@
    <span class="k">def</span> <span class="nf">initialize</span></pre></div>
       </td>
     </tr>
-    <tr id='section-19'>
+    <tr id='section-20'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-19">#</a>
+          <a class="octothorpe" href="#section-20">#</a>
         </div>
         <p> First setup the menuitem</p>
       </td>
@@ -521,10 +529,10 @@
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Quit&quot;</span></pre></div>
       </td>
     </tr>
-    <tr id='section-20'>
+    <tr id='section-21'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-20">#</a>
+          <a class="octothorpe" href="#section-21">#</a>
         </div>
         <p> Build the button
  Connect the button to an action</p>
@@ -536,10 +544,10 @@
       <span class="n">quit</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span></pre></div>
       </td>
     </tr>
-    <tr id='section-21'>
+    <tr id='section-22'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-21">#</a>
+          <a class="octothorpe" href="#section-22">#</a>
         </div>
         <p> Lay the button out</p>
       </td>
@@ -600,10 +608,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-22'>
+    <tr id='section-23'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-22">#</a>
+          <a class="octothorpe" href="#section-23">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
       </td>
@@ -615,10 +623,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-23'>
+    <tr id='section-24'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-23">#</a>
+          <a class="octothorpe" href="#section-24">#</a>
         </div>
         <p> Go Dog Go</p>
       </td>
@@ -627,10 +635,10 @@
 <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span><span class="p">)</span></pre></div>
       </td>
     </tr>
-    <tr id='section-24'>
+    <tr id='section-25'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-24">#</a>
+          <a class="octothorpe" href="#section-25">#</a>
         </div>
         <p> Display</p>
       </td>
@@ -638,10 +646,10 @@
         <div class='highlight'><pre><span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-25'>
+    <tr id='section-26'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-25">#</a>
+          <a class="octothorpe" href="#section-26">#</a>
         </div>
         <p> Run</p>
 
