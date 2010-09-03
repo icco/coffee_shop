@@ -51,7 +51,14 @@ class GlobalSettings
 
          QPlainTextEdit {
             color: #{@fgColor};
+            background-color: #{@bgColor};
             border: 1px solid #{@fgColor}; 
+            padding: 10px;
+         }
+
+         QScrollAread {
+            background-color: #{@bgColor};
+            color: #{@fgColor};
          }
       GLOBAL
    end
@@ -73,7 +80,11 @@ class CoffeeFile
    end
 
    def load filename
-      @fname = filename
+      if filename.nil?
+         @fname = ""
+      else
+         @fname = filename
+      end
 
       if @fname.empty?
          log "Empty filename, could not load"
@@ -94,10 +105,11 @@ class CoffeeFile
          if @fname.empty?
             case mode
             when 'auto'
-               #log "Not Saving: filename empty"
                return
             when 'click'
-               @fname = Qt::FileDialog.getSaveFileName()
+               fname = Qt::FileDialog.getSaveFileName()
+               @fname = fname.nil? ? "" : fname
+               return if @fname.empty?
             else
                log "Unknow save mode: #{mode}."
             end
