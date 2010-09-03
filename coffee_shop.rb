@@ -65,7 +65,7 @@ class CoffeeFile
    attr_reader :text, :pageCount
 
    # Number of characters per page
-   @@perPage = 100
+   @@perPage = 1000
 
    def initialize filename
       @fname = filename
@@ -129,7 +129,7 @@ class CoffeeFile
       # Instead of doing the math, and doing the offset lookup, we could store
       # the page content in a hash table on change of @text.
       offset = num * @@perPage
-      range = offset..(offset+@@perPage)
+      range = offset...(offset+@@perPage)
 
       return @text[range]
    end
@@ -138,10 +138,11 @@ end
 class Boxes < Qt::Widget
    def initialize
       super
-      layout = Qt::VBoxLayout.new()
       @widgets = []
+      layout = Qt::VBoxLayout.new()
+      layout.setSizeConstraint Qt::Layout::SetMinimumSize
 
-      (0..GlobalSettings.instance.file.pageCount).each {|n|
+      (0...GlobalSettings.instance.file.pageCount).each {|n|
          @widgets[n] = build n
          layout.addWidget(@widgets[n])
       }
@@ -149,9 +150,26 @@ class Boxes < Qt::Widget
       setLayout(layout)
    end
 
+   # called every time the text changes.
+   def paintEvent x
+      # Need to move text around
+      @widgets.each {|n|
+
+      }
+
+      (0...GlobalSettings.instance.file.pageCount).each {|n|
+         @widgets[n] = build n if @widgets[n].nil?
+         self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
+      }
+
+      p self.sizeHint
+
+      super
+   end
+
    def text= txt
       GlobalSettings.instance.file.text = txt
-      (0..GlobalSettings.instance.file.pageCount).each {|n|
+      (0...GlobalSettings.instance.file.pageCount).each {|n|
          @widgets[n] = build n if @widgets[n].nil?
          @widgets[n].setPlainText GlobalSettings.instance.file.page n
       }
@@ -164,11 +182,6 @@ class Boxes < Qt::Widget
       return t
    end
 
-   # Fire off custom signal
-   def textChanged
-      puts "TEXT CHANGED"
-   end
-
    def get n
       return @wigets[n]
    end
@@ -176,14 +189,11 @@ class Boxes < Qt::Widget
    def build n
       wid = Qt::PlainTextEdit.new 
 
-      wid.connect(SIGNAL :textChanged) {
-         textChanged
-      }
+      wid.setFixedWidth 550
+      wid.setFixedHeight 750
 
-      wid.setStyleSheet <<-STYLE
-         QPlainTextEdit {
-         }
-      STYLE
+      # Queues up a paint event when text changes.
+      wid.connect(SIGNAL :textChanged) { update }
 
       wid.setVerticalScrollBarPolicy Qt::ScrollBarAlwaysOff
       wid.setHorizontalScrollBarPolicy Qt::ScrollBarAlwaysOff

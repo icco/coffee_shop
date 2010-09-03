@@ -142,7 +142,7 @@
         <p> Number of characters per page</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>   <span class="vc">@@perPage</span> <span class="o">=</span> <span class="mi">100</span>
+        <div class='highlight'><pre>   <span class="vc">@@perPage</span> <span class="o">=</span> <span class="mi">1000</span>
 
    <span class="k">def</span> <span class="nf">initialize</span> <span class="n">filename</span>
       <span class="vi">@fname</span> <span class="o">=</span> <span class="n">filename</span>
@@ -257,7 +257,7 @@
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">offset</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="vc">@@perPage</span>
-      <span class="n">range</span> <span class="o">=</span> <span class="n">offset</span><span class="o">.</span><span class="n">.</span><span class="p">(</span><span class="n">offset</span><span class="o">+</span><span class="vc">@@perPage</span><span class="p">)</span>
+      <span class="n">range</span> <span class="o">=</span> <span class="n">offset</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">(</span><span class="n">offset</span><span class="o">+</span><span class="vc">@@perPage</span><span class="p">)</span>
 
       <span class="k">return</span> <span class="vi">@text</span><span class="o">[</span><span class="n">range</span><span class="o">]</span>
    <span class="k">end</span>
@@ -266,20 +266,55 @@
 <span class="k">class</span> <span class="nc">Boxes</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
-      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="vi">@widgets</span> <span class="o">=</span> <span class="o">[]</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">setSizeConstraint</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Layout</span><span class="o">::</span><span class="no">SetMinimumSize</span>
 
-      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
          <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">build</span> <span class="n">n</span>
          <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span>
       <span class="p">}</span>
 
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-14'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-14">#</a>
+        </div>
+        <p> called every time the text changes.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">paintEvent</span> <span class="n">x</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-15'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-15">#</a>
+        </div>
+        <p> Need to move text around</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="vi">@widgets</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+
+      <span class="p">}</span>
+
+      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+         <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">build</span> <span class="n">n</span> <span class="k">if</span> <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">nil?</span>
+         <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span> <span class="k">if</span> <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+      <span class="p">}</span>
+
+      <span class="nb">p</span> <span class="nb">self</span><span class="o">.</span><span class="n">sizeHint</span>
+
+      <span class="k">super</span>
    <span class="k">end</span>
 
    <span class="k">def</span> <span class="nf">text</span><span class="o">=</span> <span class="n">txt</span>
       <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">txt</span>
-      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pageCount</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
          <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">build</span> <span class="n">n</span> <span class="k">if</span> <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">nil?</span>
          <span class="vi">@widgets</span><span class="o">[</span><span class="n">n</span><span class="o">].</span><span class="n">setPlainText</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">page</span> <span class="n">n</span>
       <span class="p">}</span>
@@ -290,19 +325,6 @@
       <span class="vi">@widgets</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">t</span> <span class="o">+=</span> <span class="n">v</span> <span class="p">}</span>
 
       <span class="k">return</span> <span class="n">t</span>
-   <span class="k">end</span></pre></div>
-      </td>
-    </tr>
-    <tr id='section-14'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-14">#</a>
-        </div>
-        <p> Fire off custom signal</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">textChanged</span>
-      <span class="nb">puts</span> <span class="s2">&quot;TEXT CHANGED&quot;</span>
    <span class="k">end</span>
 
    <span class="k">def</span> <span class="nf">get</span> <span class="n">n</span>
@@ -312,14 +334,19 @@
    <span class="k">def</span> <span class="nf">build</span> <span class="n">n</span>
       <span class="n">wid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> 
 
-      <span class="n">wid</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
-         <span class="n">textChanged</span>
-      <span class="p">}</span>
-
-      <span class="n">wid</span><span class="o">.</span><span class="n">setStyleSheet</span> <span class="o">&lt;&lt;-</span><span class="no">STYLE</span>
-<span class="sh">         QPlainTextEdit {</span>
-<span class="sh">         }</span>
-<span class="no">      STYLE</span>
+      <span class="n">wid</span><span class="o">.</span><span class="n">setFixedWidth</span> <span class="mi">550</span>
+      <span class="n">wid</span><span class="o">.</span><span class="n">setFixedHeight</span> <span class="mi">750</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-16'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-16">#</a>
+        </div>
+        <p> Queues up a paint event when text changes.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">wid</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span> <span class="n">update</span> <span class="p">}</span>
 
       <span class="n">wid</span><span class="o">.</span><span class="n">setVerticalScrollBarPolicy</span> <span class="no">Qt</span><span class="o">::</span><span class="no">ScrollBarAlwaysOff</span>
       <span class="n">wid</span><span class="o">.</span><span class="n">setHorizontalScrollBarPolicy</span> <span class="no">Qt</span><span class="o">::</span><span class="no">ScrollBarAlwaysOff</span>
@@ -352,10 +379,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-15'>
+    <tr id='section-17'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-15">#</a>
+          <a class="octothorpe" href="#section-17">#</a>
         </div>
         <p> Super class for anything in the menu</p>
       </td>
@@ -365,10 +392,10 @@
       <span class="k">super</span></pre></div>
       </td>
     </tr>
-    <tr id='section-16'>
+    <tr id='section-18'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-16">#</a>
+          <a class="octothorpe" href="#section-18">#</a>
         </div>
         <p> Now that we know about stylesheets, we can save a string that all
  MenuItems can use to style themselves. It&rsquo;s kind of amazing really.</p>
@@ -480,10 +507,10 @@
    <span class="k">def</span> <span class="nf">initialize</span></pre></div>
       </td>
     </tr>
-    <tr id='section-17'>
+    <tr id='section-19'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-17">#</a>
+          <a class="octothorpe" href="#section-19">#</a>
         </div>
         <p> First setup the menuitem</p>
       </td>
@@ -494,10 +521,10 @@
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Quit&quot;</span></pre></div>
       </td>
     </tr>
-    <tr id='section-18'>
+    <tr id='section-20'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-18">#</a>
+          <a class="octothorpe" href="#section-20">#</a>
         </div>
         <p> Build the button
  Connect the button to an action</p>
@@ -509,10 +536,10 @@
       <span class="n">quit</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span></pre></div>
       </td>
     </tr>
-    <tr id='section-19'>
+    <tr id='section-21'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-19">#</a>
+          <a class="octothorpe" href="#section-21">#</a>
         </div>
         <p> Lay the button out</p>
       </td>
@@ -573,10 +600,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-20'>
+    <tr id='section-22'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-20">#</a>
+          <a class="octothorpe" href="#section-22">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
       </td>
@@ -588,10 +615,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-21'>
+    <tr id='section-23'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-21">#</a>
+          <a class="octothorpe" href="#section-23">#</a>
         </div>
         <p> Go Dog Go</p>
       </td>
@@ -600,10 +627,10 @@
 <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span><span class="p">)</span></pre></div>
       </td>
     </tr>
-    <tr id='section-22'>
+    <tr id='section-24'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-22">#</a>
+          <a class="octothorpe" href="#section-24">#</a>
         </div>
         <p> Display</p>
       </td>
@@ -611,10 +638,10 @@
         <div class='highlight'><pre><span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-23'>
+    <tr id='section-25'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-23">#</a>
+          <a class="octothorpe" href="#section-25">#</a>
         </div>
         <p> Run</p>
 
