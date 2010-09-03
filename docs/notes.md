@@ -228,3 +228,13 @@ easy. So happy that I found this.
 [qm]: http://doc.trolltech.com/4.1/qmenu.html 
 [ui]: /ui
 
+# 8.30.10
+
+I started working on pagination today. Very little success.
+
+# 9.3.10
+
+the paintEvent function widgets can implement is awesome. Basically whenever
+the widget feels it needs to be redrawn, it calls the paintEvent function. So
+you can then dynamically recreate the widget right there. It's awesome.
+

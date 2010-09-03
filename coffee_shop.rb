@@ -248,6 +248,7 @@ class BgColorButton < MenuItem
 
       gs = GlobalSettings.instance
 
+      # I need to dynamically figure out icon color based on bg color.
       icon  = Qt::Icon.new 'assets/icons/black/64x64/add.png'
       label = "Color"
 
