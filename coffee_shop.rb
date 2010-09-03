@@ -75,6 +75,7 @@ class CoffeeFile
    @@perPage = 1000
 
    def initialize filename
+      @text = ""
       @fname = filename
       @pageCount = 1
    end
@@ -142,8 +143,9 @@ class CoffeeFile
       # the page content in a hash table on change of @text.
       offset = num * @@perPage
       range = offset...(offset+@@perPage)
+      out = @text.slice(range)
 
-      return @text[range]
+      return out.nil? ? @text : out
    end
 end
 
@@ -151,10 +153,11 @@ class Boxes < Qt::Widget
    def initialize
       super
       @widgets = []
+      @pc = GlobalSettings.instance.file.pageCount;
       layout = Qt::VBoxLayout.new()
       layout.setSizeConstraint Qt::Layout::SetMinimumSize
 
-      (0...GlobalSettings.instance.file.pageCount).each {|n|
+      (0...@pc).each {|n|
          @widgets[n] = build n
          layout.addWidget(@widgets[n])
       }
@@ -167,15 +170,22 @@ class Boxes < Qt::Widget
       # Need to move text around
       txt = self.text
       GlobalSettings.instance.file.text = txt
-      (0...GlobalSettings.instance.file.pageCount).each {|n|
-         @widgets[n] = build n if @widgets[n].nil?
-         @widgets[n].setPlainText GlobalSettings.instance.file.page n
-      }
+      gspc = GlobalSettings.instance.file.pageCount
 
-      (0...GlobalSettings.instance.file.pageCount).each {|n|
-         @widgets[n] = build n if @widgets[n].nil?
-         self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
-      }
+      if (@pc != gspc)
+         @pc = gspc
+
+         # This makes sure the widgets are laid out.
+         (0...@pc).each {|n|
+            @widgets[n] = build n if @widgets[n].nil?
+            self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
+         }
+
+         # This distributes the text among the pages.
+         (0...@pc).each {|n|
+            @widgets[n].setPlainText GlobalSettings.instance.file.page n
+         }
+      end
    end
 
    def text= txt
