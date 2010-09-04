@@ -153,7 +153,9 @@ class Boxes < Qt::Widget
    def initialize
       super
       @widgets = []
+      @curIndex = 0
       @pc = GlobalSettings.instance.file.pageCount;
+
       layout = Qt::VBoxLayout.new()
       layout.setSizeConstraint Qt::Layout::SetMinimumSize
 
@@ -165,6 +167,7 @@ class Boxes < Qt::Widget
       setLayout(layout)
    end
 
+
    # called every time the text changes.
    def paintEvent x
       # Need to move text around
@@ -172,20 +175,16 @@ class Boxes < Qt::Widget
       GlobalSettings.instance.file.text = txt
       gspc = GlobalSettings.instance.file.pageCount
 
-      if (@pc != gspc)
-         @pc = gspc
+      # This makes sure the widgets are laid out.
+      (0...@pc).each {|n|
+         @widgets[n] = build n if @widgets[n].nil?
+         self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
+      }
 
-         # This makes sure the widgets are laid out.
-         (0...@pc).each {|n|
-            @widgets[n] = build n if @widgets[n].nil?
-            self.layout.addWidget(@widgets[n]) if self.layout.indexOf(@widgets[n]) < 0
-         }
-
-         # This distributes the text among the pages.
-         (0...@pc).each {|n|
-            @widgets[n].setPlainText GlobalSettings.instance.file.page n
-         }
-      end
+      # This distributes the text among the pages. It sadly does not work. 
+      #(0...@pc).each {|n|
+      #   @widgets[n].setPlainText GlobalSettings.instance.file.page n
+      #}
    end
 
    def text= txt
