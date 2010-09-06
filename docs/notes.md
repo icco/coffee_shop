@@ -256,6 +256,10 @@ not working the way I wanted.
 
 Also, at some point I need to turn my makefile into a [rakefile][rake].
 
+Scanning through the source of KWord I found [QTextFormat ][qtf] which sounds
+promissing.
+
 [qsrc]: http://qt.gitorious.org/qt/qt/blobs/4.7/src/gui/text/qtextdocument.cpp#line1629
 [rake]: http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
+[qtf]: http://doc.trolltech.com/4.3/qtextformat.html
 
