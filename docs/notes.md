@@ -234,7 +234,28 @@ I started working on pagination today. Very little success.
 
 # 9.3.10
 
-the paintEvent function widgets can implement is awesome. Basically whenever
-the widget feels it needs to be redrawn, it calls the paintEvent function. So
-you can then dynamically recreate the widget right there. It's awesome.
+The paintEvent function that widgets can implement is awesome. Basically
+whenever the widget feels it needs to be redrawn, it calls the paintEvent
+function. So you can then dynamically recreate the widget right there. It's
+awesome.
+
+# 9.6.10
+
+While paintEvent was cool, I ran into all sorts of issues trying to redraw
+widgets while they were in use. Paginating text loaded from a file is easy,
+paginating on the fly is a bitch.
+
+Tried out WxRuby and Ruby/Tk. As hard as it is to beleive, both are far worse
+than Qt, mainly because Qt has "good" documentation and tutorials.
+
+Walked through the source of [QTextEdit and QPrinter][qsrc]. This confirmed all
+of my suspicions that Qt has no interest in write time pagination. This seems
+like such a silly view issue that I should be able to code everything up and go
+from there, but we shall see. I had everything looking the way I wanted, just
+not working the way I wanted.
+
+Also, at some point I need to turn my makefile into a [rakefile][rake].
+
+[qsrc]: http://qt.gitorious.org/qt/qt/blobs/4.7/src/gui/text/qtextdocument.cpp#line1629
+[rake]: http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 
