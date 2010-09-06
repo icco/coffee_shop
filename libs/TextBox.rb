@@ -3,20 +3,31 @@ class TextBox < Qt::Widget
    def initialize
       super
 
-      gs = GlobalSettings.instance
-      @boxes = Boxes.new
+      @tb = Qt::PlainTextEdit.new
+      @doc = @tb.document
 
-      @sa = Qt::ScrollArea.new
-      @sa.setFrameShape Qt::Frame::NoFrame
+      size = Qt::SizeF.new
+      size.setWidth 570
+      size.setHeight 750
+      @doc.setPageSize size
 
-      @sa.setWidget @boxes
+      #textLayout = Qt::PlainTextDocumentLayout.new @doc
+      #@doc.setDocumentLayout textLayout
+
+      @tb.connect(SIGNAL :textChanged) { 
+         update
+         GlobalSettings.log @doc.pageCount.to_s
+      }
+
+      @tb.setFrameShape Qt::Frame::NoFrame
+
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(@sa)
+      layout.addWidget(@tb)
       setLayout(layout)
    end
 
    def text= txt
-      @boxes.text = txt
+      @tb.setPlainText txt
    end
 end
 
