@@ -268,3 +268,16 @@ promissing.
 I lied, QTextFormat is not what I want. I've posted to the Qt mailing list to
 see if maybe someone can figure out a solution, because I am stuck.
 
+# 9.12.10
+
+I asked around on the Qt forums, and got [a reasonable response][qtf].
+Basically it sounds like I need to reinvent the QTextEdit. Classes I need/am
+looking at:
+
+ * <http://doc.trolltech.com/4.6/qgraphicsscene.html>
+ * <http://doc.trolltech.com/4.6/graphicsview.html>
+ * <http://doc.trolltech.com/4.6/qgraphicsitem.html>
+ * <http://doc.trolltech.com/4.6/qgraphicstextitem.html>
+
+[qtf]: http://developer.qt.nokia.com/forums/viewthread/862/
+
