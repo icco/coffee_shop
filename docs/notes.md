@@ -243,7 +243,7 @@ awesome.
 
 While paintEvent was cool, I ran into all sorts of issues trying to redraw
 widgets while they were in use. Paginating text loaded from a file is easy,
-paginating on the fly is a bitch.
+paginating on the fly was a bitch.
 
 Tried out WxRuby and Ruby/Tk. As hard as it is to beleive, both are far worse
 than Qt, mainly because Qt has "good" documentation and tutorials.
@@ -256,10 +256,15 @@ not working the way I wanted.
 
 Also, at some point I need to turn my makefile into a [rakefile][rake].
 
-Scanning through the source of KWord I found [QTextFormat ][qtf] which sounds
+Scanning through the source of KWord I found [QTextFormat][qtf] which sounds
 promissing.
 
 [qsrc]: http://qt.gitorious.org/qt/qt/blobs/4.7/src/gui/text/qtextdocument.cpp#line1629
 [rake]: http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 [qtf]: http://doc.trolltech.com/4.3/qtextformat.html
+
+# 9.11.10
+
+I lied, QTextFormat is not what I want. I've posted to the Qt mailing list to
+see if maybe someone can figure out a solution, because I am stuck.
 

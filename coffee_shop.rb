@@ -21,11 +21,11 @@ require 'singleton'
 # I moved all of the classes into their sperate files for readability
 require './libs/GlobalSettings'
 require './libs/CoffeeFile'
-require './libs/Boxes'
 require './libs/TextBox'
 require './libs/MenuItem'
 require './libs/Buttons'
 
+# This is the root class that does all of the setting up and displaying.
 class FullScreen < Qt::Widget
    include Singleton
    attr_accessor :file
@@ -33,35 +33,42 @@ class FullScreen < Qt::Widget
    def initialize
       super
 
+      # We need to set up all of the settings 
       gs = GlobalSettings.instance;
       gs.files = [];
       gs.currentFile = 0;
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
+      # Define the file menu layout
       menu1 = Qt::HBoxLayout.new()
       menu1.addWidget SaveButton.new
       menu1.addWidget LoadButton.new
       menu1.addWidget QuitButton.new
       menu1.setAlignment Qt::AlignLeft
 
+      # Define the color menu layout
       menu2 = Qt::HBoxLayout.new()
       menu2.addWidget FgColorButton.new
       menu2.addWidget BgColorButton.new
       menu2.setAlignment Qt::AlignLeft
 
+      # Layout the right side menus
       menus = Qt::VBoxLayout.new
       menus.addLayout menu1
       menus.addLayout menu2
       menus.setAlignment Qt::AlignTop
 
+      # Layout the textbox
       hbox = Qt::HBoxLayout.new
       hbox.addWidget(gs.text)
       hbox.addLayout(menus)
 
+      # Create right and left side buffers
       spacer1 = Qt::SpacerItem.new(300, 100)
       spacer2 = Qt::SpacerItem.new(200, 100)
 
+      # Lay it all out
       grid = Qt::GridLayout.new
       grid.addItem(spacer1, 0, 0)
       grid.addItem(spacer2, 0, 2)
@@ -75,13 +82,9 @@ class FullScreen < Qt::Widget
    end
 end
 
-# Go Dog Go
+# Create the app, define the style sheet and start the application.
 app = Qt::Application.new ARGV
 app.setStyleSheet(GlobalSettings.instance.appStyles)
-
-# Display
 FullScreen.instance.show 
-
-# Run
 app.exec 
 

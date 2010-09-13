@@ -15,8 +15,8 @@ class TextBox < Qt::Widget
       #@doc.setDocumentLayout textLayout
 
       @tb.connect(SIGNAL :textChanged) { 
-         update
-         GlobalSettings.log @doc.pageCount.to_s
+         GlobalSettings.log @tb.document.pageSize.width.to_s
+         GlobalSettings.log @tb.document.pageSize.height.to_s
       }
 
       @tb.setFrameShape Qt::Frame::NoFrame
