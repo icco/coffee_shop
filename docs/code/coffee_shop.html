@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>coffee_shop.rb</title>
+  <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>coffee_shop.rb</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-1'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-1">#</a>
+        </div>
+        
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-2'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-2">#</a>
+        </div>
+        <p> <strong>coffee_shop</strong> is an implementation of <a href="http://www.hogbaysoftware.com/products/writeroom">writeroom</a> in ruby for Linux. It
+ was written by Nathaniel Welch for his senior project at Cal Poly.</p>
+
+<p> The program&rsquo;s goal is to be small, lightweight and distraction free.</p>
+
+<p> Some of it&rsquo;s main features are:</p>
+
+<ul>
+<li>open, edit and save text files</li>
+<li>provide a simplistic UI to keep the user focused on writing</li>
+</ul>
+
+
+<p> Anyway, enough of my babbling. Lets take a look at the code.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <p> First off we need to require Qt4. It sadly only works with ruby 1.8.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-4">#</a>
+        </div>
+        <p> I moved all of the classes into their sperate files for readability</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;./libs/GlobalSettings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./libs/CoffeeFile&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./libs/TextBox&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./libs/MenuItem&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;./libs/Buttons&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-5'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-5">#</a>
+        </div>
+        <p> This is the root class that does all of the setting up and displaying.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">FullScreen</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
+   <span class="kp">include</span> <span class="no">Singleton</span>
+   <span class="kp">attr_accessor</span> <span class="ss">:file</span>
+
+   <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-6'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-6">#</a>
+        </div>
+        <p> We need to set up all of the settings</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">files</span><span class="o">[</span><span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span><span class="o">]</span> <span class="o">=</span> <span class="no">CoffeeFile</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;&quot;</span>
+      <span class="n">gs</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-7'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-7">#</a>
+        </div>
+        <p> Define the file menu layout</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">menu1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu1</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-8'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-8">#</a>
+        </div>
+        <p> Define the color menu layout</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">menu2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">FgColorButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">BgColorButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu2</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-9'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-9">#</a>
+        </div>
+        <p> Layout the right side menus</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">menus</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu1</span>
+      <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu2</span>
+      <span class="n">menus</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignTop</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-10'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-10">#</a>
+        </div>
+        <p> Layout the textbox</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">hbox</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">menus</span><span class="p">)</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-11'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-11">#</a>
+        </div>
+        <p> Create right and left side buffers</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">spacer1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+      <span class="n">spacer2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-12'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-12">#</a>
+        </div>
+        <p> Lay it all out</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">hbox</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+      <span class="n">setLayout</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+      <span class="n">setWindowTitle</span> <span class="s2">&quot;Coffee_Shop&quot;</span>
+
+      <span class="n">setWindowState</span><span class="p">(</span><span class="no">Qt</span><span class="o">::</span><span class="no">WindowFullScreen</span><span class="p">)</span>
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-13'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-13">#</a>
+        </div>
+        <p> Create the app, define the style sheet and start the application.</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span>
+<span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span><span class="p">)</span>
+<span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> 
+<span class="n">app</span><span class="o">.</span><span class="n">exec</span> </pre></div>
+      </td>
+    </tr>
+    </table>
+</div>
+</body>

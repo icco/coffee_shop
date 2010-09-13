@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>GlobalSettings.rb</title>
+  <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div id="jump_to">
+    Jump To &hellip;
+    <div id="jump_wrapper">
+      <div id="jump_page">
+        <a class="source" href="Buttons.html">Buttons.rb</a>
+        <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
+        <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
+        <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="TextBox.html">TextBox.rb</a>
+        </div>
+    </div>
+  </div>
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>GlobalSettings.rb</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-1'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-1">#</a>
+        </div>
+        
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-2'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-2">#</a>
+        </div>
+        <p> Next we define this class, which is a singleton for storing configuration
+ data that needs to be passed around the program.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">GlobalSettings</span>
+   <span class="kp">include</span> <span class="no">Singleton</span>
+   <span class="kp">attr_accessor</span> <span class="ss">:text</span><span class="p">,</span> <span class="ss">:files</span><span class="p">,</span> <span class="ss">:currentFile</span><span class="p">,</span> <span class="ss">:bgColor</span><span class="p">,</span> <span class="ss">:fgColor</span>
+
+   <span class="k">def</span> <span class="nf">file</span>
+      <span class="k">return</span> <span class="vi">@files</span><span class="o">[</span><span class="vi">@currentFile</span><span class="o">]</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">file</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+      <span class="vi">@files</span><span class="o">[</span><span class="vi">@currentFile</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">app</span>
+      <span class="k">return</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">instance</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">refresh</span>
+      <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">appStyles</span><span class="p">)</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">appStyles</span>
+      <span class="vi">@bgColor</span> <span class="o">=</span> <span class="s1">&#39;#FFF&#39;</span> <span class="k">if</span> <span class="vi">@bgColor</span><span class="o">.</span><span class="n">nil?</span>
+      <span class="vi">@fgColor</span> <span class="o">=</span> <span class="s1">&#39;#000&#39;</span> <span class="k">if</span> <span class="vi">@fgColor</span><span class="o">.</span><span class="n">nil?</span>
+
+      <span class="k">return</span> <span class="o">&lt;&lt;-</span><span class="no">GLOBAL</span>
+<span class="sh">         QVBoxLayout {</span>
+<span class="sh">            background-color: #{@bgColor};</span>
+<span class="sh">         }</span>
+
+<span class="sh">         QPlainTextEdit {</span>
+<span class="sh">            color: #{@fgColor};</span>
+<span class="sh">            background-color: #{@bgColor};</span>
+<span class="sh">            border: 1px solid #{@fgColor}; </span>
+<span class="sh">            padding: 10px;</span>
+<span class="sh">         }</span>
+
+<span class="sh">         QScrollAread {</span>
+<span class="sh">            background-color: #{@bgColor};</span>
+<span class="sh">            color: #{@fgColor};</span>
+<span class="sh">         }</span>
+<span class="no">      GLOBAL</span>
+   <span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <p> A standard &ldquo;log&rdquo; format.</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>   <span class="k">def</span> <span class="nc">GlobalSettings</span><span class="o">.</span><span class="nf">log</span> <span class="n">text</span>
+      <span class="n">tFormat</span> <span class="o">=</span> <span class="s2">&quot;[%m/%d/%Y %H:%M:%S]: &quot;</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">new</span>
+      <span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">tFormat</span><span class="p">)</span> <span class="o">+</span> <span class="n">text</span> 
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    </table>
+</div>
+</body>
