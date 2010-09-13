@@ -60,9 +60,17 @@ get '/survey' do
    erb :page, :locals => { :title => title, :content => md }
 end
 
-get '/docs' do
-   f = File.new "docs/coffee_shop.html" 
-   erb :blank, :locals => { :content => f.read }
+get '/docs/*' do |file|
+   if file.empty?
+      file = "coffee_shop.html"
+   end
+
+   if File.exists? "docs/code/#{file}"
+      f = File.new "docs/code/#{file}"
+      erb :blank, :locals => { :content => f.read }
+   else
+      halt 404
+   end
 end
 
 get '/style.css' do
