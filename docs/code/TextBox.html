@@ -55,12 +55,14 @@
 
       <span class="vi">@gv</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsView</span><span class="o">.</span><span class="n">new</span>
       <span class="n">scene</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsScene</span><span class="o">.</span><span class="n">new</span>
-      <span class="vi">@tb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsTextItem</span><span class="o">.</span><span class="n">new</span>
+      <span class="vi">@tb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsTextItem</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;asdsadsa&quot;</span>
       <span class="vi">@tb</span><span class="o">.</span><span class="n">setTextInteractionFlags</span> <span class="no">Qt</span><span class="o">::</span><span class="no">TextEditable</span>
       <span class="vi">@tb</span><span class="o">.</span><span class="n">setTextWidth</span> <span class="mi">550</span>
-      <span class="vi">@tb1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsTextItem</span><span class="o">.</span><span class="n">new</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setPos</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">700</span>
+      <span class="vi">@tb1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GraphicsTextItem</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;gfsgfdgd&quot;</span>
       <span class="vi">@tb1</span><span class="o">.</span><span class="n">setTextInteractionFlags</span> <span class="no">Qt</span><span class="o">::</span><span class="no">TextEditable</span>
       <span class="vi">@tb1</span><span class="o">.</span><span class="n">setTextWidth</span> <span class="mi">550</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setPos</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span>
       <span class="n">scene</span><span class="o">.</span><span class="n">addItem</span> <span class="vi">@tb</span>
       <span class="n">scene</span><span class="o">.</span><span class="n">addItem</span> <span class="vi">@tb1</span>
       <span class="n">scene</span><span class="o">.</span><span class="n">setFocusItem</span> <span class="vi">@tb</span>
