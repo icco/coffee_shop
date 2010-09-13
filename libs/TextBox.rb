@@ -1,23 +1,26 @@
 
+# the UI for the actual typing interface.
 class TextBox < Qt::Widget
    def initialize
       super
 
-      @tb = Qt::PlainTextEdit.new
-      @doc = @tb.document
-
-      size = Qt::SizeF.new
-      size.setWidth 570
-      size.setHeight 750
-      @doc.setPageSize size
-
-      @tb.connect(SIGNAL :textChanged) { 
-      }
-
-      @tb.setFrameShape Qt::Frame::NoFrame
+      @gv = Qt::GraphicsView.new
+      scene = Qt::GraphicsScene.new
+      @tb = Qt::GraphicsTextItem.new "asdsadsa"
+      @tb.setTextInteractionFlags Qt::TextEditable
+      @tb.setTextWidth 550
+      @tb.setPos 0, -700
+      @tb1 = Qt::GraphicsTextItem.new "gfsgfdgd"
+      @tb1.setTextInteractionFlags Qt::TextEditable
+      @tb1.setTextWidth 550
+      @tb.setPos 0, -200
+      scene.addItem @tb
+      scene.addItem @tb1
+      scene.setFocusItem @tb
+      @gv.setScene scene
 
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(@tb)
+      layout.addWidget(@gv)
       setLayout(layout)
    end
 
