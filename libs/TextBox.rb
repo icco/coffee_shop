@@ -11,12 +11,7 @@ class TextBox < Qt::Widget
       size.setHeight 750
       @doc.setPageSize size
 
-      #textLayout = Qt::PlainTextDocumentLayout.new @doc
-      #@doc.setDocumentLayout textLayout
-
       @tb.connect(SIGNAL :textChanged) { 
-         GlobalSettings.log @tb.document.pageSize.width.to_s
-         GlobalSettings.log @tb.document.pageSize.height.to_s
       }
 
       @tb.setFrameShape Qt::Frame::NoFrame
