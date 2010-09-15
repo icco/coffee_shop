@@ -6,16 +6,12 @@ class TextBox < Qt::Widget
 
       @gv = Qt::GraphicsView.new
       scene = Qt::GraphicsScene.new
-      @tb = Qt::GraphicsTextItem.new "asdsadsa"
+      @tb = CoffeePage.new "page 1"
       @tb.setTextInteractionFlags Qt::TextEditable
       @tb.setTextWidth 550
-      @tb.setPos 0, -700
-      @tb1 = Qt::GraphicsTextItem.new "gfsgfdgd"
-      @tb1.setTextInteractionFlags Qt::TextEditable
-      @tb1.setTextWidth 550
-      @tb.setPos 0, -200
+      @tb.setPos 0, 0
+
       scene.addItem @tb
-      scene.addItem @tb1
       scene.setFocusItem @tb
       @gv.setScene scene
 
@@ -26,6 +22,23 @@ class TextBox < Qt::Widget
 
    def text= txt
       @tb.setPlainText txt
+   end
+end
+
+class CoffeePage < Qt::GraphicsTextItem
+   def boundingRect
+      t = super
+      t2 = Qt::RectF.new
+      t2.setHeight 700
+      t2.setWidth t.width
+      return t2
+   end
+
+   def shape
+      t = self.boundingRect
+      path = Qt::PainterPath.new
+      path.addRect(t);
+      return path;
    end
 end
 
