@@ -281,3 +281,7 @@ looking at:
 
 [qtf]: http://developer.qt.nokia.com/forums/viewthread/862/
 
+# 9.15.10
+
+Made some good progress. Trying to figure out the logic behind deciding when to
+draw new pages, and how.
