@@ -279,7 +279,7 @@ looking at:
  * <http://doc.trolltech.com/4.6/qgraphicsitem.html>
  * <http://doc.trolltech.com/4.6/qgraphicstextitem.html>
 
-[qtf]: http://developer.qt.nokia.com/forums/viewthread/862/
+[qf]: http://developer.qt.nokia.com/forums/viewthread/862/
 
 # 9.15.10
 
