@@ -8,6 +8,10 @@ class CoffeeFile
    # Number of characters per page
    @@perPage = 1000
 
+   def CoffeeFile.perPage
+      return @@perPage
+   end
+
    def initialize filename
       @text = ""
       @fname = filename
@@ -25,7 +29,7 @@ class CoffeeFile
          log "Empty filename, could not load"
       else
          file = File.new(@fname, 'r')
-         @text = file.read
+         self.text = file.read
          @changed = true
          file.close
          GlobalSettings.instance.text.text = @text
@@ -64,7 +68,7 @@ class CoffeeFile
    # When text comes in, we need to recalc pages.
    def text= txt
       @text = txt
-      @pageCount = (@text.length.to_f / @@perPage.to_f)
+      @pageCount = (@text.length.to_f / @@perPage.to_f).ceil
    end
 
    # This function returns the text of the page requested.

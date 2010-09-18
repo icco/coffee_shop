@@ -83,6 +83,7 @@ class LoadButton < MenuItem
             gs.file.load Qt::FileDialog.getOpenFileName()
          }
       end
+
       but.setStyleSheet(@menuStyle);
 
       layout = Qt::VBoxLayout.new()

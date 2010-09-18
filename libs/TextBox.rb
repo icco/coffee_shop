@@ -4,17 +4,19 @@ class TextBox < Qt::Widget
    def initialize
       super
 
+      @pages = []
+
       @gv = Qt::GraphicsView.new
-      scene = Qt::GraphicsScene.new
-      @tb = CoffeePage.new "page 1"
-      @tb.setPos 0, 0
+      @scene = Qt::GraphicsScene.new
+      @pages[0] = CoffeePage.new "page 1"
+      @pages[0].setOffset 0
 
-      @tb1 = CoffeePage.new "page 2"
-      @tb1.setPos 0, 0
+      @pages.each {|tb|
+         @scene.addItem tb
+      }
 
-      scene.addItem @tb
-      scene.setFocusItem @tb
-      @gv.setScene scene
+      @scene.setFocusItem @pages[0]
+      @gv.setScene @scene
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@gv)
@@ -22,7 +24,16 @@ class TextBox < Qt::Widget
    end
 
    def text= txt
-      @tb.setPlainText txt
+      file = GlobalSettings.instance.file
+      (0...file.pageCount).each {|pagenum|
+         if @pages[pagenum].nil?
+            @pages[pagenum] = CoffeePage.new ""
+            @pages[pagenum].setOffset pagenum
+            @scene.addItem @pages[pagenum]
+         end
+
+         @pages[pagenum].setPlainText file.page(pagenum)
+      }
    end
 end
 
@@ -46,6 +57,11 @@ class CoffeePage < Qt::GraphicsTextItem
       path = Qt::PainterPath.new
       path.addRect(self.boundingRect);
       return path;
+   end
+
+   # given the page number, set the proper position in the scene.
+   def setOffset x
+      setPos 0, (x*800)
    end
 end
 
