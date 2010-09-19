@@ -285,3 +285,8 @@ looking at:
 
 Made some good progress. Trying to figure out the logic behind deciding when to
 draw new pages, and how.
+
+# 9.18.10
+
+I changed TextBox to have an update function that gets called whenever the text
+changes, which is kind of awesome. Now I just need to write it so it does the right thing.
