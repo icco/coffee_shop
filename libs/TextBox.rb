@@ -12,8 +12,10 @@ class TextBox < Qt::Widget
       @pages[0].setOffset 0
 
       @pages.each {|tb|
+         tb.setParent self
          @scene.addItem tb
       }
+
 
       @scene.setFocusItem @pages[0]
       @gv.setScene @scene
@@ -24,8 +26,12 @@ class TextBox < Qt::Widget
    end
 
    def text= txt
+      self.update
+   end
+
+   def update
       file = GlobalSettings.instance.file
-      (0...file.pageCount).each {|pagenum|
+      (0...file.pageCount).each { |pagenum|
          if @pages[pagenum].nil?
             @pages[pagenum] = CoffeePage.new ""
             @pages[pagenum].setOffset pagenum
@@ -44,7 +50,7 @@ class CoffeePage < Qt::GraphicsTextItem
       setTextInteractionFlags Qt::TextEditable
       setTextWidth 550
    end
-   
+
    def boundingRect
       t = super
       t2 = Qt::RectF.new
@@ -62,6 +68,11 @@ class CoffeePage < Qt::GraphicsTextItem
    # given the page number, set the proper position in the scene.
    def setOffset x
       setPos 0, (x*800)
+   end
+
+   def keyReleaseEvent x
+      super
+      self.parent.update
    end
 end
 
