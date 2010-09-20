@@ -290,3 +290,10 @@ draw new pages, and how.
 
 I changed TextBox to have an update function that gets called whenever the text
 changes, which is kind of awesome. Now I just need to write it so it does the right thing.
+
+ * [this example][graph-ex] is good
+ * [key event][qkey] is fired when you type
+
+[graph-ex]: http://doc.qt.nokia.com/4.3/graphicsview-diagramscene.html
+[qkey]: http://doc.trolltech.com/4.6/qkeyevent.html
+
