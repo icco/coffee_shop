@@ -29,8 +29,15 @@ class TextBox < Qt::Widget
       self.update
    end
 
+   def text
+      ret = ""
+      @pages.each {|tb| ret += tb.toPlainText }
+      return ret
+   end
+
    def update
       file = GlobalSettings.instance.file
+      file.text = self.text
       (0...file.pageCount).each { |pagenum|
          if @pages[pagenum].nil?
             @pages[pagenum] = CoffeePage.new ""
@@ -71,7 +78,6 @@ class CoffeePage < Qt::GraphicsTextItem
    end
 
    def keyReleaseEvent x
-      super
       self.parent.update
    end
 end
