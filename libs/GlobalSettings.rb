@@ -30,7 +30,11 @@ class GlobalSettings
             background-color: #{@bgColor};
          }
 
-         QPlainTextEdit {
+         QGraphicsScene {
+            background-color: '#000';
+         }
+
+         QGraphicsTextItem {
             color: #{@fgColor};
             background-color: #{@bgColor};
             border: 1px solid #{@fgColor}; 
