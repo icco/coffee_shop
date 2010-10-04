@@ -310,10 +310,13 @@ writting navigation. Both of these seem kind of important to me as a user, and
 it's not something I would use. But the internet media loves it, so maybe I
 just don't get it.
 
- * Screenshot 1 -- Still on work computer...
- * Screenshot 2 -- Still on work computer...
+ * [Screenshot 1][writer1]
+ * [Screenshot 2][writer2]
+ * [Screenshot 3][writer3]
 
 [writer]: http://www.informationarchitects.jp/en/writer-for-ipad/
 [dp]: http://dmpatierno.com/
 [jp]: http://changedmy.name/
-
+[writer1]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer1.png
+[writer2]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer2.png
+[writer3]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer3.png
