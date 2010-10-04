@@ -228,18 +228,18 @@ easy. So happy that I found this.
 [qm]: http://doc.trolltech.com/4.1/qmenu.html 
 [ui]: /ui
 
-# 8.30.10
+## 8.30.10
 
 I started working on pagination today. Very little success.
 
-# 9.3.10
+## 9.3.10
 
 The paintEvent function that widgets can implement is awesome. Basically
 whenever the widget feels it needs to be redrawn, it calls the paintEvent
 function. So you can then dynamically recreate the widget right there. It's
 awesome.
 
-# 9.6.10
+## 9.6.10
 
 While paintEvent was cool, I ran into all sorts of issues trying to redraw
 widgets while they were in use. Paginating text loaded from a file is easy,
@@ -263,12 +263,12 @@ promissing.
 [rake]: http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 [qtf]: http://doc.trolltech.com/4.3/qtextformat.html
 
-# 9.11.10
+## 9.11.10
 
 I lied, QTextFormat is not what I want. I've posted to the Qt mailing list to
 see if maybe someone can figure out a solution, because I am stuck.
 
-# 9.12.10
+## 9.12.10
 
 I asked around on the Qt forums, and got [a reasonable response][qfr].
 Basically it sounds like I need to reinvent the QTextEdit. Classes I need/am
@@ -281,12 +281,12 @@ looking at:
 
 [qfr]: http://developer.qt.nokia.com/forums/viewthread/862/
 
-# 9.15.10
+## 9.15.10
 
 Made some good progress. Trying to figure out the logic behind deciding when to
 draw new pages, and how.
 
-# 9.18.10
+## 9.18.10
 
 I changed TextBox to have an update function that gets called whenever the text
 changes, which is kind of awesome. Now I just need to write it so it does the right thing.
@@ -297,7 +297,7 @@ changes, which is kind of awesome. Now I just need to write it so it does the ri
 [graph-ex]: http://doc.qt.nokia.com/4.3/graphicsview-diagramscene.html
 [qkey]: http://doc.trolltech.com/4.6/qkeyevent.html
 
-# 10.2.10
+## 10.2.10
 
 [James Pearson][jp] showed me a new writing program for the iPad, called
 [Writer][writer]. [Dave Patierno][dp] ended up buying it for his iPad and
@@ -320,3 +320,4 @@ just don't get it.
 [writer1]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer1.png
 [writer2]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer2.png
 [writer3]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer3.png
+
