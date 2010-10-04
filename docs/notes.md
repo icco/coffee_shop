@@ -297,3 +297,23 @@ changes, which is kind of awesome. Now I just need to write it so it does the ri
 [graph-ex]: http://doc.qt.nokia.com/4.3/graphicsview-diagramscene.html
 [qkey]: http://doc.trolltech.com/4.6/qkeyevent.html
 
+# 10.2.10
+
+[James Pearson][jp] showed me a new writing program for the iPad, called
+[Writer][writer]. [Dave Patierno][dp] ended up buying it for his iPad and
+letting me try it out. It has some interesting features. One of the ones it
+totes as being amazing is it's ability to predict reading time. Not entirely
+sure how it does that, but it's an interesting idea. It also has a reading mode
+that highlights what you are supposedly reading. I find it interesting, because
+I found it really hard to use as a writer, and it lacked touch controls for
+writting navigation. Both of these seem kind of important to me as a user, and
+it's not something I would use. But the internet media loves it, so maybe I
+just don't get it.
+
+ * Screenshot 1 -- Still on work computer...
+ * Screenshot 2 -- Still on work computer...
+
+[writer]: http://www.informationarchitects.jp/en/writer-for-ipad/
+[dp]: http://dmpatierno.com/
+[jp]: http://changedmy.name/
+
