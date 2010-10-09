@@ -321,3 +321,13 @@ just don't get it.
 [writer2]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer2.png
 [writer3]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer3.png
 
+## 10.9.10
+
+Waking up abnormally early, I decided it's time to get back to work. I'm going
+to scrap pagination as a feature, for now. All it's really done is piss me off
+and force me to focus on a technical problem that no one else really cares
+about. So I'm going to make a branch marking where I'm departing from
+pagination. The only real problem with this, is it reminds me that Kyle is far
+smarter than I am. Whoo humbling moments...
+
+
