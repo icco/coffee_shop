@@ -1,84 +1,36 @@
 
-# the UI for the actual typing interface.
+# This file deals with all of the text editing fun. If I were to try dealing
+# with pagination again, I would do it in here.
 class TextBox < Qt::Widget
    def initialize
       super
 
-      @pages = []
-
-      @gv = Qt::GraphicsView.new
-      @scene = Qt::GraphicsScene.new
-      @pages[0] = CoffeePage.new "page 1"
-      @pages[0].setOffset 0
-
-      @pages.each {|tb|
-         tb.setParent self
-         @scene.addItem tb
-      }
-
-
-      @scene.setFocusItem @pages[0]
-      @gv.setScene @scene
+      # QTextEdit makes life so easy, it's almost depressing.
+      @gv = Qt::TextEdit.new
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@gv)
       setLayout(layout)
    end
 
+   # Need to implement this for opening
    def text= txt
       self.update
    end
 
+   # Need to implement this for saving, and other things... I think.
    def text
-      ret = ""
-      @pages.each {|tb| ret += tb.toPlainText }
-      return ret
+      return 
    end
 
-   def update
-      file = GlobalSettings.instance.file
-      file.text = self.text
-      (0...file.pageCount).each { |pagenum|
-         if @pages[pagenum].nil?
-            @pages[pagenum] = CoffeePage.new ""
-            @pages[pagenum].setOffset pagenum
-            @scene.addItem @pages[pagenum]
-         end
+   # Returns details about the currently edited file
+   def stats
+      # Word Count, scan could be bad on a large file...
+      wc = self.text.scan(/(\w|-)+/).size
 
-         @pages[pagenum].setPlainText file.page(pagenum)
+      return {
+         :wc => wc
       }
-   end
-end
-
-class CoffeePage < Qt::GraphicsTextItem
-   def initialize a
-      super a
-
-      setTextInteractionFlags Qt::TextEditable
-      setTextWidth 550
-   end
-
-   def boundingRect
-      t = super
-      t2 = Qt::RectF.new
-      t2.setHeight 700
-      t2.setWidth t.width
-      return t2
-   end
-
-   def shape
-      path = Qt::PainterPath.new
-      path.addRect(self.boundingRect);
-      return path;
-   end
-
-   # given the page number, set the proper position in the scene.
-   def setOffset x
-      setPos 0, (x*800)
-   end
-
-   def keyReleaseEvent x
-      self.parent.update
    end
 end
 
