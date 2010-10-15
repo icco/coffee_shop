@@ -49,8 +49,8 @@ class FullScreen < Qt::Widget
 
       # Define the color menu layout
       menu2 = Qt::HBoxLayout.new()
-      menu2.addWidget FgColorButton.new
-      menu2.addWidget BgColorButton.new
+      menu2.addWidget Drawer.new
+      menu2.addWidget Drawer.new
       menu2.setAlignment Qt::AlignLeft
 
       # Layout the right side menus
@@ -64,7 +64,8 @@ class FullScreen < Qt::Widget
       hbox.addWidget(gs.text)
       hbox.addLayout(menus)
 
-      # Create right and left side buffers
+      # Create right and left side buffers. At some point, I need to make these
+      # fit any screen size.
       spacer1 = Qt::SpacerItem.new(300, 100)
       spacer2 = Qt::SpacerItem.new(200, 100)
 
