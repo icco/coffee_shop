@@ -330,4 +330,8 @@ about. So I'm going to make a branch marking where I'm departing from
 pagination. The only real problem with this, is it reminds me that Kyle is far
 smarter than I am. Whoo humbling moments...
 
+## 10.16.10
+
+ * <http://zetcode.com/tutorials/qtrubytutorial/introduction/>
+ * <http://doc.trolltech.com/4.6/qcompleter.html>
 
