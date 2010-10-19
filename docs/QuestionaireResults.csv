@@ -1,0 +1,69 @@
+Timestamp,What is your Occupation?,What is your Name?,What is your age?,"When writing text on a computer, what tools do you usually use?",What type of environment do you usually write in?,What features do you find absolutely necessary when writing using a word processor?,How large is the average piece of text you write?
+5/17/2010 13:39:50,"Computer science student, site beta tester",Adam Hintz,19,"Microsoft Word - well-formatted word processing
+WriteRoom - focused typing
+TextEdit - little blurbs / clipboard overflow
+Xcode - C, C++, Ruby, Lua, Objective-C
+TextWrangler - HTML, PHP
+Eclipse - Java","Wherever I can - usually at my desk, which is semi-well lit.",Find and replace,"The most common type of writing I use word processors for is little blurbs, sometimes not even a sentence long. Average length would be around 1 pg long, because for longer writing, I generally have several (5-10+) pages.
+
+Have fun with your project :)"
+5/17/2010 13:40:23,Programmer,Nat,22,Vim,Anywhere I can find a table,"spell check, find and replace, autosave",a page
+5/17/2010 13:42:23,Product Evangelist,Andrew Guenther,18,"MS Word when in Windows, Open Office Writer in Linux, and Wordpad for quick notes","My apartment, sitting at my desk","Spell check, find and replace, formatting, image embedding, numbering/bullets, easily customizable toolbars, and autosave",1-10 pages
+5/17/2010 13:47:04,Web Scientist,Sterling Hirsh,20,Open Office for Papers to turn in. SubEthaEdit for notes and some code. Vim for other code.,Well-lit room.,"Word Count, Spell Check, Formatting (Center, line spacing), margin control (I must be able to make my document MLA-compliant for school).",1-2 pages.
+5/17/2010 13:47:55,Student / Gamer,Taylor Arnicar,Forever 21,"Microsoft Word 2003 or Open Office Writer (don't like the GUI in Microsoft Office 2007) for editing documents, resume, etc.
+
+Open Office Writer for exporting documents to pdf's.
+
+Text Editor (gedit) when I'm on linux or in the csl for coding. The syntax highlighting and parentheses matching is very useful to me.
+
+For a while I did my coding in Notepad on Windows.","Computer science lab if I feel like I want to work on linux (cuts down on delays for uploading my files from home to the school's servers before I compile).
+
+Sometimes at home in my well lit room, with some music (techno?) playing.","It depends on what I'm using it to write, but keyboard shortcuts are generally very important to me. Find and replace is very useful in certain situations. I don't use a spell check very often. Formatting generally very important to me if I'm writing anything other than code.","Usually when I sit down to use a text editor, I write entire masterworks / collections of books that could fill a small library.
+
+Jk.
+
+Usually it's a few paragraphs."
+5/17/2010 13:56:33,Student,Patrick Paladino,22,"Microsoft Word (at school), OpenOffice Writer (at home)","Library, bedroom","Formatting, footer/header, easy keyboard shortcuts, citation templates",3-5 pages
+5/17/2010 13:56:51,Computer Technician,,,"Word:  Reports and other Professional documents
+Vim:  Programming and short notes",Anywhere,"Keyboard shortcuts, find/replace, spell check, formatting (for professional documents)",3-8 paragraphs on average
+5/17/2010 14:21:31,Web Engineer,David M. Patierno,24,"vim (CLI), TextEdit (Mac), Notepad (Win), Simplenote (iPhone+iPad)","bedroom, living room, office desk","find/replace, spellcheck",just a few sentences or lines
+5/17/2010 14:38:49,QA Engineer,Paul Morales,23,"Word or Pages, depending on which OS I'm using, to write documents or creative writing pieces.  Notepad++ or TextMate, again depending on my current OS, to record
+notes, view source code, or write documents that don't require styling.","Home, at my desk.","Find and replace, spell checking, formatting/styling.",Several paragraphs (<1000ish words).
+5/17/2010 15:04:58,student,Katherine,22,Open Office for writing. Vim for programming. ,apartment room or library,"word count, whitespace formatting and the ability to override the whitespace formatting with sanity intact, ","either less than six pages or at least a hundred, depending on the type of project."
+5/17/2010 15:54:13,fiction writer,Johnny Stafford,31,Mac Pages,"home, caltrain, library","word count, spell check, I love the feature that blacks out the rest of the desktop (so I can concentrate on writing) and generally despise any automatic formatting ",5 pages
+5/17/2010 16:30:14,Student,Chris,21,"*Microsoft Word: Research papers, term papers, and other formal submissions. *Microsoft Notepad: Personal notes/reminders, creative writing.","Typically, a desk in a private room with sparse lighting (ie. single desk lamp). Occasionally sitting on living room couch (well-lit), lying in bed (no lights), or at the library.","Formatting is of especial interest to me, particularly on-the-fly (ie. need to make a fast outline or brainstorm) or when I'm trying to achieve a certain formatting effect I have in mind (ie. with a poem). For formal papers, the ability to insert tables, charts, images, or other media without disrupting the rest of the document is often necessary.","Either shorter (1/2 page to 1 page) lists/personal notes/poems, or longer 5-10 page formal papers. -Good luck Nat!"
+5/17/2010 17:02:19,Student,Reed,22,"Depends. If it's an essay or something, then Apple's Pages. For notes to self, programs, etc I use TextMate. I've also used WriteRoom in the past, and will probably do so again for long essays. Sometimes I also use Adobe InDesign for text layout. And I use gmail a lot too.",Usually dark places like my room. Honestly I try to stay away from writing as much as possible.,"Spell check is really nice, but the built-in OS X one works really well. Bold/italic are important. Honestly, for just writing and editing, I like TextMate because it really gets out of the way.","Most text I write is in emails, so a paragraph or two. I try to stay away from writing anything longer than that."
+5/17/2010 17:45:21,Student,Alexander Lowry,22,"Open Office
+Notepad++",Room at home,"Page Count
+Shortcuts
+Find and replace
+spell check
+All the formatting options
+autosave
+cut and paste",1-2 pages
+5/17/2010 18:28:55,Statistician,David,Your survey design sucks,"vim for C, notepad for quick ascii, word for papers/memos/homework",office or coffee shop,"find and replace, spell check, formatting, embedding images, embedding equations",7 pages
+5/17/2010 19:22:28,student,jeannie,21,"word, pages, and open office word processor for essays
+indesign for magazines, posters, flyers,  programs, or brochures
+textedit, textwrangler, and gedit for quick notes
+vim, gedit, textwrangler, or dreamweaver for code
+eclipse for css for my.calpoly.edu",at my desk in my bedroom which is well lit and also includes a comfortable chair. Must be quiet. ,"PARAGRAPH AND CHARACTER STYLES!! And word count, find and replace, short cuts, and spell check. ",single pages
+5/17/2010 19:26:19,Mechanical Engineer,,21,Microsoft Word,Desk,"Spell check, auto-format for bullets, line spacing options",1-5 pages
+5/17/2010 19:57:44,Student,Robin F.,22,I use Microsoft Word pretty exclusively.,In my room at my desk. Anywhere else I get distracted and find it hard to focus (unless I'm really determined and then I can usually get stuff done anywhere). ,"Spell check, word count, copy, cut, and paste keyboard shortcuts. Formatting things like font size, italics, bold, underline, line spacing, and indent tabs are also really important. I use find and replace occasionally, but I wouldn't call it necessary. ","For school papers it ranges from about 3-15 pages of text, but I write stories that range from 10-200+ pages. So...it can be a lot of text."
+5/17/2010 21:08:26,Network Admin/Student,PeterOyler Destryoer of Worlds,23,"Word - SPELL CHECK, justifying text, lists
+Vim - I love the delete line",At home/Work  with a full keyboard + numpad ,"Spell check, delete a line","A few paragraphs
+
+you r a BAMF :)"
+5/18/2010 9:13:49,Student,Laura,22,Microsoft Word 2003. I have Word 2007 but I like the design of 2003 better. Probably because I'm used to it but it seems more accessible.,"Semi-well lit room, either bedroom or living room.","Formatting is key for me, as is spell check. The ability of Word to automatically indent after I've manually indented the first few paragraphs, for instance, is very nice.","Uh, lately? The last few things I have written were my honors thesis and NaNoWriMo edits, so, between 50-150 pages? Generally though, my school papers are 7-12 pages, but I do like writing for fun, which accumulates into pretty long documents."
+5/18/2010 9:31:50,Student/Systems Administrator,trainman,22,"OpenOffice(~80%) and MS Word(~20%) for reports and professional documents.
+vim for everything else","Home, classrooms, occasionally work or coffee shops.","Spell check.
+Formatting:
+* tab stops
+* lists
+* headers, footers, page numbers
+* quick format styles, ie heading, paragraph
+* superscript/subscript
+* support for Greek characters
+find and replace
+images
+vector drawing: flowcharts, block diagrams
+tables","A few pages, almost always less than 10."
