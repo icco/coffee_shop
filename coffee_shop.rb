@@ -40,23 +40,31 @@ class FullScreen < Qt::Widget
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
-      # Define the file menu layout
-      menu1 = Qt::HBoxLayout.new()
-      menu1.addWidget SaveButton.new
-      menu1.addWidget LoadButton.new
-      menu1.addWidget QuitButton.new
-      menu1.setAlignment Qt::AlignLeft
+      menu = []
 
-      # Define the color menu layout
-      menu2 = Qt::HBoxLayout.new()
-      menu2.addWidget Drawer.new
-      menu2.addWidget Drawer.new
-      menu2.setAlignment Qt::AlignLeft
+      # Define the file menu layout
+      menu[1] = Qt::HBoxLayout.new()
+      menu[1].addWidget SaveButton.new
+      menu[1].addWidget LoadButton.new
+      menu[1].addWidget QuitButton.new
+      menu[1].setAlignment Qt::AlignLeft
+
+      # Define the fg color menu
+      menu[2] = Qt::HBoxLayout.new()
+      menu[2].addWidget Drawer.new
+      menu[2].setAlignment Qt::AlignLeft
+
+      # Define the bg color menu
+      menu[3] = Qt::HBoxLayout.new()
+      menu[3].addWidget Drawer.new
+      menu[3].setAlignment Qt::AlignLeft
 
       # Layout the right side menus
       menus = Qt::VBoxLayout.new
-      menus.addLayout menu1
-      menus.addLayout menu2
+      menu.each {|m|
+         menus.addLayout m if !m.nil?
+      }
+
       menus.setAlignment Qt::AlignTop
 
       # Layout the textbox

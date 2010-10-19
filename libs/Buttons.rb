@@ -6,82 +6,56 @@ end
 
 # This is a button that expands when clicked
 class Drawer < MenuItem
+   slots 'onclick()'
+
    def initialize
       super
+      @open = false
+      self.expand
+   end
 
+   def onclick
+      if @open
+         self.collapse
+      else
+         self.expand
+      end
+
+      @open = !@open
+   end
+
+   def collapse
       gs = GlobalSettings.instance
 
       icon  = Qt::Icon.new 'assets/icons/black/arrow1_e.png'
       label = "Open"
 
-      but = Qt::PushButton.new(icon, "") do
-      end
-         connect(SIGNAL :clicked) { expand }
-          connect but, SIGNAL('clicked()'), self, SLOT('expand()')
+      @but = Qt::PushButton.new(icon, "")
 
+      connect @but, SIGNAL('clicked()'), self, SLOT('onclick()')
 
-      but.setStyleSheet(@menuStyle);
+      @but.setStyleSheet(@menuStyle);
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(but)
+      layout.addWidget(@but)
       setLayout(layout)
    end
 
    def expand
-      print 'Byah'
+      gs = GlobalSettings.instance
+
+      icon  = Qt::Icon.new 'assets/icons/black/arrow1_w.png'
+      label = "Close"
+
+      @but = Qt::PushButton.new(icon, "")
+
+      connect @but, SIGNAL('clicked()'), self, SLOT('onclick()')
+
+      @but.setStyleSheet(@menuStyle);
+      layout = Qt::VBoxLayout.new()
+      layout.addWidget(@but)
+      setLayout(layout)
    end
-
-   def collapse
-
-   end
 end
-
-class BgColorButton < MenuItem
-   #def initialize
-   #   super
-
-   #   gs = GlobalSettings.instance
-
-   #   # I need to dynamically figure out icon color based on bg color.
-   #   icon  = Qt::Icon.new 'assets/icons/black/add.png'
-   #   label = "Color"
-
-   #   but = Qt::PushButton.new('Bg') do
-   #      connect(SIGNAL :clicked) { 
-   #         gs.bgColor = Qt::ColorDialog.getColor.name
-   #         gs.refresh
-   #      }
-   #   end
-
-   #   but.setStyleSheet(@menuStyle);
-   #   
-   #   layout = Qt::VBoxLayout.new()
-   #   layout.addWidget(but)
-   #   setLayout(layout)
-   #end
-end
-
-class FgColorButton < MenuItem
-   #def initialize
-   #   super
-
-   #   gs = GlobalSettings.instance
-
-   #   icon  = Qt::Icon.new 'assets/icons/black/add.png'
-   #   label = "Color"
-
-   #   but = Qt::PushButton.new('Fg') do
-   #      connect(SIGNAL :clicked) { 
-   #         gs.fgColor = Qt::ColorDialog.getColor.name
-   #         gs.refresh
-   #      }
-   #   end
-   #   but.setStyleSheet(@menuStyle);
-   #   layout = Qt::VBoxLayout.new()
-   #   layout.addWidget(but)
-   #   setLayout(layout)
-   #end
-end
-
 
 class SaveButton < MenuItem
    def initialize
