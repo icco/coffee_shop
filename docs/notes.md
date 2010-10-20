@@ -335,3 +335,13 @@ smarter than I am. Whoo humbling moments...
  * <http://zetcode.com/tutorials/qtrubytutorial/introduction/>
  * <http://doc.trolltech.com/4.6/qcompleter.html>
 
+## 10.19.10
+
+Apparently I'm meeting with Dr. Turner tomorrow. In the last two months, I've
+broken most of the features I had working around July. So now I'm pounding them
+out and getting them working again. Heck I even added an application icon.
+
+Some interesting research I came across, that I'll need to deal with later.
+
+ * <http://www.erikveen.dds.nl/distributingrubyapplications/>
+
