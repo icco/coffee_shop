@@ -17,6 +17,7 @@
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="Statistics.html">Statistics.rb</a>
         <a class="source" href="TextBox.html">TextBox.rb</a>
         </div>
     </div>
@@ -84,11 +85,12 @@
         <p> I moved all of the classes into their sperate files for readability</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;./libs/GlobalSettings&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;./libs/CoffeeFile&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;./libs/TextBox&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;./libs/MenuItem&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;./libs/Buttons&#39;</span></pre></div>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;libs/GlobalSettings&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/CoffeeFile&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/TextBox&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/MenuItem&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/Buttons&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/Statistics&#39;</span></pre></div>
       </td>
     </tr>
     <tr id='section-5'>
@@ -119,7 +121,9 @@
       <span class="n">gs</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
       <span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
       <span class="n">gs</span><span class="o">.</span><span class="n">files</span><span class="o">[</span><span class="n">gs</span><span class="o">.</span><span class="n">currentFile</span><span class="o">]</span> <span class="o">=</span> <span class="no">CoffeeFile</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;&quot;</span>
-      <span class="n">gs</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span></pre></div>
+      <span class="n">gs</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="no">TextBox</span><span class="o">.</span><span class="n">new</span>
+
+      <span class="n">menu</span> <span class="o">=</span> <span class="o">[]</span></pre></div>
       </td>
     </tr>
     <tr id='section-7'>
@@ -130,11 +134,11 @@
         <p> Define the file menu layout</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="n">menu1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu1</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu1</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
+        <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
       </td>
     </tr>
     <tr id='section-8'>
@@ -142,13 +146,12 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-8">#</a>
         </div>
-        <p> Define the color menu layout</p>
+        <p> Define the fg color menu</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="n">menu2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">FgColorButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu2</span><span class="o">.</span><span class="n">addWidget</span> <span class="no">BgColorButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu2</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
+        <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">Drawer</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
       </td>
     </tr>
     <tr id='section-9'>
@@ -156,19 +159,38 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-9">#</a>
         </div>
-        <p> Layout the right side menus</p>
+        <p> Define the bg color menu</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="n">menus</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu1</span>
-      <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">menu2</span>
-      <span class="n">menus</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignTop</span></pre></div>
+        <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">Drawer</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span>
+
+      <span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">StatsWidget</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
       </td>
     </tr>
     <tr id='section-10'>
       <td class=docs>
         <div class="octowrap">
           <a class="octothorpe" href="#section-10">#</a>
+        </div>
+        <p> Layout the right side menus</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">menus</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span>
+         <span class="n">menus</span><span class="o">.</span><span class="n">addLayout</span> <span class="n">m</span> <span class="k">if</span> <span class="o">!</span><span class="n">m</span><span class="o">.</span><span class="n">nil?</span>
+      <span class="p">}</span>
+
+      <span class="n">menus</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignTop</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-11'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-11">#</a>
         </div>
         <p> Layout the textbox</p>
       </td>
@@ -178,22 +200,23 @@
       <span class="n">hbox</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">menus</span><span class="p">)</span></pre></div>
       </td>
     </tr>
-    <tr id='section-11'>
+    <tr id='section-12'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-11">#</a>
+          <a class="octothorpe" href="#section-12">#</a>
         </div>
-        <p> Create right and left side buffers</p>
+        <p> Create right and left side buffers. At some point, I need to make these
+ fit any screen size.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">spacer1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
       <span class="n">spacer2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></pre></div>
       </td>
     </tr>
-    <tr id='section-12'>
+    <tr id='section-13'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-12">#</a>
+          <a class="octothorpe" href="#section-13">#</a>
         </div>
         <p> Lay it all out</p>
       </td>
@@ -212,16 +235,18 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-13'>
+    <tr id='section-14'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-13">#</a>
+          <a class="octothorpe" href="#section-14">#</a>
         </div>
         <p> Create the app, define the style sheet and start the application.</p>
 
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span>
+<span class="n">app</span><span class="o">.</span><span class="n">setWindowIcon</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;assets/icons/light_gray/sad.png&quot;</span> 
+
 <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span><span class="p">)</span>
 <span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> 
 <span class="n">app</span><span class="o">.</span><span class="n">exec</span> </pre></div>

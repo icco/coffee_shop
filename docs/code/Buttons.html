@@ -17,6 +17,7 @@
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="Statistics.html">Statistics.rb</a>
         <a class="source" href="TextBox.html">TextBox.rb</a>
         </div>
     </div>
@@ -37,11 +38,11 @@
         
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="k">class</span> <span class="nc">BgColorButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">ColorButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
-
-      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span></pre></div>
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
       </td>
     </tr>
     <tr id='section-2'>
@@ -49,49 +50,56 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-2">#</a>
         </div>
-        <p> I need to dynamically figure out icon color based on bg color.</p>
+        <p> This is a button that expands when clicked</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
-      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Color&quot;</span>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">Drawer</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+   <span class="n">slots</span> <span class="s1">&#39;onclick()&#39;</span>
 
-      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Bg&#39;</span><span class="p">)</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="n">gs</span><span class="o">.</span><span class="n">bgColor</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">ColorDialog</span><span class="o">.</span><span class="n">getColor</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">gs</span><span class="o">.</span><span class="n">refresh</span>
-         <span class="p">}</span>
-      <span class="k">end</span>
-
-      <span class="n">but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
-      
-      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
-      <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-   <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">FgColorButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span>
 
-      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
+      <span class="vi">@open</span> <span class="o">=</span> <span class="kp">false</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/arrow1_e.png&#39;</span>
+      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Close&quot;</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/add.png&#39;</span>
-      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Color&quot;</span>
+      <span class="vi">@but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+      <span class="vi">@but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
 
-      <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Fg&#39;</span><span class="p">)</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="n">gs</span><span class="o">.</span><span class="n">fgColor</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">ColorDialog</span><span class="o">.</span><span class="n">getColor</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">gs</span><span class="o">.</span><span class="n">refresh</span>
-         <span class="p">}</span>
-      <span class="k">end</span>
-      <span class="n">but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
-      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
+      <span class="n">connect</span> <span class="vi">@but</span><span class="p">,</span> <span class="no">SIGNAL</span><span class="p">(</span><span class="s1">&#39;clicked()&#39;</span><span class="p">),</span> <span class="nb">self</span><span class="p">,</span> <span class="no">SLOT</span><span class="p">(</span><span class="s1">&#39;onclick()&#39;</span><span class="p">)</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span><span class="o">.</span><span class="n">insertWidget</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="vi">@but</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
    <span class="k">end</span>
-<span class="k">end</span>
 
+   <span class="k">def</span> <span class="nf">onclick</span>
+      <span class="k">if</span> <span class="vi">@open</span>
+         <span class="nb">self</span><span class="o">.</span><span class="n">collapse</span>
+      <span class="k">else</span>
+         <span class="nb">self</span><span class="o">.</span><span class="n">expand</span>
+      <span class="k">end</span>
+
+      <span class="vi">@open</span> <span class="o">=</span> <span class="o">!</span><span class="vi">@open</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">collapse</span>
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
+
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/arrow1_e.png&#39;</span>
+      <span class="vi">@but</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">itemAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">widget</span>
+      <span class="vi">@but</span><span class="o">.</span><span class="n">setIcon</span> <span class="n">icon</span>
+      <span class="vi">@but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">expand</span>
+      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
+
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/arrow1_w.png&#39;</span>
+      <span class="vi">@but</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">itemAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">widget</span>
+      <span class="vi">@but</span><span class="o">.</span><span class="n">setIcon</span> <span class="n">icon</span>
+      <span class="vi">@but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
+   <span class="k">end</span>
+<span class="k">end</span>
 
 <span class="k">class</span> <span class="nc">SaveButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
@@ -99,7 +107,7 @@
 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/save.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/save.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Save&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
@@ -117,7 +125,7 @@
       <span class="k">super</span> 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/open.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/open.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Load&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
@@ -153,7 +161,7 @@
       <td class=code>
         <div class='highlight'><pre>      <span class="k">super</span> 
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/64x64/close.png&#39;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/close.png&#39;</span>
       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Quit&quot;</span></pre></div>
       </td>
     </tr>

@@ -17,6 +17,7 @@
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="Statistics.html">Statistics.rb</a>
         <a class="source" href="TextBox.html">TextBox.rb</a>
         </div>
     </div>
@@ -91,12 +92,13 @@
       <span class="k">end</span>
 
       <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
-         <span class="n">log</span> <span class="s2">&quot;Empty filename, could not load&quot;</span>
+         <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Empty filename, could not load&quot;</span>
       <span class="k">else</span>
          <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-         <span class="nb">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
+         <span class="vi">@text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
          <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">true</span>
          <span class="n">file</span><span class="o">.</span><span class="n">close</span>
+         <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Loaded </span><span class="si">#{</span><span class="vi">@fname</span><span class="si">}</span><span class="s2">&quot;</span>
          <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="vi">@text</span>
       <span class="k">end</span>
 
@@ -124,10 +126,11 @@
                <span class="vi">@fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">nil?</span> <span class="p">?</span> <span class="s2">&quot;&quot;</span> <span class="p">:</span> <span class="n">fname</span>
                <span class="k">return</span> <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
             <span class="k">else</span>
-               <span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
+               <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="k">end</span>
          <span class="k">end</span>
 
+         <span class="vi">@text</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">text</span>
          <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
          <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="vi">@text</span>
          <span class="vi">@changed</span> <span class="o">=</span> <span class="kp">false</span></pre></div>
@@ -143,6 +146,7 @@
       <td class=code>
         <div class='highlight'><pre>         <span class="n">file</span><span class="o">.</span><span class="n">close</span>
          <span class="vi">@lastsave</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">new</span>
+         <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Saved to </span><span class="si">#{</span><span class="vi">@fname</span><span class="si">}</span><span class="s2">&quot;</span>
       <span class="k">else</span>
          <span class="vi">@lastsave</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
       <span class="k">end</span>
@@ -154,20 +158,6 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-7">#</a>
         </div>
-        <p> When text comes in, we need to recalc pages.</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">text</span><span class="o">=</span> <span class="n">txt</span>
-      <span class="vi">@text</span> <span class="o">=</span> <span class="n">txt</span>
-      <span class="vi">@pageCount</span> <span class="o">=</span> <span class="p">(</span><span class="vi">@text</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="vc">@@perPage</span><span class="o">.</span><span class="n">to_f</span><span class="p">)</span><span class="o">.</span><span class="n">ceil</span>
-   <span class="k">end</span></pre></div>
-      </td>
-    </tr>
-    <tr id='section-8'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-8">#</a>
-        </div>
         <p> This function returns the text of the page requested.</p>
       </td>
       <td class=code>
@@ -177,10 +167,10 @@
       <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-9'>
+    <tr id='section-8'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-9">#</a>
+          <a class="octothorpe" href="#section-8">#</a>
         </div>
         <p> Instead of doing the math, and doing the offset lookup, we could store
  the page content in a hash table on change of @text.</p>
