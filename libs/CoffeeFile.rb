@@ -3,19 +3,12 @@
 class CoffeeFile
    # I can never seem to remember this little function name
    attr_accessor :fname, :lastsave, :changed
-   attr_reader :text, :pageCount
-
-   # Number of characters per page
-   @@perPage = 1000
-
-   def CoffeeFile.perPage
-      return @@perPage
-   end
+   attr_reader :text
 
    def initialize filename
       @text = ""
       @fname = filename
-      @pageCount = 1
+      @changed = true
    end
 
    def load filename
@@ -39,48 +32,34 @@ class CoffeeFile
       return @text
    end
 
-   def save mode
-      if !@lastsave.nil? and (Time.new - @lastsave > 1)
-         # Surprise surprise, we only want to save when we have a filename.
-         if @fname.empty?
-            case mode
-            when 'auto'
-               return
-            when 'click'
-               fname = Qt::FileDialog.getSaveFileName()
-               @fname = fname.nil? ? "" : fname
-               return if @fname.empty?
-            else
-               GlobalSettings.log "Unknow save mode: #{mode}."
-            end
-         end
-
-         @text = GlobalSettings.instance.text.text
-         file = File.new(@fname, 'w')
-         file.write @text
-         @changed = false
-         # If we don't close, the file won't actually save until prgm death
-         file.close
-         @lastsave = Time.new
-         GlobalSettings.log "Saved to #{@fname}"
-      else
-         @lastsave = Time.at(0)
-      end
+   def text= txt
+      @changed = true
+      @text = txt
    end
 
-   # This function returns the text of the page requested.
-   def page num
-      if num < 0 || num > @pageCount
-         return nil
+   def save mode
+      # Surprise surprise, we only want to save when we have a filename.
+      if @fname.empty?
+         case mode
+         when 'auto'
+            return
+         when 'click'
+            fname = Qt::FileDialog.getSaveFileName()
+            @fname = fname.nil? ? "" : fname
+            return if @fname.empty?
+         else
+            GlobalSettings.log "Unknow save mode: #{mode}."
+         end
       end
 
-      # Instead of doing the math, and doing the offset lookup, we could store
-      # the page content in a hash table on change of @text.
-      offset = num * @@perPage
-      range = offset...(offset+@@perPage)
-      out = @text.slice(range)
-
-      return out.nil? ? @text : out
+      @text = GlobalSettings.instance.text.text
+      file = File.new(@fname, 'w')
+      file.write @text
+      @changed = false
+      # If we don't close, the file won't actually save until prgm death
+      file.close
+      @lastsave = Time.new
+      GlobalSettings.log "Saved to #{@fname}"
    end
 end
 

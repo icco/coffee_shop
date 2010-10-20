@@ -26,15 +26,11 @@ class GlobalSettings
       @fgColor = '#000' if @fgColor.nil?
 
       return <<-GLOBAL
-         QVBoxLayout {
+         * {
             background-color: #{@bgColor};
          }
 
-         QGraphicsScene {
-            background-color: '#000';
-         }
-
-         QGraphicsTextItem {
+         QTextEdit {
             color: #{@fgColor};
             background-color: #{@bgColor};
             border: 1px solid #{@fgColor}; 

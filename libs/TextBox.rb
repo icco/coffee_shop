@@ -5,23 +5,30 @@ class TextBox < Qt::Widget
    def initialize
       super
 
+      gs = GlobalSettings.instance
+
       # QTextEdit makes life so easy, it's almost depressing.
-      @gv = Qt::TextEdit.new
+      @tb = Qt::TextEdit.new 
+      @tb.connect(SIGNAL :textChanged) {
+         gs.file.text = self.text
+         gs.file.save 'auto'
+      }
+            @tb.setFrameShape Qt::Frame::NoFrame
 
       layout = Qt::VBoxLayout.new()
-      layout.addWidget(@gv)
+      layout.addWidget(@tb)
       setLayout(layout)
    end
 
    # Need to implement this for opening
    def text= txt
-      @gv.setPlainText txt
+      @tb.setPlainText txt
       self.update
    end
 
    # Need to implement this for saving, and other things... I think.
    def text
-      return @gv.toPlainText
+      return @tb.toPlainText
    end
 
    # Returns details about the currently edited file
@@ -29,10 +36,10 @@ class TextBox < Qt::Widget
       # Word Count, scan could be bad on a large file...
       wc = self.text.scan(/(\w|-)+/).size
 
-      mod = true # Due a diff of the file and buffer?
+      mod = GlobalSettings.instance.file.changed
 
       return {
-         :wc => wc,
+         :word_count => wc,
          :modified => mod
       }
    end
