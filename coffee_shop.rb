@@ -64,7 +64,6 @@ class FullScreen < Qt::Widget
       menu[4].addWidget StatsWidget.new
       menu[4].setAlignment Qt::AlignLeft
 
-
       # Layout the right side menus
       menus = Qt::VBoxLayout.new
       menu.each {|m|

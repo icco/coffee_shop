@@ -1,13 +1,12 @@
 
 class StatsWidget < Qt::Widget
-
    def initialize
       super
 
       labels = []
-      (0..4).each {|n|
+      GlobalSettings.instance.text.stats.each_pair {|key, value|
          l = Qt::Label.new
-         l.setText("Label #{n}")
+         l.setText("#{key}: #{value}")
          labels << l
       }
 
