@@ -15,12 +15,13 @@ class TextBox < Qt::Widget
 
    # Need to implement this for opening
    def text= txt
+      @gv.setPlainText txt
       self.update
    end
 
    # Need to implement this for saving, and other things... I think.
    def text
-      return 
+      return @gv.toPlainText
    end
 
    # Returns details about the currently edited file
@@ -28,8 +29,11 @@ class TextBox < Qt::Widget
       # Word Count, scan could be bad on a large file...
       wc = self.text.scan(/(\w|-)+/).size
 
+      mod = true # Due a diff of the file and buffer?
+
       return {
-         :wc => wc
+         :wc => wc,
+         :modified => mod
       }
    end
 end

@@ -38,7 +38,7 @@ class Drawer < MenuItem
       gs = GlobalSettings.instance
 
       icon  = Qt::Icon.new 'assets/icons/black/arrow1_e.png'
-      @but = (self.layout.itemAt 0).widget
+      @but = self.layout.itemAt(0).widget
       @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
    end
@@ -47,7 +47,7 @@ class Drawer < MenuItem
       gs = GlobalSettings.instance
 
       icon  = Qt::Icon.new 'assets/icons/black/arrow1_w.png'
-      @but = (self.layout.itemAt 0).widget
+      @but = self.layout.itemAt(0).widget
       @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
    end

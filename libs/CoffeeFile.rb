@@ -26,12 +26,13 @@ class CoffeeFile
       end
 
       if @fname.empty?
-         log "Empty filename, could not load"
+         GlobalSettings.log "Empty filename, could not load"
       else
          file = File.new(@fname, 'r')
-         self.text = file.read
+         @text = file.read
          @changed = true
          file.close
+         GlobalSettings.log "Loaded #{@fname}"
          GlobalSettings.instance.text.text = @text
       end
 
@@ -50,25 +51,21 @@ class CoffeeFile
                @fname = fname.nil? ? "" : fname
                return if @fname.empty?
             else
-               log "Unknow save mode: #{mode}."
+               GlobalSettings.log "Unknow save mode: #{mode}."
             end
          end
 
+         @text = GlobalSettings.instance.text.text
          file = File.new(@fname, 'w')
          file.write @text
          @changed = false
          # If we don't close, the file won't actually save until prgm death
          file.close
          @lastsave = Time.new
+         GlobalSettings.log "Saved to #{@fname}"
       else
          @lastsave = Time.at(0)
       end
-   end
-
-   # When text comes in, we need to recalc pages.
-   def text= txt
-      @text = txt
-      @pageCount = (@text.length.to_f / @@perPage.to_f).ceil
    end
 
    # This function returns the text of the page requested.

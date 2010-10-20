@@ -19,11 +19,12 @@ require 'Qt4'
 require 'singleton'
 
 # I moved all of the classes into their sperate files for readability
-require './libs/GlobalSettings'
-require './libs/CoffeeFile'
-require './libs/TextBox'
-require './libs/MenuItem'
-require './libs/Buttons'
+require 'libs/GlobalSettings'
+require 'libs/CoffeeFile'
+require 'libs/TextBox'
+require 'libs/MenuItem'
+require 'libs/Buttons'
+require 'libs/Statistics'
 
 # This is the root class that does all of the setting up and displaying.
 class FullScreen < Qt::Widget
@@ -59,6 +60,11 @@ class FullScreen < Qt::Widget
       menu[3].addWidget Drawer.new
       menu[3].setAlignment Qt::AlignLeft
 
+      menu[4]  = Qt::HBoxLayout.new()
+      menu[4].addWidget StatsWidget.new
+      menu[4].setAlignment Qt::AlignLeft
+
+
       # Layout the right side menus
       menus = Qt::VBoxLayout.new
       menu.each {|m|
@@ -93,6 +99,8 @@ end
 
 # Create the app, define the style sheet and start the application.
 app = Qt::Application.new ARGV
+app.setWindowIcon Qt::Icon.new "assets/icons/light_gray/sad.png" 
+
 app.setStyleSheet(GlobalSettings.instance.appStyles)
 FullScreen.instance.show 
 app.exec 
