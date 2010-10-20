@@ -75,15 +75,11 @@
       <span class="vi">@fgColor</span> <span class="o">=</span> <span class="s1">&#39;#000&#39;</span> <span class="k">if</span> <span class="vi">@fgColor</span><span class="o">.</span><span class="n">nil?</span>
 
       <span class="k">return</span> <span class="o">&lt;&lt;-</span><span class="no">GLOBAL</span>
-<span class="sh">         QVBoxLayout {</span>
+<span class="sh">         * {</span>
 <span class="sh">            background-color: #{@bgColor};</span>
 <span class="sh">         }</span>
 
-<span class="sh">         QGraphicsScene {</span>
-<span class="sh">            background-color: &#39;#000&#39;;</span>
-<span class="sh">         }</span>
-
-<span class="sh">         QGraphicsTextItem {</span>
+<span class="sh">         QTextEdit {</span>
 <span class="sh">            color: #{@fgColor};</span>
 <span class="sh">            background-color: #{@bgColor};</span>
 <span class="sh">            border: 1px solid #{@fgColor}; </span>
