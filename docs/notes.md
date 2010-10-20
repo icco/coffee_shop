@@ -345,3 +345,6 @@ Some interesting research I came across, that I'll need to deal with later.
 
  * <http://www.erikveen.dds.nl/distributingrubyapplications/>
 
+## 10.20.10
+
+Attempted to get word count working... no luck. Also pasting from other programs does not work.
