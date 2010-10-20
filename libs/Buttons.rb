@@ -10,8 +10,18 @@ class Drawer < MenuItem
 
    def initialize
       super
+
       @open = false
-      self.expand
+      icon  = Qt::Icon.new 'assets/icons/black/arrow1_e.png'
+      label = "Close"
+
+      @but = Qt::PushButton.new(icon, "")
+      @but.setStyleSheet(@menuStyle);
+
+      connect @but, SIGNAL('clicked()'), self, SLOT('onclick()')
+      layout = Qt::HBoxLayout.new()
+      layout.insertWidget(0, @but)
+      setLayout(layout)
    end
 
    def onclick
@@ -28,32 +38,18 @@ class Drawer < MenuItem
       gs = GlobalSettings.instance
 
       icon  = Qt::Icon.new 'assets/icons/black/arrow1_e.png'
-      label = "Open"
-
-      @but = Qt::PushButton.new(icon, "")
-
-      connect @but, SIGNAL('clicked()'), self, SLOT('onclick()')
-
+      @but = (self.layout.itemAt 0).widget
+      @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(@but)
-      setLayout(layout)
    end
 
    def expand
       gs = GlobalSettings.instance
 
       icon  = Qt::Icon.new 'assets/icons/black/arrow1_w.png'
-      label = "Close"
-
-      @but = Qt::PushButton.new(icon, "")
-
-      connect @but, SIGNAL('clicked()'), self, SLOT('onclick()')
-
+      @but = (self.layout.itemAt 0).widget
+      @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(@but)
-      setLayout(layout)
    end
 end
 
