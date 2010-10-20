@@ -2,6 +2,8 @@
 # This file deals with all of the text editing fun. If I were to try dealing
 # with pagination again, I would do it in here.
 class TextBox < Qt::Widget
+   attr_accessor :tb
+
    def initialize
       super
 
@@ -13,7 +15,8 @@ class TextBox < Qt::Widget
          gs.file.text = self.text
          gs.file.save 'auto'
       }
-            @tb.setFrameShape Qt::Frame::NoFrame
+
+      @tb.setFrameShape Qt::Frame::NoFrame
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@tb)
@@ -37,11 +40,23 @@ class TextBox < Qt::Widget
       wc = self.text.scan(/(\w|-)+/).size
 
       mod = GlobalSettings.instance.file.changed
-
-      return {
+      ret = {
          :word_count => wc,
          :modified => mod
       }
+
+      def ret.to_a
+         r = super
+
+         r = r.map {|pair|
+            k, v = pair
+            "#{k}: #{v}"
+         }
+
+         return r
+      end
+
+      return ret
    end
 end
 
