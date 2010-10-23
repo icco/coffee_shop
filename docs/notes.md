@@ -348,3 +348,17 @@ Some interesting research I came across, that I'll need to deal with later.
 ## 10.20.10
 
 Attempted to get word count working... no luck. Also pasting from other programs does not work.
+
+## 10.22.10
+
+I met with Dr. Turner on wednesday. He said I should make sure to bring up some
+of the community challenges I have faced. The big one I am talking about is
+pagination, and how the Qt users (both on SO and their forums) don't understand
+the point of pagination while typing. I think it is very possible that using
+ruby for this was a bad idea. Mainly because writing desktop applications in a
+scripting language is not they easiest thing. 
+
+I asked [this question][so-dist] on Stack Overflow, so maybe I can get some
+help with distributing my app. 
+
+[so-dist]: http://stackoverflow.com/questions/4000206/distributing-a-rubyqt-app
