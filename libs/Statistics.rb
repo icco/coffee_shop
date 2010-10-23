@@ -16,6 +16,13 @@ class StatsWidget < Qt::Widget
       @layout = Qt::VBoxLayout.new
       @labels.each {|l| @layout.addWidget l }
       setLayout(@layout)
+
+      # Calls timerEvent every one second
+      startTimer(1000);
+   end
+
+   def timerEvent ev
+      self.update
    end
 
    def update

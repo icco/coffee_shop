@@ -17,6 +17,10 @@ class GlobalSettings
       return Qt::Application.instance
    end
 
+   def update
+      self.refresh
+   end
+
    def refresh
       app.setStyleSheet(appStyles)
    end

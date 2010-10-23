@@ -12,6 +12,7 @@ class TextBox < Qt::Widget
       # QTextEdit makes life so easy, it's almost depressing.
       @tb = Qt::TextEdit.new 
       @tb.connect(SIGNAL :textChanged) {
+         gs.file.changed = true
          gs.file.text = self.text
          gs.file.save 'auto'
       }
