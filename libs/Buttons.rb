@@ -1,8 +1,3 @@
-class ColorButton < MenuItem
-   def initialize
-      super
-   end
-end
 
 # This is a button that expands when clicked
 class Drawer < MenuItem
@@ -41,6 +36,10 @@ class Drawer < MenuItem
       @but = self.layout.itemAt(0).widget
       @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
+
+      (1...self.layout.count).each {|k|
+         self.layout.takeAt 1
+      }
    end
 
    def expand
@@ -50,6 +49,40 @@ class Drawer < MenuItem
       @but = self.layout.itemAt(0).widget
       @but.setIcon icon
       @but.setStyleSheet(@menuStyle);
+   end
+end
+
+class ColorButton < Drawer
+   def initialize
+      super
+
+      # These should be overwritten by children
+      gs = GlobalSettings.instance
+      @colors = [
+         [gs.fgColor, gs.bgColor],
+         [gs.fgColor, gs.bgColor],
+         [gs.fgColor, gs.bgColor]
+      ]
+   end
+
+   def expand
+      super
+
+      @colors.each_index {|i|
+         bcolor = @colors[i][1]
+         fcolor = @colors[i][0]
+         style = <<-COLOR
+         #{@menuStyle}
+
+         QPushButton {
+            background-color: #{bcolor};
+            color: #{fcolor};
+         }
+         COLOR
+         w = Qt::PushButton.new("A")
+         w.setStyleSheet(style);
+         self.layout.addWidget w
+      }
    end
 end
 
