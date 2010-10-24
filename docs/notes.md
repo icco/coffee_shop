@@ -351,7 +351,7 @@ Attempted to get word count working... no luck. Also pasting from other programs
 
 ## 10.22.10
 
-I met with Dr. Turner on wednesday. He said I should make sure to bring up some
+I met with Dr. Turner on Wednesday. He said I should make sure to bring up some
 of the community challenges I have faced. The big one I am talking about is
 pagination, and how the Qt users (both on SO and their forums) don't understand
 the point of pagination while typing. I think it is very possible that using
@@ -362,3 +362,24 @@ I asked [this question][so-dist] on Stack Overflow, so maybe I can get some
 help with distributing my app. 
 
 [so-dist]: http://stackoverflow.com/questions/4000206/distributing-a-rubyqt-app
+
+## 10.23.10
+
+Yesterday I got the word count working, which I'm pretty stoked about. While
+figuring out how to get it working, I think I figured out my biggest problem
+with Qt: it assumes you can pass by reference, and that you have a reference to
+every widget you ever created. This is so different to the design decisions
+that web programming has, it's scary.
+
+Also, I asked Jeannie to make me a [Splash Screen][splash-screen]. It'll be
+sweet if she comes through. If not, I'll have to start drawing again, which
+could burn out my user's eyes before the program finishes loading...
+
+[splash-screen]: http://doc.trolltech.com/4.7/qsplashscreen.html
+
+Things I have left to do:
+
+ * Get the right menu disappearing
+ * get my color picker working.
+ * auto-detect screen size and scale appropriately
+
