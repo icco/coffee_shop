@@ -23,8 +23,15 @@ require 'libs/GlobalSettings'
 require 'libs/CoffeeFile'
 require 'libs/TextBox'
 require 'libs/MenuItem'
-require 'libs/Buttons'
+require 'libs/Drawer'
+require 'libs/ColorButton'
+require 'libs/BackgroundButton'
+require 'libs/ForegroundButton'
+require 'libs/LoadButton'
+require 'libs/QuitButton'
+require 'libs/SaveButton'
 require 'libs/Statistics'
+
 
 # This is the root class that does all of the setting up and displaying.
 class FullScreen < Qt::Widget
