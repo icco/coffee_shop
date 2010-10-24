@@ -95,28 +95,30 @@ class ColorButton < Drawer
 end
 
 class ForegroundButton < ColorButton
-   def initialize
-      super
-
+   def expand
       gs = GlobalSettings.instance
       @colors = [
          ['#FFFFFF', gs.bgColor],
          ['#AAAAAA', gs.bgColor],
          ['#000000', gs.bgColor]
       ]
+
+      super
+
    end
 end
 
 class BackgroundButton < ColorButton
-   def initialize
-      super
-
+   def expand
       gs = GlobalSettings.instance
       @colors = [
          [gs.fgColor, '#FFFFFF'],
          [gs.fgColor, '#AAAAAA'],
          [gs.fgColor, '#000000']
       ]
+
+      super
+
    end
 end
 
