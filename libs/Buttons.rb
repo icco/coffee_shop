@@ -68,6 +68,8 @@ class ColorButton < Drawer
    def expand
       super
 
+      gs = GlobalSettings.instance
+
       @colors.each_index {|i|
          bcolor = @colors[i][1]
          fcolor = @colors[i][0]
@@ -79,10 +81,42 @@ class ColorButton < Drawer
             color: #{fcolor};
          }
          COLOR
-         w = Qt::PushButton.new("A")
+         w = Qt::PushButton.new("A") do
+            connect(SIGNAL :clicked) {
+               gs.bgColor = bcolor
+               gs.fgColor = fcolor
+               gs.refresh
+            }
+         end
          w.setStyleSheet(style);
          self.layout.addWidget w
       }
+   end
+end
+
+class ForegroundButton < ColorButton
+   def initialize
+      super
+
+      gs = GlobalSettings.instance
+      @colors = [
+         ['#FFFFFF', gs.bgColor],
+         ['#AAAAAA', gs.bgColor],
+         ['#000000', gs.bgColor]
+      ]
+   end
+end
+
+class BackgroundButton < ColorButton
+   def initialize
+      super
+
+      gs = GlobalSettings.instance
+      @colors = [
+         [gs.fgColor, '#FFFFFF'],
+         [gs.fgColor, '#AAAAAA'],
+         [gs.fgColor, '#000000']
+      ]
    end
 end
 
