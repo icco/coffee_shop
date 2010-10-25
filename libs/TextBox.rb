@@ -42,8 +42,7 @@ class TextBox < Qt::Widget
 
       mod = GlobalSettings.instance.file.changed
       ret = {
-         :word_count => wc,
-         :modified => mod
+         'Word Count' => wc,
       }
 
       def ret.to_a

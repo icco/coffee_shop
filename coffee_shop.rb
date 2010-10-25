@@ -22,6 +22,7 @@ require 'singleton'
 require 'libs/GlobalSettings'
 require 'libs/CoffeeFile'
 require 'libs/TextBox'
+require 'libs/Menu'
 require 'libs/MenuItem'
 require 'libs/Drawer'
 require 'libs/ColorButton'
@@ -30,8 +31,7 @@ require 'libs/ForegroundButton'
 require 'libs/LoadButton'
 require 'libs/QuitButton'
 require 'libs/SaveButton'
-require 'libs/Statistics'
-
+require 'libs/StatsWidget'
 
 # This is the root class that does all of the setting up and displaying.
 class FullScreen < Qt::Widget
@@ -48,46 +48,16 @@ class FullScreen < Qt::Widget
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
-      menu = []
-
-      # Define the file menu layout
-      menu[1] = Qt::HBoxLayout.new()
-      menu[1].addWidget SaveButton.new
-      menu[1].addWidget LoadButton.new
-      menu[1].addWidget QuitButton.new
-      menu[1].setAlignment Qt::AlignLeft
-
-      # Define the fg color menu
-      menu[2] = Qt::HBoxLayout.new()
-      menu[2].addWidget ForegroundButton.new
-      menu[2].setAlignment Qt::AlignLeft
-
-      # Define the bg color menu
-      menu[3] = Qt::HBoxLayout.new()
-      menu[3].addWidget BackgroundButton.new
-      menu[3].setAlignment Qt::AlignLeft
-
-      menu[4]  = Qt::HBoxLayout.new()
-      menu[4].addWidget StatsWidget.new
-      menu[4].setAlignment Qt::AlignLeft
-
-      # Layout the right side menus
-      menus = Qt::VBoxLayout.new
-      menu.each {|m|
-         menus.addLayout m if !m.nil?
-      }
-
-      menus.setAlignment Qt::AlignTop
-
-      # Layout the textbox
-      hbox = Qt::HBoxLayout.new
-      hbox.addWidget(gs.text)
-      hbox.addLayout(menus)
-
       # Create right and left side buffers. At some point, I need to make these
       # fit any screen size.
       spacer1 = Qt::SpacerItem.new(300, 100)
       spacer2 = Qt::SpacerItem.new(200, 100)
+
+      # Layout the textbox
+      menu = Menu.new
+      hbox = Qt::HBoxLayout.new
+      hbox.addWidget(gs.text)
+      hbox.addWidget(menu)
 
       # Lay it all out
       grid = Qt::GridLayout.new

@@ -1,15 +1,12 @@
 
 class ForegroundButton < ColorButton
-   def expand
+   def updateColors
       gs = GlobalSettings.instance
       @colors = [
          ['#FFFFFF', gs.bgColor],
          ['#AAAAAA', gs.bgColor],
          ['#000000', gs.bgColor]
       ]
-
-      super
-
    end
 end
 

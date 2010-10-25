@@ -1,8 +1,12 @@
 
 class ColorButton < Drawer
+   slots :updateColors 
+
    def initialize
       super
+   end
 
+   def updateColors
       # These should be overwritten by children
       gs = GlobalSettings.instance
       @colors = [
@@ -12,8 +16,16 @@ class ColorButton < Drawer
       ]
    end
 
+   def collapse
+      self.updateColors
+
+      super
+   end
+
    def expand
       super
+
+      self.updateColors
 
       gs = GlobalSettings.instance
 
@@ -35,6 +47,9 @@ class ColorButton < Drawer
                gs.refresh
             }
          end
+
+         connect w, SIGNAL(:clicked), self, SLOT(:updateColors)
+
          w.setStyleSheet(style);
          self.layout.addWidget w
       }
