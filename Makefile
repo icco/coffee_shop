@@ -8,6 +8,7 @@
 all: run
 
 doc: coffee_shop.rb docs/coffee_shop.html
+	rm docs/code/*.html
 	rocco coffee_shop.rb libs/*rb
 	mv coffee_shop.html docs/code/
 	mv libs/*html docs/code/
