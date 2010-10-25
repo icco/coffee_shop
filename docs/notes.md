@@ -383,3 +383,10 @@ Things I have left to do:
  * get my color picker working.
  * auto-detect screen size and scale appropriately
 
+End of the day update: got the color picker kind of working, and the base for
+the disappearing menu is working. I think.
+
+
+
+
+
