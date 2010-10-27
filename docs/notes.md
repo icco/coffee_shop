@@ -389,10 +389,22 @@ the disappearing menu is working. I think.
 
 ## 10.26.10
 
-Features I still want:
+Features I still want, in no particular order:
 
+ * Add config saving
+   * yaml?
  * tabs for multiple files
  * key commands
  * pasting from another app
+   * this actually seems to be working...
+ * styling of scrollbar
+ * auto-hiding of the menu
+ * intelligent sizing
+   * also get the text area to be the appropriate size for paper. Can we look at the font? Do we need to?
+ * Add the ability to change the font
+   * serif, sans-serif, monospace
+ * make the whole app look a little sexier. Maybe better default colors?
+ * Maybe turn off auto saving?
+   * Not sure how I feel about this...
 
 
