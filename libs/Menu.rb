@@ -41,6 +41,6 @@ class Menu < Qt::Widget
    def mouseMoveEvent ev
       super 
 
-      self.setHidden true
+      #self.setHidden true
    end
 end

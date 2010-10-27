@@ -34,16 +34,22 @@ class GlobalSettings
             background-color: #{@bgColor};
          }
 
-         QTextEdit {
+         QPlainTextEdit {
             color: #{@fgColor};
             background-color: #{@bgColor};
             border: 1px solid #{@fgColor}; 
             padding: 10px;
          }
 
-         QScrollAread {
-            background-color: #{@bgColor};
-            color: #{@fgColor};
+         QScrollArea {
+            background-color: #{@bgcolor};
+            color: #{@fgcolor};
+         }
+
+         QScrollBar {
+            border: 1px solid #{@fgColor}; 
+            background-color: #{@bgcolor};
+            color: #{@fgcolor};
          }
       GLOBAL
    end

@@ -387,6 +387,12 @@ End of the day update: got the color picker kind of working, and the base for
 the disappearing menu is working. I think.
 
 
+## 10.26.10
 
+Features I still want:
+
+ * tabs for multiple files
+ * key commands
+ * pasting from another app
 
 

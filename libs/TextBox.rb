@@ -10,7 +10,7 @@ class TextBox < Qt::Widget
       gs = GlobalSettings.instance
 
       # QTextEdit makes life so easy, it's almost depressing.
-      @tb = Qt::TextEdit.new 
+      @tb = Qt::PlainTextEdit.new 
       @tb.connect(SIGNAL :textChanged) {
          gs.file.changed = true
          gs.file.text = self.text
