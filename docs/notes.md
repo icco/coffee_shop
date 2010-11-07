@@ -407,4 +407,15 @@ Features I still want, in no particular order:
  * Maybe turn off auto saving?
    * Not sure how I feel about this...
 
+## 11.7.10
 
+Started messing with config saving. I sadly don't want to just dump the entire
+GlobalSettings object into a file after encoding it with YAML, mainly because I
+use it as a Singleton across the entire program to store all of my settings and
+references to objects I have instantiated. 
+
+An interesting caveat to how ruby's File.open works: you must send the file
+name through File.expand_path if you want to turn ~/ into a users home dir. 
+
+Also, Jeannie sent me some possible icon / theme ideas. You can check them out
+[here](https://github.com/icco/coffee_shop/raw/master/docs/images/coffee-shop-icons-110710.jpg).
