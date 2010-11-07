@@ -77,6 +77,7 @@ end
 app = Qt::Application.new ARGV
 app.setWindowIcon Qt::Icon.new "assets/icons/light_gray/sad.png" 
 
+GlobalSettings.instance.load
 app.setStyleSheet(GlobalSettings.instance.appStyles)
 FullScreen.instance.show 
 app.exec 

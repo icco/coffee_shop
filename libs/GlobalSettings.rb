@@ -1,3 +1,4 @@
+require 'yaml'
 
 # Next we define this class, which is a singleton for storing configuration
 # data that needs to be passed around the program. 
@@ -23,6 +24,22 @@ class GlobalSettings
 
    def refresh
       app.setStyleSheet(appStyles)
+      self.save
+   end
+
+   def save
+      # Closes when block exits
+      File.open(File.expand_path('~/.coffee_shop.yml'), 'w+') {|f| 
+         f.write(self.config)
+      }
+   end
+
+   def load
+      c = {}
+      File.open(File.expand_path('~/.coffee_shop.yml'), 'a+') { |yf| c = YAML::load( yf ) }
+
+      @bgColor = c['bgColor'] ? c['bgColor'] : '#FFF' if c
+      @fgColor = c['fgColor'] ? c['fgColor'] : '#000' if c
    end
 
    def appStyles
@@ -52,6 +69,15 @@ class GlobalSettings
             color: #{@fgcolor};
          }
       GLOBAL
+   end
+
+   def config
+      yaml = {
+         'fgColor' => @fgColor,
+         'bgColor' => @bgColor,
+      }
+
+      YAML::dump yaml
    end
 
    # A standard "log" format.
