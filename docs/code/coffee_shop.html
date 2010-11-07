@@ -199,6 +199,7 @@
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span>
 <span class="n">app</span><span class="o">.</span><span class="n">setWindowIcon</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;assets/icons/light_gray/sad.png&quot;</span> 
 
+<span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">load</span>
 <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span><span class="p">)</span>
 <span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> 
 <span class="n">app</span><span class="o">.</span><span class="n">exec</span> </pre></div>

@@ -45,7 +45,7 @@
         
       </td>
       <td class=code>
-        <div class='highlight'><pre></pre></div>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;yaml&#39;</span></pre></div>
       </td>
     </tr>
     <tr id='section-2'>
@@ -79,6 +79,31 @@
 
    <span class="k">def</span> <span class="nf">refresh</span>
       <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">appStyles</span><span class="p">)</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">save</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">save</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <p> Closes when block exits</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;~/.coffee_shop.yml&#39;</span><span class="p">),</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> 
+         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+      <span class="p">}</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">load</span>
+      <span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;~/.coffee_shop.yml&#39;</span><span class="p">),</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">yf</span><span class="o">|</span> <span class="n">c</span> <span class="o">=</span> <span class="no">YAML</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span> <span class="n">yf</span> <span class="p">)</span> <span class="p">}</span>
+
+      <span class="vi">@bgColor</span> <span class="o">=</span> <span class="n">c</span><span class="o">[</span><span class="s1">&#39;bgColor&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">c</span><span class="o">[</span><span class="s1">&#39;bgColor&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="s1">&#39;#FFF&#39;</span> <span class="k">if</span> <span class="n">c</span>
+      <span class="vi">@fgColor</span> <span class="o">=</span> <span class="n">c</span><span class="o">[</span><span class="s1">&#39;fgColor&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">c</span><span class="o">[</span><span class="s1">&#39;fgColor&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="s1">&#39;#000&#39;</span> <span class="k">if</span> <span class="n">c</span>
    <span class="k">end</span>
 
    <span class="k">def</span> <span class="nf">appStyles</span>
@@ -90,25 +115,40 @@
 <span class="sh">            background-color: #{@bgColor};</span>
 <span class="sh">         }</span>
 
-<span class="sh">         QTextEdit {</span>
+<span class="sh">         QPlainTextEdit {</span>
 <span class="sh">            color: #{@fgColor};</span>
 <span class="sh">            background-color: #{@bgColor};</span>
 <span class="sh">            border: 1px solid #{@fgColor}; </span>
 <span class="sh">            padding: 10px;</span>
 <span class="sh">         }</span>
 
-<span class="sh">         QScrollAread {</span>
-<span class="sh">            background-color: #{@bgColor};</span>
-<span class="sh">            color: #{@fgColor};</span>
+<span class="sh">         QScrollArea {</span>
+<span class="sh">            background-color: #{@bgcolor};</span>
+<span class="sh">            color: #{@fgcolor};</span>
+<span class="sh">         }</span>
+
+<span class="sh">         QScrollBar {</span>
+<span class="sh">            border: 1px solid #{@fgColor}; </span>
+<span class="sh">            background-color: #{@bgcolor};</span>
+<span class="sh">            color: #{@fgcolor};</span>
 <span class="sh">         }</span>
 <span class="no">      GLOBAL</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">config</span>
+      <span class="n">yaml</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="s1">&#39;fgColor&#39;</span> <span class="o">=&gt;</span> <span class="vi">@fgColor</span><span class="p">,</span>
+         <span class="s1">&#39;bgColor&#39;</span> <span class="o">=&gt;</span> <span class="vi">@bgColor</span><span class="p">,</span>
+      <span class="p">}</span>
+
+      <span class="no">YAML</span><span class="o">::</span><span class="n">dump</span> <span class="n">yaml</span>
    <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-3'>
+    <tr id='section-4'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-3">#</a>
+          <a class="octothorpe" href="#section-4">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
 
