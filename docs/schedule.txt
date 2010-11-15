@@ -52,6 +52,11 @@ End   Sat Dec 4th, 2010
 --- Q3 ---             |  Wk 1 |  Wk 2 |  Wk 3 |  Wk 4 |  Wk 5 |  Wk 6 |  Wk 7 |  Wk 8 |  Wk 9 | Wk 10 | Wk 11 |
                        |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 Milestone 1            |       |       |       |       |   x   |       |       |       |       |       |       |
+Meeting w/ Turner      |       |       |       |       |       |   x   |       |       |       |       |       |
+Meeting w/ Turner      |       |       |       |       |       |       |   x   |       |       |       |       |
+Meeting w/ Turner      |       |       |       |       |       |       |       |   x   |       |       |       |
+Meeting w/ Turner      |       |       |       |       |       |       |       |       |   x   |       |       |
+Milestone 2            |       |       |       |       |       |       |       |       |       |       |  x    |
                        |SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|SMTWRFS|
                               26       3      10       17     24      31       7      14      21      28       4
 
