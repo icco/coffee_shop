@@ -75,7 +75,7 @@ end
 
 # Create the app, define the style sheet and start the application.
 app = Qt::Application.new ARGV
-app.setWindowIcon Qt::Icon.new "assets/icons/light_gray/sad.png" 
+app.setWindowIcon Qt::Icon.new "assets/icons/icon.png" 
 
 GlobalSettings.instance.load
 app.setStyleSheet(GlobalSettings.instance.appStyles)
