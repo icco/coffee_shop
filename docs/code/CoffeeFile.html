@@ -113,17 +113,17 @@
         <p> Surprise surprise, we only want to save when we have a filename.</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
-         <span class="k">case</span> <span class="n">mode</span>
-         <span class="k">when</span> <span class="s1">&#39;auto&#39;</span>
-            <span class="k">return</span>
-         <span class="k">when</span> <span class="s1">&#39;click&#39;</span>
+        <div class='highlight'><pre>      <span class="k">case</span> <span class="n">mode</span>
+      <span class="k">when</span> <span class="s1">&#39;auto&#39;</span>
+         <span class="k">return</span> <span class="c1"># No auto-save...</span>
+      <span class="k">when</span> <span class="s1">&#39;click&#39;</span>
+         <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
             <span class="n">fname</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getSaveFileName</span><span class="p">()</span>
             <span class="vi">@fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">nil?</span> <span class="p">?</span> <span class="s2">&quot;&quot;</span> <span class="p">:</span> <span class="n">fname</span>
             <span class="k">return</span> <span class="k">if</span> <span class="vi">@fname</span><span class="o">.</span><span class="n">empty?</span>
-         <span class="k">else</span>
-            <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
          <span class="k">end</span>
+      <span class="k">else</span>
+         <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Unknow save mode: </span><span class="si">#{</span><span class="n">mode</span><span class="si">}</span><span class="s2">.&quot;</span>
       <span class="k">end</span>
 
       <span class="vi">@text</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">text</span>

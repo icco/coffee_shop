@@ -419,3 +419,21 @@ name through File.expand_path if you want to turn ~/ into a users home dir.
 
 Also, Jeannie sent me some possible icon / theme ideas. You can check them out
 [here](https://github.com/icco/coffee_shop/raw/master/docs/images/coffee-shop-icons-110710.jpg).
+
+## 11.15.10
+
+Finalized icon and screenshot. Turned off autosaving. I know, not a lot of progress, but meh.
+
+TODO:
+
+ * tabs for multiple files
+ * key commands
+   * C, V, P, O, S, W
+ * styling of scrollbar
+ * auto-hiding of the menu
+ * intelligent sizing
+   * also get the text area to be the appropriate size for paper. Can we look at the font? Do we need to?
+ * Add the ability to change the font
+   * serif, sans-serif, monospace
+ * make the whole app look a little sexier. Maybe better default colors?
+
