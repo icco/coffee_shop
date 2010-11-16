@@ -39,17 +39,17 @@ class CoffeeFile
 
    def save mode
       # Surprise surprise, we only want to save when we have a filename.
-      if @fname.empty?
-         case mode
-         when 'auto'
-            return
-         when 'click'
+      case mode
+      when 'auto'
+         return # No auto-save...
+      when 'click'
+         if @fname.empty?
             fname = Qt::FileDialog.getSaveFileName()
             @fname = fname.nil? ? "" : fname
             return if @fname.empty?
-         else
-            GlobalSettings.log "Unknow save mode: #{mode}."
          end
+      else
+         GlobalSettings.log "Unknow save mode: #{mode}."
       end
 
       @text = GlobalSettings.instance.text.text
