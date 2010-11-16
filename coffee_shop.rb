@@ -77,8 +77,17 @@ end
 app = Qt::Application.new ARGV
 app.setWindowIcon Qt::Icon.new "assets/icons/icon.png" 
 
-GlobalSettings.instance.load
-app.setStyleSheet(GlobalSettings.instance.appStyles)
-FullScreen.instance.show 
-app.exec 
+# Splash Screen init
+ss_icon = Qt::Pixmap.new "assets/splash.png"
+ss = Qt::SplashScreen.new(ss_icon)
+ss.show
 
+GlobalSettings.instance.load
+FullScreen.instance.show 
+app.setStyleSheet GlobalSettings.instance.appStyles
+
+sleep 2 
+
+ss.finish(FullScreen.instance)
+
+app.exec 
