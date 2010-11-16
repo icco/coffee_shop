@@ -42,6 +42,7 @@ class CoffeeFile
       case mode
       when 'auto'
          return # No auto-save...
+      when 'key'
       when 'click'
          if @fname.empty?
             fname = Qt::FileDialog.getSaveFileName()

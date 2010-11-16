@@ -10,7 +10,7 @@ class QuitButton < MenuItem
       # Build the button
       # Connect the button to an action
       quit = Qt::PushButton.new(icon, "") do
-         connect(SIGNAL :clicked) { Qt::Application.instance.quit }
+         connect(SIGNAL :clicked) { GlobalSettings.quit }
       end
       quit.setStyleSheet(@menuStyle);
 

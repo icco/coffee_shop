@@ -9,6 +9,15 @@ class TextBox < Qt::Widget
 
       gs = GlobalSettings.instance
 
+      # Key combos
+      save = Qt::KeySequence.new("Ctrl+S")
+      save_shortcut = Qt::Shortcut.new(save, self);
+      save_shortcut.connect(SIGNAL :activated) { gs.file.save 'key' }
+
+      quit = Qt::KeySequence.new("Alt+F4")
+      quit_shortcut = Qt::Shortcut.new(save, self);
+      quit_shortcut.connect(SIGNAL :activated) { GlobalSettings.quit }
+
       # QTextEdit makes life so easy, it's almost depressing.
       @tb = Qt::PlainTextEdit.new 
       @tb.connect(SIGNAL :textChanged) {
@@ -22,6 +31,10 @@ class TextBox < Qt::Widget
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@tb)
       setLayout(layout)
+   end
+
+   def activate x
+      p x
    end
 
    # Need to implement this for opening

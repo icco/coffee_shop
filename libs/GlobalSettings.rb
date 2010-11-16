@@ -86,5 +86,10 @@ class GlobalSettings
       t = Time.new
       puts t.strftime(tFormat) + text 
    end
+
+   # Called to exit program
+   def GlobalSettings.quit
+      Qt::Application.instance.quit
+   end
 end
 
