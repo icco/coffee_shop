@@ -36,11 +36,29 @@ class Menu < Qt::Widget
       menus.setAlignment Qt::AlignTop
 
       setLayout menus
+
+      # Get ready to hide.
+      @hidden = true
+      self.toggle
+   end
+
+   def toggle
+      if @hidden
+         # show
+
+         # add timer till hide
+         Qt::Timer::singleShot(10000, self) do
+            p 'timeout'
+            @hidden = true
+         end
+
+         @hidden = false
+      end
    end
 
    def mouseMoveEvent ev
       super 
 
-      #self.setHidden true
+      self.toggle
    end
 end

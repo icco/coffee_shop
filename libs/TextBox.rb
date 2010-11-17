@@ -72,4 +72,3 @@ class TextBox < Qt::Widget
       return ret
    end
 end
-

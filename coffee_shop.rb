@@ -50,8 +50,8 @@ class FullScreen < Qt::Widget
 
       # Create right and left side buffers. At some point, I need to make these
       # fit any screen size.
-      spacer1 = Qt::SpacerItem.new(300, 100)
-      spacer2 = Qt::SpacerItem.new(200, 100)
+      spacer1 = Qt::SpacerItem.new(100, 100)
+      spacer2 = Qt::SpacerItem.new(100, 100)
 
       # Layout the textbox
       menu = Menu.new
