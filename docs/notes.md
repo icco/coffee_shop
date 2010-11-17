@@ -437,3 +437,29 @@ TODO:
    * serif, sans-serif, monospace
  * make the whole app look a little sexier. Maybe better default colors?
 
+## 11.16.10
+
+ Got Ctrl+s and Alt+F4 working
+
+Current Functional requirement status
+
+FR1: 85%
+
+    * FR1.1: complete
+    * FR1.2: 70%
+
+FR2: complete
+
+FR3: 75%
+
+    * FR3.1: Done, kinda buggy
+    * FR3.2: Done, Kinda buggy
+    * FR3.3: the user should be able to select a font, from a limited selection of fonts.
+    * FR3.4: Done
+
+FR4: It must support find and replace.
+
+FR5: Done
+
+FR6: When the user clicks the print menu item, the dialog to print must be displayed.
+
