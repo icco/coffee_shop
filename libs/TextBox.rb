@@ -14,6 +14,10 @@ class TextBox < Qt::Widget
       save_shortcut = Qt::Shortcut.new(save, self);
       save_shortcut.connect(SIGNAL :activated) { gs.file.save 'key' }
 
+      open = Qt::KeySequence.new("Ctrl+O")
+      open_shortcut = Qt::Shortcut.new(save, self);
+      open_shortcut.connect(SIGNAL :activated) { gs.file.load Qt::FileDialog.getOpenFileName() }
+            
       quit = Qt::KeySequence.new("Alt+F4")
       quit_shortcut = Qt::Shortcut.new(save, self);
       quit_shortcut.connect(SIGNAL :activated) { GlobalSettings.quit }
