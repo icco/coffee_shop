@@ -19,6 +19,7 @@ require 'Qt4'
 require 'singleton'
 
 # I moved all of the classes into their sperate files for readability
+# TODO: there is a way to make ruby autoload smarter...
 require 'libs/GlobalSettings'
 require 'libs/CoffeeFile'
 require 'libs/TextBox'
@@ -29,6 +30,7 @@ require 'libs/ColorButton'
 require 'libs/BackgroundButton'
 require 'libs/ForegroundButton'
 require 'libs/LoadButton'
+require 'libs/PrintButton'
 require 'libs/QuitButton'
 require 'libs/SaveButton'
 require 'libs/StatsWidget'

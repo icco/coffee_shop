@@ -10,6 +10,7 @@ class Menu < Qt::Widget
       menu[1] = Qt::HBoxLayout.new()
       menu[1].addWidget SaveButton.new
       menu[1].addWidget LoadButton.new
+      menu[1].addWidget PrintButton.new
       menu[1].addWidget QuitButton.new
       menu[1].setAlignment Qt::AlignLeft
 
@@ -48,7 +49,6 @@ class Menu < Qt::Widget
 
          # add timer till hide
          Qt::Timer::singleShot(10000, self) do
-            p 'timeout'
             @hidden = true
          end
 

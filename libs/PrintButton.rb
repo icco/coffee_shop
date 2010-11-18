@@ -1,19 +1,20 @@
-# Deals with loading a file into the text editor on button click.
-class LoadButton < MenuItem
+# Prints the current tab on click
+class PrintButton < MenuItem
    def initialize
       super 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/black/open.png'
-      label = "Load"
+      icon  = Qt::Icon.new 'assets/icons/black/scream.png'
+      label = "Print"
 
       but = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) {
             if (gs.file.changed)
-               gs.file.save 'auto'
+               gs.file.save 'print'
             end
 
-            gs.file.load Qt::FileDialog.getOpenFileName
+            # something like this...
+            #Qt::PrintPreviewDialog.new gs.file.fname
          }
       end
 
