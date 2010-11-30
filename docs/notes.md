@@ -228,3 +228,244 @@ easy. So happy that I found this.
 [qm]: http://doc.trolltech.com/4.1/qmenu.html 
 [ui]: /ui
 
+## 8.30.10
+
+I started working on pagination today. Very little success.
+
+## 9.3.10
+
+The paintEvent function that widgets can implement is awesome. Basically
+whenever the widget feels it needs to be redrawn, it calls the paintEvent
+function. So you can then dynamically recreate the widget right there. It's
+awesome.
+
+## 9.6.10
+
+While paintEvent was cool, I ran into all sorts of issues trying to redraw
+widgets while they were in use. Paginating text loaded from a file is easy,
+paginating on the fly was a bitch.
+
+Tried out WxRuby and Ruby/Tk. As hard as it is to beleive, both are far worse
+than Qt, mainly because Qt has "good" documentation and tutorials.
+
+Walked through the source of [QTextEdit and QPrinter][qsrc]. This confirmed all
+of my suspicions that Qt has no interest in write time pagination. This seems
+like such a silly view issue that I should be able to code everything up and go
+from there, but we shall see. I had everything looking the way I wanted, just
+not working the way I wanted.
+
+Also, at some point I need to turn my makefile into a [rakefile][rake].
+
+Scanning through the source of KWord I found [QTextFormat][qtf] which sounds
+promissing.
+
+[qsrc]: http://qt.gitorious.org/qt/qt/blobs/4.7/src/gui/text/qtextdocument.cpp#line1629
+[rake]: http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
+[qtf]: http://doc.trolltech.com/4.3/qtextformat.html
+
+## 9.11.10
+
+I lied, QTextFormat is not what I want. I've posted to the Qt mailing list to
+see if maybe someone can figure out a solution, because I am stuck.
+
+## 9.12.10
+
+I asked around on the Qt forums, and got [a reasonable response][qfr].
+Basically it sounds like I need to reinvent the QTextEdit. Classes I need/am
+looking at:
+
+ * <http://doc.trolltech.com/4.6/qgraphicsscene.html>
+ * <http://doc.trolltech.com/4.6/graphicsview.html>
+ * <http://doc.trolltech.com/4.6/qgraphicsitem.html>
+ * <http://doc.trolltech.com/4.6/qgraphicstextitem.html>
+
+[qfr]: http://developer.qt.nokia.com/forums/viewthread/862/
+
+## 9.15.10
+
+Made some good progress. Trying to figure out the logic behind deciding when to
+draw new pages, and how.
+
+## 9.18.10
+
+I changed TextBox to have an update function that gets called whenever the text
+changes, which is kind of awesome. Now I just need to write it so it does the right thing.
+
+ * [this example][graph-ex] is good
+ * [key event][qkey] is fired when you type
+
+[graph-ex]: http://doc.qt.nokia.com/4.3/graphicsview-diagramscene.html
+[qkey]: http://doc.trolltech.com/4.6/qkeyevent.html
+
+## 10.2.10
+
+[James Pearson][jp] showed me a new writing program for the iPad, called
+[Writer][writer]. [Dave Patierno][dp] ended up buying it for his iPad and
+letting me try it out. It has some interesting features. One of the ones it
+totes as being amazing is it's ability to predict reading time. Not entirely
+sure how it does that, but it's an interesting idea. It also has a reading mode
+that highlights what you are supposedly reading. I find it interesting, because
+I found it really hard to use as a writer, and it lacked touch controls for
+writting navigation. Both of these seem kind of important to me as a user, and
+it's not something I would use. But the internet media loves it, so maybe I
+just don't get it.
+
+ * [Screenshot 1][writer1]
+ * [Screenshot 2][writer2]
+ * [Screenshot 3][writer3]
+
+[writer]: http://www.informationarchitects.jp/en/writer-for-ipad/
+[dp]: http://dmpatierno.com/
+[jp]: http://changedmy.name/
+[writer1]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer1.png
+[writer2]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer2.png
+[writer3]: http://github.com/icco/coffee_shop/raw/master/docs/images/writer3.png
+
+## 10.9.10
+
+Waking up abnormally early, I decided it's time to get back to work. I'm going
+to scrap pagination as a feature, for now. All it's really done is piss me off
+and force me to focus on a technical problem that no one else really cares
+about. So I'm going to make a branch marking where I'm departing from
+pagination. The only real problem with this, is it reminds me that Kyle is far
+smarter than I am. Whoo humbling moments...
+
+## 10.16.10
+
+ * <http://zetcode.com/tutorials/qtrubytutorial/introduction/>
+ * <http://doc.trolltech.com/4.6/qcompleter.html>
+
+## 10.19.10
+
+Apparently I'm meeting with Dr. Turner tomorrow. In the last two months, I've
+broken most of the features I had working around July. So now I'm pounding them
+out and getting them working again. Heck I even added an application icon.
+
+Some interesting research I came across, that I'll need to deal with later.
+
+ * <http://www.erikveen.dds.nl/distributingrubyapplications/>
+
+## 10.20.10
+
+Attempted to get word count working... no luck. Also pasting from other programs does not work.
+
+## 10.22.10
+
+I met with Dr. Turner on Wednesday. He said I should make sure to bring up some
+of the community challenges I have faced. The big one I am talking about is
+pagination, and how the Qt users (both on SO and their forums) don't understand
+the point of pagination while typing. I think it is very possible that using
+ruby for this was a bad idea. Mainly because writing desktop applications in a
+scripting language is not they easiest thing. 
+
+I asked [this question][so-dist] on Stack Overflow, so maybe I can get some
+help with distributing my app. 
+
+[so-dist]: http://stackoverflow.com/questions/4000206/distributing-a-rubyqt-app
+
+## 10.23.10
+
+Yesterday I got the word count working, which I'm pretty stoked about. While
+figuring out how to get it working, I think I figured out my biggest problem
+with Qt: it assumes you can pass by reference, and that you have a reference to
+every widget you ever created. This is so different to the design decisions
+that web programming has, it's scary.
+
+Also, I asked Jeannie to make me a [Splash Screen][splash-screen]. It'll be
+sweet if she comes through. If not, I'll have to start drawing again, which
+could burn out my user's eyes before the program finishes loading...
+
+[splash-screen]: http://doc.trolltech.com/4.7/qsplashscreen.html
+
+Things I have left to do:
+
+ * Get the right menu disappearing
+ * get my color picker working.
+ * auto-detect screen size and scale appropriately
+
+End of the day update: got the color picker kind of working, and the base for
+the disappearing menu is working. I think.
+
+
+## 10.26.10
+
+Features I still want, in no particular order:
+
+ * Add config saving
+   * yaml?
+ * tabs for multiple files
+ * key commands
+ * pasting from another app
+   * this actually seems to be working...
+ * styling of scrollbar
+ * auto-hiding of the menu
+ * intelligent sizing
+   * also get the text area to be the appropriate size for paper. Can we look at the font? Do we need to?
+ * Add the ability to change the font
+   * serif, sans-serif, monospace
+ * make the whole app look a little sexier. Maybe better default colors?
+ * Maybe turn off auto saving?
+   * Not sure how I feel about this...
+
+## 11.7.10
+
+Started messing with config saving. I sadly don't want to just dump the entire
+GlobalSettings object into a file after encoding it with YAML, mainly because I
+use it as a Singleton across the entire program to store all of my settings and
+references to objects I have instantiated. 
+
+An interesting caveat to how ruby's File.open works: you must send the file
+name through File.expand_path if you want to turn ~/ into a users home dir. 
+
+Also, Jeannie sent me some possible icon / theme ideas. You can check them out
+[here](https://github.com/icco/coffee_shop/raw/master/docs/images/coffee-shop-icons-110710.jpg).
+
+## 11.15.10
+
+Finalized icon and screenshot. Turned off autosaving. I know, not a lot of progress, but meh.
+
+TODO:
+
+ * tabs for multiple files
+ * key commands
+   * C, V, P, O, S, W
+ * styling of scrollbar
+ * auto-hiding of the menu
+ * intelligent sizing
+   * also get the text area to be the appropriate size for paper. Can we look at the font? Do we need to?
+ * Add the ability to change the font
+   * serif, sans-serif, monospace
+ * make the whole app look a little sexier. Maybe better default colors?
+
+## 11.16.10
+
+ Got Ctrl+s and Alt+F4 working
+
+Current Functional requirement status
+
+FR1: 85%
+
+    * FR1.1: complete
+    * FR1.2: 70%
+
+FR2: complete
+
+FR3: 75%
+
+    * FR3.1: Done, kinda buggy
+    * FR3.2: Done, Kinda buggy
+    * FR3.3: the user should be able to select a font, from a limited selection of fonts.
+    * FR3.4: Done
+
+FR4: It must support find and replace.
+
+FR5: Done
+
+FR6: When the user clicks the print menu item, the dialog to print must be displayed.
+
+## 11.29.10
+
+Crap. Has it really been 13 days since I did any work on this?
+
+Oh well. I got FR6 done. The problem is I need to get the global styling to be
+better, because setting the BG color for * just doesn't work.

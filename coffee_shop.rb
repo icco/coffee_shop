@@ -18,248 +18,24 @@
 require 'Qt4'
 require 'singleton'
 
-# Next we define this class, which is a singleton for storing configuration
-# data that needs to be passed around the program. 
-class GlobalSettings
-   include Singleton
-   attr_accessor :files, :currentFile, :text, :bgColor, :fgColor
+# I moved all of the classes into their sperate files for readability
+# TODO: there is a way to make ruby autoload smarter...
+require 'libs/GlobalSettings'
+require 'libs/CoffeeFile'
+require 'libs/TextBox'
+require 'libs/Menu'
+require 'libs/MenuItem'
+require 'libs/Drawer'
+require 'libs/ColorButton'
+require 'libs/BackgroundButton'
+require 'libs/ForegroundButton'
+require 'libs/LoadButton'
+require 'libs/PrintButton'
+require 'libs/QuitButton'
+require 'libs/SaveButton'
+require 'libs/StatsWidget'
 
-   def file
-      return @files[@currentFile]
-   end
-
-   def file=(a)
-      @files[@currentFile] = a
-   end
-
-   def app
-      return Qt::Application.instance
-   end
-
-   def refresh
-      app.setStyleSheet(appStyles)
-   end
-
-   def appStyles
-      @bgColor = '#FFF' if @bgColor.nil?
-      @fgColor = '#000' if @fgColor.nil?
-
-      return <<-GLOBAL
-         * {
-            background-color: #{@bgColor};
-         }
-
-         QPlainTextEdit {
-            color: #{@fgColor};
-         }
-      GLOBAL
-   end
-end
-
-# A class to represent something on disk.
-class CoffeeFile
-   # I can never seem to remember this little function name
-   attr_accessor :text, :fname, :lastsave, :changed
-
-   def initialize filename
-      @fname = filename
-   end
-
-   # currently I don't know how to put the loaded text back into the editor
-   def load filename
-      @fname = filename
-
-      if @fname.empty?
-         log "Empty filename, could not load"
-      else
-         file = File.new(@fname, 'r')
-         @text = file.read
-         @changed = true
-         file.close
-         GlobalSettings.instance.text.text = @text
-      end
-
-      return @text
-   end
-
-   def save mode
-      if !@lastsave.nil? and (Time.new - @lastsave > 1)
-         # Surprise surprise, we only want to save when we have a filename.
-         if @fname.empty?
-            case mode
-            when 'auto'
-               #log "Not Saving: filename empty"
-               return
-            when 'click'
-               @fname = Qt::FileDialog.getSaveFileName()
-            else
-               log "Unknow save mode: #{mode}."
-            end
-         end
-
-         file = File.new(@fname, 'w')
-         file.write @text
-         @changed = false
-         # If we don't close, the file won't actually save until prgm death
-         file.close
-         @lastsave = Time.new
-      else
-         @lastsave = Time.at(0)
-      end
-   end
-end
-
-# this is the big ass text box.
-class TextBox < Qt::Widget
-   def initialize
-      super
-      gs = GlobalSettings.instance
-      @tb = Qt::PlainTextEdit.new 
-      @tb.connect(SIGNAL :textChanged) {
-         gs.file.text = @tb.toPlainText
-         gs.file.save 'auto'
-      }
-
-      setGeometry(10, 10, 10, 10)
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(@tb)
-      setLayout(layout)
-   end
-
-   def text= txt
-      @tb.setPlainText txt
-   end
-end
-
-# Super class for anything in the menu
-class MenuItem < Qt::Widget
-   def initialize
-      super
-
-      # Now that we know about stylesheets, we can save a string that all
-      # MenuItems can use to style themselves. It's kind of amazing really.
-      @menuStyle = <<-STYLE
-      QPushButton {
-         border: none;
-         width:  20px;
-         height: 20px;
-      }
-      STYLE
-   end
-end
-
-class BgColorButton < MenuItem
-   def initialize
-      super
-
-      gs = GlobalSettings.instance
-
-      icon  = Qt::Icon.new 'assets/icons/black/64x64/add.png'
-      label = "Color"
-
-      but = Qt::PushButton.new('Bg') do
-         connect(SIGNAL :clicked) { 
-            gs.bgColor = Qt::ColorDialog.getColor.name
-            gs.refresh
-         }
-      end
-      but.setStyleSheet(@menuStyle);
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(but)
-      setLayout(layout)
-   end
-end
-
-class FgColorButton < MenuItem
-   def initialize
-      super
-
-      gs = GlobalSettings.instance
-
-      icon  = Qt::Icon.new 'assets/icons/black/64x64/add.png'
-      label = "Color"
-
-      but = Qt::PushButton.new('Fg') do
-         connect(SIGNAL :clicked) { 
-            gs.fgColor = Qt::ColorDialog.getColor.name
-            gs.refresh
-         }
-      end
-      but.setStyleSheet(@menuStyle);
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(but)
-      setLayout(layout)
-   end
-end
-
-
-class SaveButton < MenuItem
-   def initialize
-      super 
-
-      gs = GlobalSettings.instance
-
-      icon  = Qt::Icon.new 'assets/icons/black/64x64/save.png'
-      label = "Save"
-
-      but = Qt::PushButton.new(icon, "") do
-         connect(SIGNAL :clicked) { gs.file.save 'click' }
-      end
-      but.setStyleSheet(@menuStyle);
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(but)
-      setLayout(layout)
-   end
-end
-
-class LoadButton < MenuItem
-   def initialize
-      super 
-      gs = GlobalSettings.instance
-
-      icon  = Qt::Icon.new 'assets/icons/black/64x64/open.png'
-      label = "Load"
-
-      but = Qt::PushButton.new(icon, "") do
-         connect(SIGNAL :clicked) {
-            if (gs.files[gs.currentFile].changed)
-               gs.file.save 'auto'
-            end
-
-            gs.file.load Qt::FileDialog.getOpenFileName()
-         }
-      end
-      but.setStyleSheet(@menuStyle);
-
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(but)
-      setLayout(layout)
-   end
-end
-
-
-class QuitButton < MenuItem
-   def initialize
-      # First setup the menuitem
-      super 
-
-      icon  = Qt::Icon.new 'assets/icons/black/64x64/close.png'
-      label = "Quit"
-
-      # Build the button
-      # Connect the button to an action
-      quit = Qt::PushButton.new(icon, "") do
-         connect(SIGNAL :clicked) { Qt::Application.instance.quit }
-      end
-      quit.setStyleSheet(@menuStyle);
-
-      # Lay the button out
-      layout = Qt::VBoxLayout.new()
-      layout.addWidget(quit)
-      setLayout(layout)
-   end
-end
-
+# This is the root class that does all of the setting up and displaying.
 class FullScreen < Qt::Widget
    include Singleton
    attr_accessor :file
@@ -267,48 +43,53 @@ class FullScreen < Qt::Widget
    def initialize
       super
 
+      # We need to set up all of the settings 
       gs = GlobalSettings.instance;
       gs.files = [];
       gs.currentFile = 0;
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
-      menu1 = Qt::HBoxLayout.new()
-      menu1.addWidget SaveButton.new
-      menu1.addWidget LoadButton.new
-      menu1.addWidget QuitButton.new
+      # Create right and left side buffers. At some point, I need to make these
+      # fit any screen size.
+      spacer1 = Qt::SpacerItem.new(100, 100)
+      spacer2 = Qt::SpacerItem.new(100, 100)
 
-      menu2 = Qt::HBoxLayout.new()
-      menu2.addWidget FgColorButton.new
-      menu2.addWidget BgColorButton.new
+      # Layout the textbox
+      menu = Menu.new
+      hbox = Qt::HBoxLayout.new
+      hbox.addWidget(gs.text)
+      hbox.addWidget(menu)
 
-      menus = Qt::VBoxLayout.new
-      menus.addLayout menu1
-      menus.addLayout menu2
-
+      # Lay it all out
       grid = Qt::GridLayout.new
-      grid.addWidget(gs.text, 0, 0)
-      grid.addLayout(menus, 0, 1)
+      grid.addItem(spacer1, 0, 0)
+      grid.addItem(spacer2, 0, 2)
+      grid.addLayout(hbox, 0, 1)
+
       setLayout(grid)
+
+      setWindowTitle "Coffee_Shop"
 
       setWindowState(Qt::WindowFullScreen)
    end
 end
 
-# A standard "log" format.
-def log text
-   tFormat = "[%m/%d/%Y %H:%M:%S]: "
-   t = Time.new
-   puts t.strftime(tFormat) + text 
-end
-
-# Go Dog Go
+# Create the app, define the style sheet and start the application.
 app = Qt::Application.new ARGV
-app.setStyleSheet(GlobalSettings.instance.appStyles)
+app.setWindowIcon Qt::Icon.new "assets/icons/icon.png" 
 
-# Display
+# Splash Screen init
+ss_icon = Qt::Pixmap.new "assets/splash.png"
+ss = Qt::SplashScreen.new(ss_icon)
+ss.show
+
+GlobalSettings.instance.load
 FullScreen.instance.show 
+app.setStyleSheet GlobalSettings.instance.appStyles
 
-# Run
+sleep 2 
+
+ss.finish(FullScreen.instance)
+
 app.exec 
-
