@@ -10,17 +10,22 @@ class PrintButton < MenuItem
       but = Qt::PushButton.new(icon, "") do
          connect(SIGNAL :clicked) {
             if (gs.file.changed)
-               gs.file.save 'print'
+               #gs.file.save 'print'
             end
 
             # something like this...
-            #Qt::PrintPreviewDialog.new gs.file.fname
+            dlg = Qt::PrintDialog.new
+            if dlg.exec == Qt::Dialog::Accepted
+               gs.text.document.print dlg.printer
+            else
+               GlobalSettings.log "Printing fail."
+            end
          }
       end
 
       but.setStyleSheet(@menuStyle);
 
-      layout = Qt::VBoxLayout.new()
+      layout = Qt::VBoxLayout.new
       layout.addWidget(but)
       setLayout(layout)
    end

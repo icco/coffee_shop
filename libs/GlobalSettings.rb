@@ -47,9 +47,6 @@ class GlobalSettings
       @fgColor = '#000' if @fgColor.nil?
 
       return <<-GLOBAL
-         * {
-            background-color: #{@bgColor};
-         }
 
          QPlainTextEdit {
             color: #{@fgColor};

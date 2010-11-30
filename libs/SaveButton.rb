@@ -1,4 +1,3 @@
-
 class SaveButton < MenuItem
    def initialize
       super 
@@ -17,4 +16,3 @@ class SaveButton < MenuItem
       setLayout(layout)
    end
 end
-

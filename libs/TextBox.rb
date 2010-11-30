@@ -31,6 +31,7 @@ class TextBox < Qt::Widget
       }
 
       @tb.setFrameShape Qt::Frame::NoFrame
+      @tb.setWordWrapMode Qt::TextOption::WordWrap
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@tb)
@@ -50,6 +51,14 @@ class TextBox < Qt::Widget
    # Need to implement this for saving, and other things... I think.
    def text
       return @tb.toPlainText
+   end
+
+   def document
+      return @tb.document
+   end
+
+   def document= x
+      return @tb.document = x
    end
 
    # Returns details about the currently edited file
