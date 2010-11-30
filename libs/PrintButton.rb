@@ -4,7 +4,7 @@ class PrintButton < MenuItem
       super 
       gs = GlobalSettings.instance
 
-      icon  = Qt::Icon.new 'assets/icons/black/scream.png'
+      icon  = Qt::Icon.new 'assets/icons/black/print.png'
       label = "Print"
 
       but = Qt::PushButton.new(icon, "") do
