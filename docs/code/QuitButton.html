@@ -22,6 +22,7 @@
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="PrintButton.html">PrintButton.rb</a>
         <a class="source" href="QuitButton.html">QuitButton.rb</a>
         <a class="source" href="SaveButton.html">SaveButton.rb</a>
         <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
@@ -73,7 +74,7 @@
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">quit</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
-         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">quit</span> <span class="p">}</span>
+         <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">quit</span> <span class="p">}</span>
       <span class="k">end</span>
       <span class="n">quit</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span></pre></div>
       </td>

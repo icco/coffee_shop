@@ -22,6 +22,7 @@
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="PrintButton.html">PrintButton.rb</a>
         <a class="source" href="QuitButton.html">QuitButton.rb</a>
         <a class="source" href="SaveButton.html">SaveButton.rb</a>
         <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
@@ -65,6 +66,7 @@
         <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">SaveButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">LoadButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">PrintButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">QuitButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
       </td>
@@ -114,11 +116,7 @@
 
       <span class="n">menus</span><span class="o">.</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignTop</span>
 
-      <span class="n">setLayout</span> <span class="n">menus</span>
-   <span class="k">end</span>
-
-   <span class="k">def</span> <span class="nf">mouseMoveEvent</span> <span class="n">ev</span>
-      <span class="k">super</span> </pre></div>
+      <span class="n">setLayout</span> <span class="n">menus</span></pre></div>
       </td>
     </tr>
     <tr id='section-6'>
@@ -126,11 +124,50 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-6">#</a>
         </div>
-        <p>self.setHidden true</p>
+        <p> Get ready to hide.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="vi">@hidden</span> <span class="o">=</span> <span class="kp">true</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">toggle</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">toggle</span>
+      <span class="k">if</span> <span class="vi">@hidden</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-7'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-7">#</a>
+        </div>
+        <p> show</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-8'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-8">#</a>
+        </div>
+        <p> add timer till hide</p>
 
       </td>
       <td class=code>
-        <div class='highlight'><pre>   <span class="k">end</span>
+        <div class='highlight'><pre>         <span class="no">Qt</span><span class="o">::</span><span class="no">Timer</span><span class="o">::</span><span class="n">singleShot</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="nb">self</span><span class="p">)</span> <span class="k">do</span>
+            <span class="vi">@hidden</span> <span class="o">=</span> <span class="kp">true</span>
+         <span class="k">end</span>
+
+         <span class="vi">@hidden</span> <span class="o">=</span> <span class="kp">false</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">mouseMoveEvent</span> <span class="n">ev</span>
+      <span class="k">super</span> 
+
+      <span class="nb">self</span><span class="o">.</span><span class="n">toggle</span>
+   <span class="k">end</span>
 <span class="k">end</span></pre></div>
       </td>
     </tr>

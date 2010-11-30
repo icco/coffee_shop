@@ -22,6 +22,7 @@
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="PrintButton.html">PrintButton.rb</a>
         <a class="source" href="QuitButton.html">QuitButton.rb</a>
         <a class="source" href="SaveButton.html">SaveButton.rb</a>
         <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
@@ -71,6 +72,27 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-3">#</a>
         </div>
+        <p> Key combos</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">save</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">KeySequence</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Ctrl+S&quot;</span><span class="p">)</span>
+      <span class="n">save_shortcut</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Shortcut</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="nb">self</span><span class="p">);</span>
+      <span class="n">save_shortcut</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:activated</span><span class="p">)</span> <span class="p">{</span> <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;key&#39;</span> <span class="p">}</span>
+
+      <span class="nb">open</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">KeySequence</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Ctrl+O&quot;</span><span class="p">)</span>
+      <span class="n">open_shortcut</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Shortcut</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="nb">self</span><span class="p">);</span>
+      <span class="n">open_shortcut</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:activated</span><span class="p">)</span> <span class="p">{</span> <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">()</span> <span class="p">}</span>
+            
+      <span class="n">quit</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">KeySequence</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Alt+F4&quot;</span><span class="p">)</span>
+      <span class="n">quit_shortcut</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Shortcut</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="nb">self</span><span class="p">);</span>
+      <span class="n">quit_shortcut</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:activated</span><span class="p">)</span> <span class="p">{</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">quit</span> <span class="p">}</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-4">#</a>
+        </div>
         <p> QTextEdit makes life so easy, it&rsquo;s almost depressing.</p>
       </td>
       <td class=code>
@@ -82,6 +104,21 @@
       <span class="p">}</span>
 
       <span class="vi">@tb</span><span class="o">.</span><span class="n">setFrameShape</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Frame</span><span class="o">::</span><span class="no">NoFrame</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setVerticalScrollBarPolicy</span> <span class="no">Qt</span><span class="o">::</span><span class="no">ScrollBarAlwaysOn</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-5'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-5">#</a>
+        </div>
+        <p> We can&rsquo;t have this if we don&rsquo;t want a horizantal scroll
+@tb.setWordWrapMode Qt::TextOption::WordWrap</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>      <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span> <span class="c1"># We want fixed width</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setMinimumSize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="vi">@tb</span><span class="o">.</span><span class="n">setMaximumSize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="mi">16777215</span><span class="p">)</span>
 
       <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="vi">@tb</span><span class="p">)</span>
@@ -89,10 +126,10 @@
    <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-4'>
+    <tr id='section-6'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-4">#</a>
+          <a class="octothorpe" href="#section-6">#</a>
         </div>
         <p> Need to implement this for opening</p>
       </td>
@@ -103,23 +140,39 @@
    <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-5'>
+    <tr id='section-7'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-5">#</a>
+          <a class="octothorpe" href="#section-7">#</a>
         </div>
         <p> Need to implement this for saving, and other things&hellip; I think.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">text</span>
       <span class="k">return</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">toPlainText</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">title</span><span class="o">=</span> <span class="n">x</span>
+      <span class="k">return</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">setDocumentTitle</span> <span class="n">x</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">title</span>
+      <span class="k">return</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">documentTitle</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">document</span>
+      <span class="k">return</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">document</span>
+   <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">document</span><span class="o">=</span> <span class="n">x</span>
+      <span class="k">return</span> <span class="vi">@tb</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="n">x</span>
    <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-6'>
+    <tr id='section-8'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-6">#</a>
+          <a class="octothorpe" href="#section-8">#</a>
         </div>
         <p> Returns details about the currently edited file</p>
       </td>
@@ -127,10 +180,10 @@
         <div class='highlight'><pre>   <span class="k">def</span> <span class="nf">stats</span></pre></div>
       </td>
     </tr>
-    <tr id='section-7'>
+    <tr id='section-9'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-7">#</a>
+          <a class="octothorpe" href="#section-9">#</a>
         </div>
         <p> Word Count, scan could be bad on a large file&hellip;</p>
 

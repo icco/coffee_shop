@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <title>LoadButton.rb</title>
+  <title>PrintButton.rb</title>
   <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
 </head>
 <body>
@@ -33,7 +33,7 @@
   <table cellspacing=0 cellpadding=0>
   <thead>
     <tr>
-      <th class=docs><h1>LoadButton.rb</h1></th>
+      <th class=docs><h1>PrintButton.rb</h1></th>
       <th class=code></th>
     </tr>
   </thead>
@@ -43,31 +43,54 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-1">#</a>
         </div>
-        <p> Deals with loading a file into the text editor on button click.</p>
-
+        <p> Prints the current tab on click</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre><span class="k">class</span> <span class="nc">LoadButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
+        <div class='highlight'><pre><span class="k">class</span> <span class="nc">PrintButton</span> <span class="o">&lt;</span> <span class="no">MenuItem</span>
    <span class="k">def</span> <span class="nf">initialize</span>
       <span class="k">super</span> 
       <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span>
 
-      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/open.png&#39;</span>
-      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Load&quot;</span>
+      <span class="n">icon</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;assets/icons/black/print.png&#39;</span>
+      <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Print&quot;</span>
 
       <span class="n">but</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PushButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">do</span>
          <span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:clicked</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span>
-               <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">save</span> <span class="s1">&#39;auto&#39;</span>
-            <span class="k">end</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-2'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-2">#</a>
+        </div>
+        <p>gs.file.save &lsquo;print&rsquo;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>            <span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-3">#</a>
+        </div>
+        <p> something like this&hellip;</p>
 
-            <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span> <span class="no">Qt</span><span class="o">::</span><span class="no">FileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>            <span class="n">dlg</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PrintDialog</span><span class="o">.</span><span class="n">new</span>
+            <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">open</span> <span class="o">==</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Dialog</span><span class="o">::</span><span class="no">Accepted</span>
+               <span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">print</span> <span class="n">dlg</span><span class="o">.</span><span class="n">printer</span>
+            <span class="k">else</span>
+               <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">log</span> <span class="s2">&quot;Printing fail.&quot;</span>
+            <span class="k">end</span>
          <span class="p">}</span>
       <span class="k">end</span>
 
       <span class="n">but</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="vi">@menuStyle</span><span class="p">);</span>
 
-      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">layout</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">VBoxLayout</span><span class="o">.</span><span class="n">new</span>
       <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">but</span><span class="p">)</span>
       <span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
    <span class="k">end</span>

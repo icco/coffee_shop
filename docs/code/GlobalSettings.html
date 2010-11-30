@@ -22,6 +22,7 @@
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="PrintButton.html">PrintButton.rb</a>
         <a class="source" href="QuitButton.html">QuitButton.rb</a>
         <a class="source" href="SaveButton.html">SaveButton.rb</a>
         <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
@@ -111,10 +112,6 @@
       <span class="vi">@fgColor</span> <span class="o">=</span> <span class="s1">&#39;#000&#39;</span> <span class="k">if</span> <span class="vi">@fgColor</span><span class="o">.</span><span class="n">nil?</span>
 
       <span class="k">return</span> <span class="o">&lt;&lt;-</span><span class="no">GLOBAL</span>
-<span class="sh">         * {</span>
-<span class="sh">            background-color: #{@bgColor};</span>
-<span class="sh">         }</span>
-
 <span class="sh">         QPlainTextEdit {</span>
 <span class="sh">            color: #{@fgColor};</span>
 <span class="sh">            background-color: #{@bgColor};</span>
@@ -151,13 +148,26 @@
           <a class="octothorpe" href="#section-4">#</a>
         </div>
         <p> A standard &ldquo;log&rdquo; format.</p>
-
       </td>
       <td class=code>
         <div class='highlight'><pre>   <span class="k">def</span> <span class="nc">GlobalSettings</span><span class="o">.</span><span class="nf">log</span> <span class="n">text</span>
       <span class="n">tFormat</span> <span class="o">=</span> <span class="s2">&quot;[%m/%d/%Y %H:%M:%S]: &quot;</span>
       <span class="n">t</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">new</span>
       <span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">tFormat</span><span class="p">)</span> <span class="o">+</span> <span class="n">text</span> 
+   <span class="k">end</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-5'>
+      <td class=docs>
+        <div class="octowrap">
+          <a class="octothorpe" href="#section-5">#</a>
+        </div>
+        <p> Called to exit program</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>   <span class="k">def</span> <span class="nc">GlobalSettings</span><span class="o">.</span><span class="nf">quit</span>
+      <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">quit</span>
    <span class="k">end</span>
 <span class="k">end</span></pre></div>
       </td>

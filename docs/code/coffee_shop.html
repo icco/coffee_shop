@@ -22,6 +22,7 @@
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
         <a class="source" href="MenuItem.html">MenuItem.rb</a>
+        <a class="source" href="PrintButton.html">PrintButton.rb</a>
         <a class="source" href="QuitButton.html">QuitButton.rb</a>
         <a class="source" href="SaveButton.html">SaveButton.rb</a>
         <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
@@ -89,7 +90,8 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-4">#</a>
         </div>
-        <p> I moved all of the classes into their sperate files for readability</p>
+        <p> I moved all of the classes into their sperate files for readability
+ TODO: there is a way to make ruby autoload smarter&hellip;</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;libs/GlobalSettings&#39;</span>
@@ -102,6 +104,7 @@
 <span class="nb">require</span> <span class="s1">&#39;libs/BackgroundButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/ForegroundButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/LoadButton&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/PrintButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/QuitButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/SaveButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/StatsWidget&#39;</span></pre></div>
@@ -143,19 +146,6 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-7">#</a>
         </div>
-        <p> Create right and left side buffers. At some point, I need to make these
- fit any screen size.</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>      <span class="n">spacer1</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-      <span class="n">spacer2</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">SpacerItem</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></pre></div>
-      </td>
-    </tr>
-    <tr id='section-8'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-8">#</a>
-        </div>
         <p> Layout the textbox</p>
       </td>
       <td class=code>
@@ -165,17 +155,15 @@
       <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span></pre></div>
       </td>
     </tr>
-    <tr id='section-9'>
+    <tr id='section-8'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-9">#</a>
+          <a class="octothorpe" href="#section-8">#</a>
         </div>
         <p> Lay it all out</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="n">grid</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacer2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
       <span class="n">grid</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">hbox</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
       <span class="n">setLayout</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
@@ -187,10 +175,10 @@
 <span class="k">end</span></pre></div>
       </td>
     </tr>
-    <tr id='section-10'>
+    <tr id='section-9'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-10">#</a>
+          <a class="octothorpe" href="#section-9">#</a>
         </div>
         <p> Create the app, define the style sheet and start the application.</p>
       </td>
@@ -199,10 +187,10 @@
 <span class="n">app</span><span class="o">.</span><span class="n">setWindowIcon</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Icon</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;assets/icons/icon.png&quot;</span> </pre></div>
       </td>
     </tr>
-    <tr id='section-11'>
+    <tr id='section-10'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-11">#</a>
+          <a class="octothorpe" href="#section-10">#</a>
         </div>
         <p> Splash Screen init</p>
 
