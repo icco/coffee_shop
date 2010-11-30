@@ -15,7 +15,7 @@ class PrintButton < MenuItem
 
             # something like this...
             dlg = Qt::PrintDialog.new
-            if dlg.exec == Qt::Dialog::Accepted
+            if dlg.open == Qt::Dialog::Accepted
                gs.text.document.print dlg.printer
             else
                GlobalSettings.log "Printing fail."

@@ -463,3 +463,9 @@ FR5: Done
 
 FR6: When the user clicks the print menu item, the dialog to print must be displayed.
 
+## 11.29.10
+
+Crap. Has it really been 13 days since I did any work on this?
+
+Oh well. I got FR6 done. The problem is I need to get the global styling to be
+better, because setting the BG color for * just doesn't work.
