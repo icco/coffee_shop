@@ -50,11 +50,6 @@ class FullScreen < Qt::Widget
       gs.files[gs.currentFile] = CoffeeFile.new ""
       gs.text = TextBox.new
 
-      # Create right and left side buffers. At some point, I need to make these
-      # fit any screen size.
-      spacer1 = Qt::SpacerItem.new(100, 100)
-      spacer2 = Qt::SpacerItem.new(100, 100)
-
       # Layout the textbox
       menu = Menu.new
       hbox = Qt::HBoxLayout.new
@@ -63,8 +58,6 @@ class FullScreen < Qt::Widget
 
       # Lay it all out
       grid = Qt::GridLayout.new
-      grid.addItem(spacer1, 0, 0)
-      grid.addItem(spacer2, 0, 2)
       grid.addLayout(hbox, 0, 1)
 
       setLayout(grid)

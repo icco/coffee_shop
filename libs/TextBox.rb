@@ -31,15 +31,18 @@ class TextBox < Qt::Widget
       }
 
       @tb.setFrameShape Qt::Frame::NoFrame
-      @tb.setWordWrapMode Qt::TextOption::WordWrap
+      @tb.setVerticalScrollBarPolicy Qt::ScrollBarAlwaysOn
+
+      # We can't have this if we don't want a horizantal scroll
+      #@tb.setWordWrapMode Qt::TextOption::WordWrap
+
+      width = 700 # We want fixed width
+      @tb.setMinimumSize(width, 0)
+      @tb.setMaximumSize(width, 16777215)
 
       layout = Qt::VBoxLayout.new()
       layout.addWidget(@tb)
       setLayout(layout)
-   end
-
-   def activate x
-      p x
    end
 
    # Need to implement this for opening
@@ -51,6 +54,14 @@ class TextBox < Qt::Widget
    # Need to implement this for saving, and other things... I think.
    def text
       return @tb.toPlainText
+   end
+
+   def title= x
+      return @tb.setDocumentTitle x
+   end
+
+   def title
+      return @tb.documentTitle
    end
 
    def document

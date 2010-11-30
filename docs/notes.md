@@ -469,3 +469,12 @@ Crap. Has it really been 13 days since I did any work on this?
 
 Oh well. I got FR6 done. The problem is I need to get the global styling to be
 better, because setting the BG color for * just doesn't work.
+
+## 11.30.10
+
+Trying to get the sizing right. a 700 width seems to be the money. The problem
+is with the height. I want the scrollbar to always be there first of all, and
+when you scroll down, you need to see the bottom. I'll keep messing with it.
+One thing to note is the size is not changing.
+
+
