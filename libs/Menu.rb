@@ -14,10 +14,14 @@ class Menu < Qt::Widget
       menu[1].addWidget QuitButton.new
       menu[1].setAlignment Qt::AlignLeft
 
-      # Define the fg color menu
+      # Define the color menu
       menu[2] = Qt::HBoxLayout.new()
       menu[2].addWidget ColorButton.new
       menu[2].setAlignment Qt::AlignLeft
+
+      menu[3] = Qt::HBoxLayout.new()
+      menu[3].addWidget FontButton.new
+      menu[3].setAlignment Qt::AlignLeft
 
       menu[4]  = Qt::HBoxLayout.new()
       menu[4].addWidget StatsWidget.new

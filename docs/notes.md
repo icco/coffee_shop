@@ -484,3 +484,4 @@ Noticing a few rather significant bugs in the color changing code. I need to
 fix that. I also really want the menu disappearing before I turn in my paper to
 turner. which reminds me, WRITE THE PAPER FOR TURNER.
 
+ * <http://doc.trolltech.com/latest/qboxlayout.html#insertStretch> - To specify a space that is supposed to grow in a BoxLayout
