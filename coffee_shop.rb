@@ -53,9 +53,10 @@ class FullScreen < Qt::Widget
       # Layout the textbox
       menu = Menu.new
       hbox = Qt::HBoxLayout.new
+      hbox.addStretch 0
       hbox.addWidget(gs.text)
       hbox.addWidget(menu)
-      # padding on each side to keep this centered would be awesome
+      hbox.addStretch 0
 
       # Lay it all out
       grid = Qt::GridLayout.new
