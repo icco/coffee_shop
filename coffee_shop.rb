@@ -55,6 +55,7 @@ class FullScreen < Qt::Widget
       hbox = Qt::HBoxLayout.new
       hbox.addWidget(gs.text)
       hbox.addWidget(menu)
+      # padding on each side to keep this centered would be awesome
 
       # Lay it all out
       grid = Qt::GridLayout.new
@@ -81,7 +82,7 @@ GlobalSettings.instance.load
 FullScreen.instance.show 
 app.setStyleSheet GlobalSettings.instance.appStyles
 
-sleep 2 
+sleep 1 
 
 ss.finish(FullScreen.instance)
 
