@@ -10,9 +10,12 @@ class ColorButton < Drawer
       # These should be overwritten by children
       gs = GlobalSettings.instance
       @colors = [
-         [gs.fgColor, gs.bgColor],
-         [gs.fgColor, gs.bgColor],
-         [gs.fgColor, gs.bgColor]
+         #    FG         BG
+         ['#000000', '#FFFFFF'],
+         ['#00FE00', '#000000'],
+         ['#FFFFFF', '#000000'],
+         ['#111111', '#333333'],
+         ['#BBBBBB', '#000000']
       ]
    end
 
@@ -48,6 +51,7 @@ class ColorButton < Drawer
             }
          end
 
+         # This in theory updates colors on button click...
          connect w, SIGNAL(:clicked), self, SLOT(:updateColors)
 
          w.setStyleSheet(style);

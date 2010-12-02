@@ -478,3 +478,9 @@ when you scroll down, you need to see the bottom. I'll keep messing with it.
 One thing to note is the size is not changing.
 
 
+## 12.02.10
+
+Noticing a few rather significant bugs in the color changing code. I need to
+fix that. I also really want the menu disappearing before I turn in my paper to
+turner. which reminds me, WRITE THE PAPER FOR TURNER.
+
