@@ -43,6 +43,7 @@ class ColorButton < Drawer
             color: #{fcolor};
          }
          COLOR
+
          w = Qt::PushButton.new("A") do
             connect(SIGNAL :clicked) {
                gs.bgColor = bcolor

@@ -23,7 +23,7 @@ class TextBox < Qt::Widget
       quit_shortcut.connect(SIGNAL :activated) { GlobalSettings.quit }
 
       # QTextEdit makes life so easy, it's almost depressing.
-      @tb = Qt::PlainTextEdit.new 
+      @tb = Qt::TextEdit.new 
       @tb.connect(SIGNAL :textChanged) {
          gs.file.changed = true
          gs.file.text = self.text

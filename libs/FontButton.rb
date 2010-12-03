@@ -11,14 +11,19 @@ class FontButton < Drawer
    def expand
       super
 
-      w = Qt::PushButton.new("A") do
-         connect(SIGNAL :clicked) {
-            gs.bgColor = bcolor
-            gs.fgColor = fcolor
-            gs.refresh
-         }
-      end
-      w.setStyleSheet("");
-      self.layout.addWidget w
+      gs = GlobalSettings.instance
+      b = []
+
+      (0...3).each {|i|
+         b[i] = Qt::PushButton.new("F") do
+            connect(SIGNAL :clicked) {
+               gs.font = 'Helvetica'
+               gs.refresh
+            }
+         end
+
+         b[i].setStyleSheet(@menuStyle);
+         self.layout.addWidget b[i]
+      }
    end
 end

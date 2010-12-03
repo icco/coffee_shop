@@ -53,6 +53,7 @@ class FullScreen < Qt::Widget
       menu = Menu.new
       hbox = Qt::HBoxLayout.new
       hbox.addStretch 0
+      hbox.addStretch 0
       hbox.addWidget(gs.text)
       hbox.addWidget(menu)
       hbox.addStretch 0
