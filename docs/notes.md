@@ -485,3 +485,7 @@ fix that. I also really want the menu disappearing before I turn in my paper to
 turner. which reminds me, WRITE THE PAPER FOR TURNER.
 
  * <http://doc.trolltech.com/latest/qboxlayout.html#insertStretch> - To specify a space that is supposed to grow in a BoxLayout
+
+## 12.11.10
+
+Finishing up my paper for Turner. One thing that just occured to me that I should mention in my paper next quarter, is that certain languages are built for different types of programming. This could be an interesting point of research for a section of my main paper.
