@@ -13,11 +13,10 @@
     <div id="jump_wrapper">
       <div id="jump_page">
         <a class="source" href="coffee_shop.html">coffee_shop.rb</a>
-        <a class="source" href="BackgroundButton.html">BackgroundButton.rb</a>
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="ColorButton.html">ColorButton.rb</a>
         <a class="source" href="Drawer.html">Drawer.rb</a>
-        <a class="source" href="ForegroundButton.html">ForegroundButton.rb</a>
+        <a class="source" href="FontButton.html">FontButton.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
@@ -101,8 +100,7 @@
 <span class="nb">require</span> <span class="s1">&#39;libs/MenuItem&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/Drawer&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/ColorButton&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;libs/BackgroundButton&#39;</span>
-<span class="nb">require</span> <span class="s1">&#39;libs/ForegroundButton&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;libs/FontButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/LoadButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/PrintButton&#39;</span>
 <span class="nb">require</span> <span class="s1">&#39;libs/QuitButton&#39;</span>
@@ -151,8 +149,11 @@
       <td class=code>
         <div class='highlight'><pre>      <span class="n">menu</span> <span class="o">=</span> <span class="no">Menu</span><span class="o">.</span><span class="n">new</span>
       <span class="n">hbox</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addStretch</span> <span class="mi">0</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addStretch</span> <span class="mi">0</span>
       <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-      <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span></pre></div>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">menu</span><span class="p">)</span>
+      <span class="n">hbox</span><span class="o">.</span><span class="n">addStretch</span> <span class="mi">0</span></pre></div>
       </td>
     </tr>
     <tr id='section-8'>
@@ -204,7 +205,7 @@
 <span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">show</span> 
 <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">appStyles</span>
 
-<span class="nb">sleep</span> <span class="mi">2</span> 
+<span class="nb">sleep</span> <span class="mi">1</span> 
 
 <span class="n">ss</span><span class="o">.</span><span class="n">finish</span><span class="p">(</span><span class="no">FullScreen</span><span class="o">.</span><span class="n">instance</span><span class="p">)</span>
 

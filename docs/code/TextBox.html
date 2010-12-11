@@ -13,11 +13,10 @@
     <div id="jump_wrapper">
       <div id="jump_page">
         <a class="source" href="coffee_shop.html">coffee_shop.rb</a>
-        <a class="source" href="BackgroundButton.html">BackgroundButton.rb</a>
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="ColorButton.html">ColorButton.rb</a>
         <a class="source" href="Drawer.html">Drawer.rb</a>
-        <a class="source" href="ForegroundButton.html">ForegroundButton.rb</a>
+        <a class="source" href="FontButton.html">FontButton.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
@@ -96,7 +95,7 @@
         <p> QTextEdit makes life so easy, it&rsquo;s almost depressing.</p>
       </td>
       <td class=code>
-        <div class='highlight'><pre>      <span class="vi">@tb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">PlainTextEdit</span><span class="o">.</span><span class="n">new</span> 
+        <div class='highlight'><pre>      <span class="vi">@tb</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">TextEdit</span><span class="o">.</span><span class="n">new</span> 
       <span class="vi">@tb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="no">SIGNAL</span> <span class="ss">:textChanged</span><span class="p">)</span> <span class="p">{</span>
          <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">changed</span> <span class="o">=</span> <span class="kp">true</span>
          <span class="n">gs</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">text</span>

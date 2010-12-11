@@ -13,11 +13,10 @@
     <div id="jump_wrapper">
       <div id="jump_page">
         <a class="source" href="coffee_shop.html">coffee_shop.rb</a>
-        <a class="source" href="BackgroundButton.html">BackgroundButton.rb</a>
         <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
         <a class="source" href="ColorButton.html">ColorButton.rb</a>
         <a class="source" href="Drawer.html">Drawer.rb</a>
-        <a class="source" href="ForegroundButton.html">ForegroundButton.rb</a>
+        <a class="source" href="FontButton.html">FontButton.rb</a>
         <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
         <a class="source" href="LoadButton.html">LoadButton.rb</a>
         <a class="source" href="Menu.html">Menu.rb</a>
@@ -76,24 +75,15 @@
         <div class="octowrap">
           <a class="octothorpe" href="#section-3">#</a>
         </div>
-        <p> Define the fg color menu</p>
+        <p> Define the color menu</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">ForegroundButton</span><span class="o">.</span><span class="n">new</span>
-      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
-      </td>
-    </tr>
-    <tr id='section-4'>
-      <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-4">#</a>
-        </div>
-        <p> Define the bg color menu</p>
-      </td>
-      <td class=code>
-        <div class='highlight'><pre>      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">BackgroundButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">ColorButton</span><span class="o">.</span><span class="n">new</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span>
+
+      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+      <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">addWidget</span> <span class="no">FontButton</span><span class="o">.</span><span class="n">new</span>
       <span class="n">menu</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span>
 
       <span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>  <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">HBoxLayout</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
@@ -101,10 +91,10 @@
       <span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">].</span><span class="n">setAlignment</span> <span class="no">Qt</span><span class="o">::</span><span class="no">AlignLeft</span></pre></div>
       </td>
     </tr>
-    <tr id='section-5'>
+    <tr id='section-4'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-5">#</a>
+          <a class="octothorpe" href="#section-4">#</a>
         </div>
         <p> Layout the right side menus</p>
       </td>
@@ -119,10 +109,10 @@
       <span class="n">setLayout</span> <span class="n">menus</span></pre></div>
       </td>
     </tr>
-    <tr id='section-6'>
+    <tr id='section-5'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-6">#</a>
+          <a class="octothorpe" href="#section-5">#</a>
         </div>
         <p> Get ready to hide.</p>
       </td>
@@ -135,10 +125,10 @@
       <span class="k">if</span> <span class="vi">@hidden</span></pre></div>
       </td>
     </tr>
-    <tr id='section-7'>
+    <tr id='section-6'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-7">#</a>
+          <a class="octothorpe" href="#section-6">#</a>
         </div>
         <p> show</p>
       </td>
@@ -146,10 +136,10 @@
         <div class='highlight'><pre></pre></div>
       </td>
     </tr>
-    <tr id='section-8'>
+    <tr id='section-7'>
       <td class=docs>
         <div class="octowrap">
-          <a class="octothorpe" href="#section-8">#</a>
+          <a class="octothorpe" href="#section-7">#</a>
         </div>
         <p> add timer till hide</p>
 
