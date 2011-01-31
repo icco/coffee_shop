@@ -489,3 +489,7 @@ turner. which reminds me, WRITE THE PAPER FOR TURNER.
 ## 12.11.10
 
 Finishing up my paper for Turner. One thing that just occured to me that I should mention in my paper next quarter, is that certain languages are built for different types of programming. This could be an interesting point of research for a section of my main paper.
+
+## 1.31.11
+
+Over a week ago, I talked to turner. He likes the abstract, but I need to explicitly state in it what I did.
