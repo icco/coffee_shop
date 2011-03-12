@@ -2,8 +2,6 @@
 *.bbl
 *.blg
 *.log
-*.ps
 *.toc
 .DS_Store
 *.swp
-
