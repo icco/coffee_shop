@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # A simple app to display my senior project code.
 # @author Nathaniel "Nat" Welch

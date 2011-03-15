@@ -15,8 +15,8 @@ thoughts.
  * ESC lets you turn app into normal text editor. Almost seems like a wrapper around text edit.
  * Growl notifications still appear
  * Wrap to page is pretty cool
- * [normal type](http://github.com/icco/coffee_shop/raw/master/docs/images/writeroom1.png)
- * [page broken](http://github.com/icco/coffee_shop/raw/master/docs/images/writeroom2.png)
+ * [normal type](/images/writeroom1.png)
+ * [page broken](/images/writeroom2.png)
 
 ### OmmWriter
 
@@ -27,9 +27,9 @@ thoughts.
  * UI was much more visible
  * gave scroll bar and word count
  * adjustable work area
- * [blank page](http://github.com/icco/coffee_shop/raw/master/docs/images/ommwriter1.png)
- * [normal type](http://github.com/icco/coffee_shop/raw/master/docs/images/ommwriter2.png)
- * [menu on mouse move](http://github.com/icco/coffee_shop/raw/master/docs/images/ommwriter3.png)
+ * [blank page](/images/ommwriter1.png)
+ * [normal type](/images/ommwriter2.png)
+ * [menu on mouse move](/images/ommwriter3.png)
 
 ### Other References
 
@@ -49,18 +49,18 @@ thoughts.
  * Supported so many fonts it blew my mind.
  * very easy to zoom with slider in bottom right.
  * Lots of buttons that I had no idea what they did, kind of scared me.
- * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/docs/images/oo1.png)
- * [screenshot 2](http://github.com/icco/coffee_shop/raw/master/docs/images/oo2.png)
- * [screenshot 3](http://github.com/icco/coffee_shop/raw/master/docs/images/oo3.png)
+ * [screenshot 1](/images/oo1.png)
+ * [screenshot 2](/images/oo2.png)
+ * [screenshot 3](/images/oo3.png)
 
 ### Vim 7.2
 
  * Incredibly customizable
  * all commands are incredibly arcane
  * full-screen ability is dependent on terminal app.
- * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/docs/images/vim1.png)
- * [screenshot 2](http://github.com/icco/coffee_shop/raw/master/docs/images/vim2.png)
- * [screenshot 3](http://github.com/icco/coffee_shop/raw/master/docs/images/vim3.png)
+ * [screenshot 1](/images/vim1.png)
+ * [screenshot 2](/images/vim2.png)
+ * [screenshot 3](/images/vim3.png)
 
 ### Mircosoft Word 5.5
 
@@ -71,7 +71,7 @@ thoughts.
  * no color or font customizations
  * fullscreen text
  * page breaks were very obvious with a dotted line
- * [screenshot 1](http://github.com/icco/coffee_shop/raw/master/docs/images/w55_1.png)
+ * [screenshot 1](/images/w55_1.png)
  * [reference article](http://www.downloadsquad.com/2005/11/25/free-file/)
  * [Download link](http://download.microsoft.com/download/word97win/Wd55_be/97/WIN98/EN-US/Wd55_ben.exe)
 
@@ -418,7 +418,7 @@ An interesting caveat to how ruby's File.open works: you must send the file
 name through File.expand_path if you want to turn ~/ into a users home dir. 
 
 Also, Jeannie sent me some possible icon / theme ideas. You can check them out
-[here](https://github.com/icco/coffee_shop/raw/master/docs/images/coffee-shop-icons-110710.jpg).
+[here](/images/coffee-shop-icons-110710.jpg).
 
 ## 11.15.10
 
