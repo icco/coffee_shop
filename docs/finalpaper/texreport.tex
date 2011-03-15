@@ -38,21 +38,94 @@ Depending on the job, people use different tools. Some tools are incredibly spec
 The problem coffee\_shop tries to tackle is whether or not developing a desktop application focused on writing, instead of formating, is a good idea.
 
 \section{Survey of relevant work}
+
+Before starting the project, I surveyed a variety of word processor programs and interviewed individuals about their writing habits. The survey I distributed was rather simple and open ended. I asked users what types of documents they wrote, what they disliked about their current word processor and what they liked and wanted in their word processor.
+
+I discovered that there were two classifications of users of word processors in my survey group. There were those who wrote in a corporate or academic environment and those that wrote for themselves. The users that wrote more for academia and corporate positions tended to want lots of formatting options. Users writing for themselves wanted something that hid everything and let them just write.
+
+Every single one of my responders despised Microsoft Word's auto-correct but still wanted spell check.
+
+I decided name my user group Johnny, based on two different people that I interviewed. Johnny writes fiction in his free time and aspires to be a writer. He is currently employed doing other things, so he uses his word processor as he commutes and during his time off. Most of what Johnny writes tends to be one or two pages, but he has been known to turn out novels depending on his mood.
+
 \subsection{Professional Offerings}
 
-\subsubsection{Microsoft Word}
+These are big players in the market.
+
+\subsubsection{Microsoft Word 2010}
+
+\subsubsection{Microsoft Word 5.5}
+
+Needs to be turned into paragraph:
+
+\begin{itemize}
+\item Only runs in dosbox.
+\item a pain to install. Extracted 400 files before setup and then another 200 after install
+\item navigating document was done with keyboard, but you could select sections with the mouse
+\item screenshots were a pain
+\item no color or font customizations
+\item fullscreen text
+\item page breaks were very obvious with a dotted line
+\end{itemize}
+
 \subsubsection{Pages}
+
+
 \subsubsection{Open Office}
+
+Needs to be turned into paragraph:
+
+\begin{itemize}
+\item A substantial amount of features. 
+\item Very easy to just start typing, although you feel like you need to format your writing.
+\item Has a full screen mode, crashes some times when coming in and out.
+\item export to pdf, very useful
+\item Spell check. Seemed much more obvious than the other apps
+\item Had to select all of text to change font, colors, etc.
+\item Supported so many fonts it blew my mind.
+\item very easy to zoom with slider in bottom right.
+\item Lots of buttons that I had no idea what they did, kind of scared me.
+\end{itemize}
+
+\subsubsection{Vim}
 
 \subsection{Similar implementations}
 
+These are programs I am trying to emulate.
+
 \subsubsection{WriteRoom}
+
+Needs to be turned into paragraph:
+
+\begin{itemize}
+\item Lets you change font and colors
+\item obscure key combinations to do any sort of display settings
+\item ESC lets you turn app into normal text editor. Almost seems like a wrapper around text edit.
+\item Growl notifications still appear
+\item Wrap to page is pretty cool
+\end{itemize}
 
 \subsubsection{OmmWriter}
 
+Needs to be turned into paragraph:
+
+\begin{itemize}
+\item Lets you change font (sans, serif, script), font-size, themes (background/color combinations), background music and typing noise
+\item I found typing noise very soothing, but I preferred to pick my own background music.
+\item very limited choice in themes. No Black/Green, low contrast option
+\item the sound the program produced an emotion that seemed to promote typing, although I'm not sure if I could say it was distraction free.
+\item UI was much more visible
+\item gave scroll bar and word count
+\item adjustable work area
+\end{itemize}
+
 \section{coffee\_shop}
 
+Screen shots of the program.
+
+Brief mention of what was implemented, not implemented, etc.
+
 \section{Evaluation of coffee\_shop}
+
 \subsection{Development decisions}
 
 I made some decisions while developing and designing coffee\_shop, which may be considered controversial or unintelligent. The two big decisions I made were to use Ruby as my programming language and Qt as my graphics framework.
@@ -63,13 +136,21 @@ Ruby is an interesting beast. I selected it because I had little experience with
 
 \subsubsection{Qt}
 
+Java and C++ libraries are powerful, but do not translate to Ruby well.
+
 \subsection{Features and their implementations}
 
 \subsubsection{File writing}
 
+Pretty simple, although lots of discussion.
+
 \subsubsection{Pagination}
 
+The bane of my existence.
+
 \subsubsection{Printing}
+
+This was surprisingly easy thanks to Qt.
 
 \subsubsection{Customization and preference storing}
 
