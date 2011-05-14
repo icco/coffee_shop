@@ -493,3 +493,7 @@ Finishing up my paper for Turner. One thing that just occured to me that I shoul
 ## 1.31.11
 
 Over a week ago, I talked to turner. He likes the abstract, but I need to explicitly state in it what I did.
+
+## 5.14.11
+
+In the last few months, I haven't done a whole lot. But here I am with renewed vigor. I shall finish this paper!
