@@ -163,7 +163,9 @@ This was surprisingly easy thanks to Qt. All I really had to do was open a ``Qt:
 
 \subsubsection{Customization and preference storing}
 
-Talk about how I did it (YAML) and how other programs do it.
+Storing customizations was a pretty easy technical challenge. It required creating a singleton class, which let me store key value pairs to it. Then we would write out the changes to disk on occasion. We would also make sure all of the data got written out when the program exited.
+
+The biggest problem was trying to support configuration changes while the program was running. Often Qt objects didn't want to be redrawn. Unlike an element in the DOM tree which can be styled dynamically with ease, Qt often made strange choices when to redraw with the new settings it was given. It seems like these redrawing actions are a common problem in the Qt world. When I asked around Nokia and Qt's forums, I was told I should just modify the core Qt code to get the desirable effect I was looking for.
 
 \section{Conclusion}
 
