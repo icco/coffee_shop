@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{setspace}
 \usepackage{url}
+\usepackage{graphicx}
 \usepackage{geometry}
 \geometry{letterpaper}
 \begin{document}
@@ -18,16 +19,17 @@ California State Polytechnic University\vspace{10pt} \\
 \begin{abstract}
 My senior project was spent building a desktop application similar to WriteRoom and OmmWriter. These two applications are both word processors for the Macintosh OS X operating system. Both of these applications are designed to be a reset on word processing software (cite?), bringing their interfaces back to the days of Microsoft Word 3.0 and Word Perfect. They do this by spending more time on focusing on the design of the software interface, and focusing on keeping it minimalistic, instead of filling the product with new obscure features, which is a common complaint against the current iterations of Microsoft Word (cite?).
 
-The final application, named coffee\_shop, ended up not meeting my expectations. Having spent most of my education on developing applications for the internet, instead of the desktop, I ran into pitfalls which, if this had been an internet application wouldn't have been an issue.
+The final application, named coffee\_shop, ended up not meeting my expectations. Having spent most of my education developing applications for the internet, instead of the desktop, I ran into pitfalls which, if this had been an internet application, wouldn't have been problematic.
 \end{abstract}
 
+% Table of Contents
 \thispagestyle{empty}
 \newpage
-
-\thispagestyle{empty} % Remove page number from TOC
+\singlespacing
+\thispagestyle{empty}
 \tableofcontents
-
 \newpage
+\doublespacing
 
 \section{Introduction}
 
@@ -53,13 +55,13 @@ As stated earlier, there are a variety of choices in the word processor market. 
 
 \subsubsection{Microsoft Word 2010}
 
-...
+An apparent oversight, I never actually tested Microsoft Word 2010... If I can find someone who has it (maybe the library?) I'll fill in this section...
 
 \subsubsection{Microsoft Word 5.5}
 
-Originally released in WHEN, Microsoft Word 5.5 is an interesting beast. 5.5's initial downside is that it needs to be run in dosbox. The cool thing about dosbox though, is that it means I can run 5.5 on Linux and on just about every other machine that it supports. But 5.5 comes from before the days where everything is just one executable. The user install experience is incredibly slow and time consuming. 5.5 extracts four hundred files before setup, and then another two hundred during the install process.  
+Originally released in 1991\cite{infoworld}, Microsoft Word 5.5 is an interesting beast. 5.5's initial downside is that it needs to be run in DosBox. The cool thing about DosBox though, is that it means I can run 5.5 on Linux and on just about every other machine that it supports. But 5.5 comes from before the days where everything is just one executable. The user install experience is incredibly slow and time consuming. 5.5 extracts four hundred files before setup, and then another two hundred during the install process.
 
-(Picture here...)
+\includegraphics[width=130mm]{images/w55_1.png}
 
 Once you are inside 5.5, the experience is relatively nice. Document navigation was done entirely via the keyboard. It reminded me a lot of Pico, and was a joy to use. The user can also select text with the mouse, and we can see how the experience in 5.5 turned into that of Microsoft Word 2010.
 
@@ -67,23 +69,21 @@ Once you are inside 5.5, the experience is relatively nice. Document navigation 
 
 \subsubsection{Pages}
 
-The Apple offering in the word processor space.
+The Apple offering in the word processor space. I found Pages rather nice to use, and its full screen mode was very similar to what I was looking to make. The downsides were simple though. Pages default file type cannot be read by any other program, and you could do very little to customize the user interface.
 
-\subsubsection{Open Office}
+\subsubsection{OpenOffice}
 
-Needs to be turned into paragraph:
+OpenOffice Writer 3 seems to be on-par with current Microsoft Word offerings. The product has a ton of features, most of which were hidden behind obscure icons and menus.
 
-\begin{itemize}
-\item A substantial amount of features.
-\item Very easy to just start typing, although you feel like you need to format your writing.
-\item Has a full screen mode, crashes some times when coming in and out.
-\item export to pdf, very useful
-\item Spell check. Seemed much more obvious than the other apps
-\item Had to select all of text to change font, colors, etc.
-\item Supported so many fonts it blew my mind.
-\item very easy to zoom with slider in bottom right.
-\item Lots of buttons that I had no idea what they did, kind of scared me.
-\end{itemize}
+Writer was nice in that it always opens a new empty document so you can start writing immediately.
+
+The full screen mode looked nice, but tended to crash when transitioning in and out.
+
+Writer also had an easy to use ``export to PDF'' feature. Spell check was also easy to find compared to many of the other programs examined.
+
+You could customize a lot of things in Writer, but it was annoying that you had to select all of the text to change the document color scheme. In contrast though, Writer supported more fonts than any of the other programs.
+
+Overall Writer is a nice offering considering it is free, but the interface can be intimidating, especially if you have no idea what all of the buttons do.
 
 \subsubsection{Vim}
 
@@ -160,6 +160,8 @@ This was surprisingly easy thanks to Qt.
 Talk about how I did it (YAML) and how other programs do it.
 
 \section{Conclusion}
+
+Overall, I am proud of the work I did, but in the future I would probably just make this on the web.
 
 \newpage
 \nocite{*}

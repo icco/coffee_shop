@@ -21,7 +21,7 @@ BIBFILES  = texreport.bib
 NAME      = texreport
 
 # The location of your tex compiler
-LATEX     = latex
+LATEX     = pdflatex
 BIBTEX    = bibtex
 PS        = dvips
 
