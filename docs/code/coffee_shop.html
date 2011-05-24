@@ -12,21 +12,21 @@
     Jump To &hellip;
     <div id="jump_wrapper">
       <div id="jump_page">
-        <a class="source" href="coffee_shop.html">coffee_shop.rb</a>
-        <a class="source" href="CoffeeFile.html">CoffeeFile.rb</a>
-        <a class="source" href="ColorButton.html">ColorButton.rb</a>
-        <a class="source" href="Drawer.html">Drawer.rb</a>
-        <a class="source" href="FontButton.html">FontButton.rb</a>
-        <a class="source" href="GlobalSettings.html">GlobalSettings.rb</a>
-        <a class="source" href="LoadButton.html">LoadButton.rb</a>
-        <a class="source" href="Menu.html">Menu.rb</a>
-        <a class="source" href="MenuItem.html">MenuItem.rb</a>
-        <a class="source" href="PrintButton.html">PrintButton.rb</a>
-        <a class="source" href="QuitButton.html">QuitButton.rb</a>
-        <a class="source" href="SaveButton.html">SaveButton.rb</a>
-        <a class="source" href="StatsWidget.html">StatsWidget.rb</a>
-        <a class="source" href="TextBox.html">TextBox.rb</a>
-        </div>
+          <a class="source" href="coffee_shop.html">coffee_shop.rb</a>
+          <a class="source" href="libs/CoffeeFile.html">CoffeeFile.rb</a>
+          <a class="source" href="libs/ColorButton.html">ColorButton.rb</a>
+          <a class="source" href="libs/Drawer.html">Drawer.rb</a>
+          <a class="source" href="libs/FontButton.html">FontButton.rb</a>
+          <a class="source" href="libs/GlobalSettings.html">GlobalSettings.rb</a>
+          <a class="source" href="libs/LoadButton.html">LoadButton.rb</a>
+          <a class="source" href="libs/Menu.html">Menu.rb</a>
+          <a class="source" href="libs/MenuItem.html">MenuItem.rb</a>
+          <a class="source" href="libs/PrintButton.html">PrintButton.rb</a>
+          <a class="source" href="libs/QuitButton.html">QuitButton.rb</a>
+          <a class="source" href="libs/SaveButton.html">SaveButton.rb</a>
+          <a class="source" href="libs/StatsWidget.html">StatsWidget.rb</a>
+          <a class="source" href="libs/TextBox.html">TextBox.rb</a>
+      </div>
     </div>
   </div>
   <table cellspacing=0 cellpadding=0>
@@ -39,8 +39,8 @@
   <tbody>
     <tr id='section-1'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-1">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
         
       </td>
@@ -50,15 +50,15 @@
     </tr>
     <tr id='section-2'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-2">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
         </div>
-        <p> <strong>coffee_shop</strong> is an implementation of <a href="http://www.hogbaysoftware.com/products/writeroom">writeroom</a> in ruby for Linux. It
- was written by Nathaniel Welch for his senior project at Cal Poly.</p>
+        <p><strong>coffee_shop</strong> is an implementation of <a href="http://www.hogbaysoftware.com/products/writeroom">writeroom</a> in ruby for Linux. It
+was written by Nathaniel Welch for his senior project at Cal Poly.</p>
 
-<p> The program&rsquo;s goal is to be small, lightweight and distraction free.</p>
+<p>The program&rsquo;s goal is to be small, lightweight and distraction free.</p>
 
-<p> Some of it&rsquo;s main features are:</p>
+<p>Some of it&rsquo;s main features are:</p>
 
 <ul>
 <li>open, edit and save text files</li>
@@ -66,7 +66,7 @@
 </ul>
 
 
-<p> Anyway, enough of my babbling. Lets take a look at the code.</p>
+<p>Anyway, enough of my babbling. Lets take a look at the code.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre></pre></div>
@@ -74,10 +74,10 @@
     </tr>
     <tr id='section-3'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-3">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
         </div>
-        <p> First off we need to require Qt4. It sadly only works with ruby 1.8.</p>
+        <p>First off we need to require Qt4. It sadly only works with ruby 1.8.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;Qt4&#39;</span>
@@ -86,11 +86,11 @@
     </tr>
     <tr id='section-4'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-4">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
         </div>
-        <p> I moved all of the classes into their sperate files for readability
- TODO: there is a way to make ruby autoload smarter&hellip;</p>
+        <p>I moved all of the classes into their sperate files for readability
+TODO: there is a way to make ruby autoload smarter&hellip;</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;libs/GlobalSettings&#39;</span>
@@ -110,10 +110,10 @@
     </tr>
     <tr id='section-5'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-5">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
         </div>
-        <p> This is the root class that does all of the setting up and displaying.</p>
+        <p>This is the root class that does all of the setting up and displaying.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="k">class</span> <span class="nc">FullScreen</span> <span class="o">&lt;</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Widget</span>
@@ -126,10 +126,10 @@
     </tr>
     <tr id='section-6'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-6">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-6">&#182;</a>
         </div>
-        <p> We need to set up all of the settings</p>
+        <p>We need to set up all of the settings</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">gs</span> <span class="o">=</span> <span class="no">GlobalSettings</span><span class="o">.</span><span class="n">instance</span><span class="p">;</span>
@@ -141,10 +141,10 @@
     </tr>
     <tr id='section-7'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-7">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-7">&#182;</a>
         </div>
-        <p> Layout the textbox</p>
+        <p>Layout the textbox</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">menu</span> <span class="o">=</span> <span class="no">Menu</span><span class="o">.</span><span class="n">new</span>
@@ -158,10 +158,10 @@
     </tr>
     <tr id='section-8'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-8">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-8">&#182;</a>
         </div>
-        <p> Lay it all out</p>
+        <p>Lay it all out</p>
       </td>
       <td class=code>
         <div class='highlight'><pre>      <span class="n">grid</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">GridLayout</span><span class="o">.</span><span class="n">new</span>
@@ -178,10 +178,10 @@
     </tr>
     <tr id='section-9'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-9">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-9">&#182;</a>
         </div>
-        <p> Create the app, define the style sheet and start the application.</p>
+        <p>Create the app, define the style sheet and start the application.</p>
       </td>
       <td class=code>
         <div class='highlight'><pre><span class="n">app</span> <span class="o">=</span> <span class="no">Qt</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">new</span> <span class="no">ARGV</span>
@@ -190,10 +190,10 @@
     </tr>
     <tr id='section-10'>
       <td class=docs>
-        <div class="octowrap">
-          <a class="octothorpe" href="#section-10">#</a>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
         </div>
-        <p> Splash Screen init</p>
+        <p>Splash Screen init</p>
 
       </td>
       <td class=code>
@@ -212,6 +212,6 @@
 <span class="n">app</span><span class="o">.</span><span class="n">exec</span> </pre></div>
       </td>
     </tr>
-    </table>
+  </table>
 </div>
 </body>
