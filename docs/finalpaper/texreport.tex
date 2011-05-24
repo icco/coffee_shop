@@ -135,11 +135,17 @@ I made some decisions while developing and designing coffee\_shop, which may be 
 
 \subsubsection{Ruby}
 
-Ruby is an interesting beast. I selected it because I had little experience with the language and it had a very large community online.
+Ruby is an interesting beast. I selected it because I had little experience with the language and it had a very large community online. Since starting the project I have learned a lot about the language.
+
+Ruby is a really fun language to write in, but it is not made to develop systems whose state changes during its run. Ruby works far better as a shell script or responder for a website because it can execute in entirety and doesn't need to jump around to a ton of objects already allocated. It's possible that a graphics framework could solve this, but I was unable to find one that did.
 
 \subsubsection{Qt}
 
-Java and C++ libraries are powerful, but do not translate to Ruby well.
+Qt is incredibly powerful, and RubyQt (Cite...) is probably the best UI toolkit available for Ruby. But Qt is written for Java and C++. Qt expects to have references to everything, and wants everything to be passed by reference. Ruby doesn't really work this way and because of it, hindered Qt's power.
+
+Interestingly enough, a lot of the things I saw other applications doing that I thought were cool, were actually areas where people were hacking directly on the Qt source, or rewriting entire sections of the library. (cite KWrite).
+
+In hindsight, if I were to use Qt, I would use it with C++, instead of one of it's many ports to other languages.
 
 \subsection{Features and their implementations}
 
@@ -153,7 +159,7 @@ The bane of my existence.
 
 \subsubsection{Printing}
 
-This was surprisingly easy thanks to Qt.
+This was surprisingly easy thanks to Qt. All I really had to do was open a ``Qt::PrintDialog'', which prompted the user to select a printer, and then send a block of text to the object representation of the printer they selected.
 
 \subsubsection{Customization and preference storing}
 
