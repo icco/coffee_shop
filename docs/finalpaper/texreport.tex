@@ -330,7 +330,13 @@ Pretty simple, although lots of discussion.
 
 \subsubsection{Pagination}
 
-The bane of my existence.
+So, this is the one feature I really wanted to get work, but I just couldn't figure it out. It seems to be that Qt only wants to do pagination when the data is read only. So, for example, you can send Qt a block of text to print preview, and it will return you a read only set of paginated data. All of the actual text document objects though, do not support pagination while typing, which makes them all pretty useless. Posting on the Qt forums and on StackOverflow, the general opinion was that I should fork the Qt source and modify the ``TextDocument'' object myself in C++.
+
+This made me furious, in what world is it good API design to make your library need to be modified to get a desired effect? I thought the internet was crazy, but I looked at the source of some of the major Qt users, such as KWrite, and was blown away. They reimplemented about half of the Qt framework because the framework didn't do what they wanted to. On top of that, this reimplementation was close to two thirds of their code base.
+
+Frustrated, I tried to do pagination myself. I tried a variety of methods to split the data between text boxes. The problem with this was that whenever I did this, focus was put back on the top of first text box. So depending on how often I recalculated the pagination data, users would get incredibly incoherent data. The worst was when I recalculated pages after every key press. This made it so when users typed data went into the document backwards (as if they were pushing their characters onto a stack), but when they pasted, the text went in the right way.
+
+After a while, I just moved on and abandoned the feature. I've written the Qt maintainers, and their response is not to use language wrappers, such as RubyQt, which was probably the most unhelpful response I have ever seen.
 
 \subsubsection{Printing}
 
