@@ -327,7 +327,11 @@ In hindsight, if I were to use Qt, I would use it with C++, instead of one of it
 
 \subsubsection{File writing}
 
-Pretty simple, although lots of discussion.
+File writing is a simple concept, but can be easily complicated. The question, as a developer, that you have to ask yourself, is if you want others to be able to open your files. Microsoft, Apple and OpenOffice all say no. Microsoft and OpenOffice provide specifications on how to read and edit their file types, but even that is kind of tricky.
+
+So if you don't care about others, you can just dump all of the binary data you want, and just walk away. If you do care about others, you have a few more choices. First off, are you storing any other data besides plain text in your document? For me the answer was no, so I just decided to write to the file, and give it a ``.txt'' extension by default. You could instead want to store data along with your plain text, such as formatting information or user information. Suggestions for doing this would be to either use XML or another common markup language, and then output that in plain text. This way your files are still readable by all, but your program is the most optimal way to edit the data. The downside to this is that you need to verify the documents structure on file load so that you don't have malicious users injecting data into your app.
+
+One thing I thought heavily about once I had my file type set up, was how often to save. I decided saving automatically every minute was a great decision. Every single one of the people I surveyed wanted the functionality, and it was easy to implement.
 
 \subsubsection{Pagination}
 
@@ -351,7 +355,7 @@ The biggest problem was trying to support configuration changes while the progra
 
 \section{Future Work}
 
-I think there is lots of work to be done here, but I would argue against it. Instead of continuing to develop this application, I would recommend looking into building a web application that simulates the same experience. CSS makes it easier to iterate quickly on the design and layout, plus you can use the HTML5 local storage API to let the user work offline.
+I think there is lots of work to be done here, but I would argue against actually doing any it. Instead of continuing to develop this application, I would recommend looking into building a web application that simulates the same experience. CSS makes it easier to iterate quickly on the design and layout, plus you can use the HTML5 local storage API to let the user work offline.
 
 If you were to continue working on this project, I would focus on making the application easier to deploy across a wide variety of operating systems. I would also try and find a layout that works well on all screen sizes.
 
