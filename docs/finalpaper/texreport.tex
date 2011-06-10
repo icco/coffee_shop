@@ -141,9 +141,9 @@ Ruby is a really fun language to write in, but it is not made to develop systems
 
 \subsubsection{Qt}
 
-Qt is incredibly powerful, and RubyQt (Cite...) is probably the best UI toolkit available for Ruby. But Qt is written for Java and C++. Qt expects to have references to everything, and wants everything to be passed by reference. Ruby doesn't really work this way and because of it, hindered Qt's power.
+Qt is incredibly powerful, and RubyQt \cite{rubyqt} is probably the best UI toolkit available for Ruby. But Qt is written for Java and C++. Qt expects to have references to everything, and wants everything to be passed by reference. Ruby doesn't really work this way and because of it, hindered Qt's power.
 
-Interestingly enough, a lot of the things I saw other applications doing that I thought were cool, were actually areas where people were hacking directly on the Qt source, or rewriting entire sections of the library. (cite KWrite).
+Interestingly enough, a lot of the things I saw other applications doing that I thought were cool, were actually areas where people were hacking directly on the Qt source, or rewriting entire sections of the library. \cite{kwrite}.
 
 In hindsight, if I were to use Qt, I would use it with C++, instead of one of it's many ports to other languages.
 
@@ -166,6 +166,12 @@ This was surprisingly easy thanks to Qt. All I really had to do was open a ``Qt:
 Storing customizations was a pretty easy technical challenge. It required creating a singleton class, which let me store key value pairs to it. Then we would write out the changes to disk on occasion. We would also make sure all of the data got written out when the program exited.
 
 The biggest problem was trying to support configuration changes while the program was running. Often Qt objects didn't want to be redrawn. Unlike an element in the DOM tree which can be styled dynamically with ease, Qt often made strange choices when to redraw with the new settings it was given. It seems like these redrawing actions are a common problem in the Qt world. When I asked around Nokia and Qt's forums, I was told I should just modify the core Qt code to get the desirable effect I was looking for.
+
+\section{Future Work}
+
+I think there is lots of work to be done here, but I would argue against it. Instead of continuing to develop this application, I would recommend looking into building a web application that simulates the same experience. CSS makes it easier to iterate quickly on the design and layout, plus you can use the HTML5 local storage API to let the user work offline.
+
+If you were to continue working on this project, I would focus on making the application easier to deploy across a wide variety of operating systems. I would also try and find a layout that works well on all screen sizes.
 
 \section{Conclusion}
 
