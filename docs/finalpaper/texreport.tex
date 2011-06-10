@@ -98,7 +98,7 @@ OpenOffice Writer 3 seems to be on-par with current Microsoft Word offerings. Th
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/oo1.png}
-   \caption{...}
+   \caption{OpenOffice Writer 3 with no text.}
 \end{figure}
 
 Writer was nice in that it always opened a new empty document so you can start writing immediately.
@@ -106,7 +106,7 @@ Writer was nice in that it always opened a new empty document so you can start w
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/oo2.png}
-   \caption{...}
+   \caption{OpenOffice Writer 3 with text.}
 \end{figure}
 
 The full screen mode also looked pleasant, but tended to crash when transitioning in and out.
@@ -116,7 +116,7 @@ Writer also had an easy to use ``export to PDF'' feature. Spell check was easy t
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/oo3.png}
-   \caption{...}
+   \caption{OpenOffice Writer 3 in full screen mode.}
 \end{figure}
 
 You could customize a lot of things in Writer, but it was annoying that you had to select all of the text to change the document color scheme. In contrast though, Writer supported more fonts than any of the other programs.
@@ -130,16 +130,10 @@ According to the Vim website, vim.org, ``Vim is a highly configurable text edito
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/vim2.png}
-   \caption{...}
+   \caption{Vim with one file open.}
 \end{figure}
 
 I currently am using Vim to write this paper, I used it to write almost all of the code for coffee\_shop and I have been using it pretty exclusively for the last four years.
-
-\begin{figure}
-   \centering
-      \includegraphics[width=130mm]{images/vim3.png}
-   \caption{...}
-\end{figure}
 
 Vim has its issues though. It has a really difficult learning curve. In fact, without working for a company where almost every developer used it, I probably would have given up long ago. Most people give up quickly because they do not understand why Vim tries to make sure you never use the mouse. In their defense, this is fair, the user interface does not tell the user much at all, and expects the user to know all of the magic incantations to get things to happen. I have heard that emacs is the same way, but I have never used it.
 
@@ -154,7 +148,7 @@ WriteRoom is a piece of software for OS X by HogBay Software \cite{writeroom}. B
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/writeroom1.png}
-   \caption{...}
+   \caption{WriteRoom with one page of text.}
 \end{figure}
 
 WriteRoom has a lot of cool customizations. It lets the user choose colors and fonts. It also does a really nice job wrapping and splitting up pages.
@@ -162,7 +156,7 @@ WriteRoom has a lot of cool customizations. It lets the user choose colors and f
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/writeroom2.png}
-   \caption{...}
+   \caption{WriteRoom with two pages of text.}
 \end{figure}
 
 The only thing I found annoying was that you needed to know obscure key combinations to do change any sort of display settings. This seemed weird, because while key bindings let you keep the interface simple, users can't use them if they aren't taught them when the application opens.
@@ -174,7 +168,7 @@ OmmWriter \cite{ommwriter} is similar to WriteRoom in its feature set, except th
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/ommwriter1.png}
-   \caption{...}
+   \caption{OmmWriter immediately after launch.}
 \end{figure}
 
 The typing noise was quite an interesting idea. I tended to mute the background music, but noise of clicking typewriter keys ended up being quite soothing.
@@ -182,7 +176,7 @@ The typing noise was quite an interesting idea. I tended to mute the background 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/ommwriter2.png}
-   \caption{...}
+   \caption{OmmWriter while typing.}
 \end{figure}
 
 Probably the biggest complaint comes from the limited number of themes. I was looking for a high contrast option, such as light green on a black field. There was nothing similar to this, and most themes were very low contrast and hard to read.
@@ -190,7 +184,7 @@ Probably the biggest complaint comes from the limited number of themes. I was lo
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/ommwriter3.png}
-   \caption{...}
+   \caption{OmmWriter while hovering over a menu item.}
 \end{figure}
 
 The workspace was adjustable in size, and the user interface came and went based on mouse movement and typing speed, which was a nice touch. OmmWriter seemed the most polished of everything I tried out, and was the program I probably tried the hardest to emulate.
@@ -200,43 +194,43 @@ The workspace was adjustable in size, and the user interface came and went based
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop1.png}
-   \caption{1}
+   \caption{coffee\_shop after launch.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop2.png}
-   \caption{2}
+   \caption{coffee\_shop with text.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop3.png}
-   \caption{3}
+   \caption{coffee\_shop using a different color pallet.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop4.png}
-   \caption{4}
+   \caption{The coffee\_shop splash screen designed by Jeannie Nguyen\protect\cite{jeannie}.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop5.png}
-   \caption{5}
+   \caption{coffee\_shop`s print dialog.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop6.png}
-   \caption{6...}
+   \caption{coffee\_shop`s save dialog.}
 \end{figure}
 
 \begin{figure}
    \centering
       \includegraphics[width=130mm]{images/coffee_shop7.png}
-   \caption{7...}
+   \caption{coffee\_shop`s open dialog.}
 \end{figure}
 
 Talk a little about the development process. We talk about how features were implemented below, so just give an overview of what the program does.
@@ -280,7 +274,7 @@ Below is a list of requirements determined at the begining of the project and wh
    \item[FR5] It must be able to display a word count. \\ Passed.
 
    \item[FR6] When the user clicks the print menu item, the dialog to print must be displayed. \\ Passed. It prints as well.
- 
+
 \end{description}
 
 \subsection{Non-Functional Requirements}
@@ -355,7 +349,7 @@ Overall, I am proud of the work I did, but in the future I would probably just m
 \newpage
 \singlespacing
 \addcontentsline{toc}{section}{List of Figures}
-\listoffigures 
+\listoffigures
 \newpage
 
 \newpage
