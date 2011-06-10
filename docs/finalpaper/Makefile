@@ -55,7 +55,7 @@ pdf: $(NAME).pdf
 	fi
 
 smallclean:
-	rm -f $(NAME).dvi $(NAME).log $(NAME).aux *~ *.bbl *.blg *.toc
+	rm -f $(NAME).dvi $(NAME).log $(NAME).aux *~ *.bbl *.blg *.toc *.lof
 	rm -f $(NAME).bbl $(NAME).blg $(NAME).synctex.gz
 
 clean: smallclean

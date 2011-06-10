@@ -3,5 +3,6 @@
 *.blg
 *.log
 *.toc
+*.lof
 .DS_Store
 *.swp
