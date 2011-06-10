@@ -39,18 +39,18 @@ pdf: $(NAME).pdf
 	$(PS) $(PSFLAGS) $(NAME).dvi > $(NAME).ps
 
 %.pdf: %.ps
-	@gs -q -sDEVICE=pdfwrite -sOutputFile=$@ -dNOPAUSE -dBATCH $<
+	gs -q -sDEVICE=pdfwrite -sOutputFile=$@ -dNOPAUSE -dBATCH $<
 
 %.dvi: $(TEXFILES) $(BIBFILES)
 	@echo " --- Running LaTeX"
 	$(LATEX) $(TEXFILES)
 	@echo " --- Running BibTeX"
 	$(BIBTEX) $(NAME)
-	@echo "	Running LaTeX until complete"
+	@echo "Running LaTeX until complete"
 	if $(LATEX) $(TEXFILES) | tee /dev/tty | fgrep -is rerun; then \
-		@echo "	--- Rerunning LaTeX";				\
+		echo "	--- Rerunning LaTeX";				\
 		while $(LATEX) $(TEXFILES) | fgrep -is rerun; do	\
-			@echo "  Re-Rerunning LaTeX";			\
+			echo "  Re-Rerunning LaTeX";			\
 		done;							\
 	fi
 
