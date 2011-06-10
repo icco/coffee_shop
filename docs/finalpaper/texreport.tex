@@ -219,7 +219,65 @@ Talk a little about the development process. We talk about how features were imp
 
 \section{Evaluation of coffee\_shop}
 
-Basic overview of formal requirements. A table if possible.
+Below is a list of requirements determined at the begining of the project and whether or not coffee\_shop passes them. In the following requirements, ``it'' refers to the application, coffee\_shop.
+
+\subsection{Functional Requirements}
+
+\begin{description}
+
+   \item[FR1] It must allow the user to type into the application. \\ Passed.
+
+   \begin{description}
+
+      \item[FR1.1] As the user types, text will appear onto the screen. \\ Passed.
+
+      \item[FR1.2] Certain keyboard shortcuts will cause the system to act in a predictable way. Such as CTRL+s will force the program to save the current working document. \\ Passed, although as find and replace is not supported, CTRL+f does not work.
+
+   \end{description}
+
+   \item[FR2] It must be able to save and open the users work. \\ Passed.
+
+   \item[FR3] The work environment must be customisable. \\ Passed.
+
+   \begin{description}
+
+      \item[FR3.1] The user should be able to select a background color. \\ Passed.
+
+      \item[FR3.2] The user should be able to select a font color. \\ Passed.
+
+      \item[FR3.3] The user should be able to select a font, from a limited selection of fonts. \\ Passed.
+
+      \item[FR3.4] These setting should be saved between sessions. \\ Passed.
+
+   \end{description}
+
+   \item[FR4] It must support find and replace. \\ Failed. I ran out of time and never implemented this.
+
+   \item[FR5] It must be able to display a word count. \\ Passed.
+
+   \item[FR6] When the user clicks the print menu item, the dialog to print must be displayed. \\ Passed. It prints as well.
+ 
+\end{description}
+
+\subsection{Non-Functional Requirements}
+
+\begin{description}
+
+   \item[NFR1] It must be Open Source. \\ Passed. The application is available for download at \url{https://github.com/icco/coffee_shop} under the MIT License.
+
+   \item[NFR2] The language it is written in must be Open Source. \\ Passed. The program is written in Ruby, which is available under the GPL v2 at \url{http://www.ruby-lang.org/en/}.
+
+   \item[NFR3] It must run on Linux. \\ Passed.
+
+   \item[NFR4] It must run full-screen. \\ Passed.
+
+   \item[NFR5] It should promote a distraction free work environment. \\ Passed.
+
+   \item[NFR6] It should be usable by people who work in various lighting environments (writing in a coffee shop, dark room, corporate environment). \\ Passed. I was able to use it in all three of these places.
+
+   \item[NFR7] The format the work is saved in must be standards compliant format. \\ Passed. Saves in plain text.
+
+\end{description}
 
 \subsection{Development decisions}
 
