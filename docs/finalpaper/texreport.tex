@@ -162,7 +162,7 @@ These are programs I am trying to emulate while developing coffee\_shop.
 
 \subsubsection{WriteRoom}
 
-WriteRoom is a piece of software for OS X by HogBay Software \cite{writeroom}. By default WriteRoom opens in full screen. Pressing escape though turns the app into a normal windowed text editor. This windowed text editor looks very similar to OS X's Text Edit.
+WriteRoom is a piece of software for OS X by HogBay Software \cite{writeroom}. By default WriteRoom opens in full screen. Pressing escape though turns the application into a normal windowed text editor. This windowed text editor looks very similar to OS X's Text Edit.
 
 \begin{figure}
    \centering
@@ -324,13 +324,13 @@ I made some decisions while developing and designing coffee\_shop, which may be 
 
 Ruby is an interesting beast. I selected it because I had little experience with the language and it had a very large community online. Since starting the project I have learned a lot about the language.
 
-Ruby is a really fun language to write in, but it is not made to develop systems whose state changes during its run. Ruby works far better as a shell script or responder for a website because it can execute in entirety and doesn't need to jump around to a ton of objects already allocated. It's possible that a graphics framework could solve this, but I was unable to find one that did.
+Ruby is a really fun language to write in, but it is not made to develop systems whose state changes during its run, due to the fact that most methods return new objects instead of modifying the one passed in. Ruby works far better as a shell script or responder for a website because it can execute in entirety and doesn't need to jump around to a ton of objects already allocated. It's possible that a graphics framework could solve this, but I was unable to find one that did.
 
 \subsubsection{Qt}
 
 Qt is incredibly powerful, and RubyQt \cite{rubyqt} is probably the best UI toolkit available for Ruby. But Qt is written for Java and C++. Qt expects to have references to everything, and wants everything to be passed by reference. Ruby doesn't really work this way and because of it, hindered Qt's power.
 
-Interestingly enough, a lot of the things I saw other applications doing that I thought were cool, were actually areas where people were hacking directly on the Qt source, or rewriting entire sections of the library. \cite{kwrite}.
+Interestingly enough, a lot of the things I saw other applications doing that I thought were cool, were actually areas where people were hacking directly on the Qt source, or rewriting entire sections of the library \cite{kwrite}.
 
 In hindsight, if I were to use Qt, I would use it with C++, instead of one of it's many ports to other languages.
 
@@ -338,17 +338,17 @@ In hindsight, if I were to use Qt, I would use it with C++, instead of one of it
 
 \subsubsection{File writing}
 
-File writing is a simple concept, but can be easily complicated. The question, as a developer, that you have to ask yourself, is if you want others to be able to open your files. Microsoft, Apple and OpenOffice all say no. Microsoft and OpenOffice provide specifications on how to read and edit their file types, but even that is kind of tricky.
+File writing is a simple concept, but can be easily complicated. The question, as a developer, that you have to ask yourself, is if you want others to be able to open your files. Microsoft, Apple and OpenOffice all say no. Microsoft and OpenOffice provide specifications on how to read and edit some of their file types, but even that is kind of tricky.
 
-So if you don't care about others, you can just dump all of the binary data you want, and just walk away. If you do care about others, you have a few more choices. First off, are you storing any other data besides plain text in your document? For me the answer was no, so I just decided to write to the file, and give it a ``.txt'' extension by default. You could instead want to store data along with your plain text, such as formatting information or user information. Suggestions for doing this would be to either use XML or another common markup language, and then output that in plain text. This way your files are still readable by all, but your program is the most optimal way to edit the data. The downside to this is that you need to verify the documents structure on file load so that you don't have malicious users injecting data into your app.
+So if you don't care about others, you can just dump all of the binary data you want, and just walk away. If you do care about others, you have a few more choices. First off, are you storing any other data besides plain text in your document? For me the answer was no, so I just decided to write to the file and give it a ``.txt'' extension by default. You could instead want to store meta-data along with your plain text, such as formatting information or user information. Suggestions for doing this would be to either use XML or another common markup language, and then output that in plain text. This way your files are still readable by all, but your program is the most optimal way to edit the data. The downside to this is that you need to verify the documents structure on file load so that you don't have malicious users injecting data into your application. Some might also complain that the file format will not be compressed. But then again, plain text is much easier for users to store and compress themselves.
 
 One thing I thought heavily about once I had my file type set up, was how often to save. I decided saving automatically every minute was a great decision. Every single one of the people I surveyed wanted the functionality, and it was easy to implement.
 
 \subsubsection{Pagination}
 
-So, this is the one feature I really wanted to get work, but I just couldn't figure it out. It seems to be that Qt only wants to do pagination when the data is read only. So, for example, you can send Qt a block of text to print preview, and it will return you a read only set of paginated data. All of the actual text document objects though, do not support pagination while typing, which makes them all pretty useless. Posting on the Qt forums and on StackOverflow, the general opinion was that I should fork the Qt source and modify the ``TextDocument'' object myself in C++.
+So, this is the one feature I really wanted to get work, but I just could not figure it out. It seems to be that Qt only wants to do pagination when the data is read only. So, for example, you can send Qt a block of text to print preview, and it will return you a read only set of paginated data. All of the actual text document objects do not support pagination while typing though, which makes them all pretty useless. Posting on the Qt forums and on StackOverflow, the general opinion was that I should fork the Qt source and modify the ``TextDocument'' object myself in C++.
 
-This made me furious, in what world is it good API design to make your library need to be modified to get a desired effect? I thought the internet was crazy, but I looked at the source of some of the major Qt users, such as KWrite, and was blown away. They reimplemented about half of the Qt framework because the framework didn't do what they wanted to. On top of that, this reimplementation was close to two thirds of their code base.
+This made me furious, in what world is it good API design to make your library need to be modified to get a desired effect? I thought the internet was crazy, but I looked at the source of some of the major Qt users, such as KWrite, and was blown away. They reimplemented about half of the Qt framework because the framework didn't do what they wanted to. On top of that, this reimplementation was close to two thirds of their code base. For such a large project it seems to me that it would be better if they submitted patches back to Qt instead, but oh well.
 
 Frustrated, I tried to do pagination myself. I tried a variety of methods to split the data between text boxes. The problem with this was that whenever I did this, focus was put back on the top of first text box. So depending on how often I recalculated the pagination data, users would get incredibly incoherent data. The worst was when I recalculated pages after every key press. This made it so when users typed data went into the document backwards (as if they were pushing their characters onto a stack), but when they pasted, the text went in the right way.
 
@@ -373,6 +373,8 @@ If you were to continue working on this project, I would focus on making the app
 \section{Conclusion}
 
 I originally chose to jump into this project due to the fact that after five years I had never made a desktop application. So I decided that I would do this as a way to make sure I wasn't missing out on a part of the Computer Science field that I might be interested. I quickly discovered that I did not enjoy some of the major ideas behind desktop programming. I learned a lot, and I am proud of what I made, but I would not do this again. Instead I would develop the application for the web because I am more familiar with the technologies and enjoy developing for a system where the entire state refreshes on page reload.
+
+I should say that despite how frustrating I found developing this application, the final product does work well. It is ugly and has a few bugs, but if you just want to edit text in Linux, it does the job.
 
 \newpage
 \singlespacing
